@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-  <base href="/">
   <title>Lobo Prints – Classic Cotton T-Shirt</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,8 +47,8 @@
         <div class="col-md-6">
           <!-- Main Product Image -->
           <div class="product-gallery">
-            <div class="main-image-container">
-              <img id="mainProductImage" src="images/product-item-1.jpg" alt="Classic Cotton T-Shirt" class="main-image">
+            <div class="image-zoom-container">
+              <img id="mainProductImage" src="images/white1.jpg" alt="Classic Cotton T-Shirt" class="main-image" loading="lazy">
             </div>
 
             <!-- Thumbnail gallery for selected variant -->
@@ -62,8 +61,6 @@
           <ul class="list-unstyled">
             <li><strong>Material:</strong> 100% Cotton</li>
             <li><strong>Printing:</strong> Screen Print, DTG, Heat Transfer</li>
-            <li><strong>Sizes:</strong> S, M, L, XL, XXL</li>
-            <li><strong>Colors:</strong> White, Black, Navy, Red, and more</li>
             <li><strong>Minimum Order:</strong> 10 pieces</li>
           </ul>
 
@@ -76,6 +73,18 @@
               <img src="images/yellow-thumb.jpg" class="variant-thumb" data-variant="yellow" alt="Yellow">
               <img src="images/blue-thumb.jpg" class="variant-thumb" data-variant="blue" alt="Blue">
               <img src="images/red-thumb.jpg" class="variant-thumb" data-variant="red" alt="Red">
+            </div>
+          </div>
+
+          <!-- Size Selector Section -->
+          <div class="size-section mt-4">
+            <h6>Size</h6>
+            <div class="size-options">
+              <button class="size-btn">S</button>
+              <button class="size-btn">M</button>
+              <button class="size-btn">L</button>
+              <button class="size-btn">XL</button>
+              <button class="size-btn">XXL</button>
             </div>
           </div>
 
@@ -115,6 +124,10 @@
                 <label for="quantity" class="form-label">Quantity</label>
                 <input type="number" class="form-control" id="quantity" min="1">
               </div>
+            </div>
+            <div class="mb-3">
+              <label for="design" class="form-label">Upload Design (Optional)</label>
+              <input type="file" class="form-control" id="design" accept="image/*,.pdf">
             </div>
             <div class="mb-3">
               <label for="message" class="form-label">Message</label>
