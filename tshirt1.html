@@ -46,7 +46,29 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="images/product-item-1.jpg" class="img-fluid" alt="Classic Cotton T-Shirt">
+          <!-- Main Product Image -->
+          <div class="product-image-container">
+            <img id="mainProductImage" src="images/product-item-1.jpg" class="img-fluid main-product-image" alt="Classic Cotton T-Shirt">
+          </div>
+          
+          <!-- Variant Thumbnails -->
+          <div class="variant-thumbnails mt-3">
+            <div class="thumbnail active" data-variant="white">
+              <img src="images/product-item-1.jpg" alt="White" class="img-thumbnail">
+            </div>
+            <div class="thumbnail" data-variant="black">
+              <img src="images/product-item-2.jpg" alt="Black" class="img-thumbnail">
+            </div>
+            <div class="thumbnail" data-variant="yellow">
+              <img src="images/product-item-3.jpg" alt="Yellow" class="img-thumbnail">
+            </div>
+            <div class="thumbnail" data-variant="blue">
+              <img src="images/product-item-4.jpg" alt="Blue" class="img-thumbnail">
+            </div>
+            <div class="thumbnail" data-variant="red">
+              <img src="images/product-item-5.jpg" alt="Red" class="img-thumbnail">
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <h1 class="display-5 mb-3">Classic Cotton T-Shirt</h1>
@@ -147,6 +169,36 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Product Variant Image Switching
+    const variants = {
+      'white': 'images/product-item-1.jpg',
+      'black': 'images/product-item-2.jpg',
+      'yellow': 'images/product-item-3.jpg',
+      'blue': 'images/product-item-4.jpg',
+      'red': 'images/product-item-5.jpg'
+    };
+
+    const mainImage = document.getElementById('mainProductImage');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    // Set default variant (first one)
+    const defaultVariant = Object.keys(variants)[0];
+    mainImage.src = variants[defaultVariant];
+    document.querySelector(`[data-variant="${defaultVariant}"]`).classList.add('active');
+
+    // Add click event to thumbnails
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function() {
+        const variant = this.getAttribute('data-variant');
+        mainImage.src = variants[variant];
+        
+        // Remove active class from all thumbnails
+        thumbnails.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked thumbnail
+        this.classList.add('active');
+      });
+    });
+
     document.getElementById('quoteForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('name').value;
