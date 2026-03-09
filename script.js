@@ -1,98 +1,76 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // gallery variants structure
-  const variants = {
+  // Variant image galleries
+  const variantImages = {
     white: [
-      "images/product-item-1.jpg",
-      "images/product-item-2.jpg",
-      "images/product-item-3.jpg",
-      "images/product-item-4.jpg"
+      "images/white1.jpg",
+      "images/white2.jpg",
+      "images/white3.jpg",
+      "images/white4.jpg"
     ],
     black: [
-      "images/product-item-2.jpg",
-      "images/product-item-3.jpg",
-      "images/product-item-4.jpg",
-      "images/product-item-5.jpg"
+      "images/black1.jpg",
+      "images/black2.jpg",
+      "images/black3.jpg",
+      "images/black4.jpg"
     ],
     yellow: [
-      "images/product-item-3.jpg",
-      "images/product-item-4.jpg",
-      "images/product-item-5.jpg",
-      "images/product-item-1.jpg"
+      "images/yellow1.jpg",
+      "images/yellow2.jpg",
+      "images/yellow3.jpg",
+      "images/yellow4.jpg"
     ],
     blue: [
-      "images/product-item-4.jpg",
-      "images/product-item-5.jpg",
-      "images/product-item-1.jpg",
-      "images/product-item-2.jpg"
+      "images/blue1.jpg",
+      "images/blue2.jpg",
+      "images/blue3.jpg",
+      "images/blue4.jpg"
     ],
     red: [
-      "images/product-item-5.jpg",
-      "images/product-item-1.jpg",
-      "images/product-item-2.jpg",
-      "images/product-item-3.jpg"
+      "images/red1.jpg",
+      "images/red2.jpg",
+      "images/red3.jpg",
+      "images/red4.jpg"
     ]
   };
 
-  const mainImage = document.getElementById('mainProductImage');
-  const thumbnails = document.querySelectorAll('.thumbnails .thumbnail');
-  const variantThumbs = document.querySelectorAll('.variant-thumb');
+  const mainImage = document.getElementById("mainProductImage");
+  const thumbnailContainer = document.querySelector(".thumbnails");
+  const variantThumbs = document.querySelectorAll(".variant-thumb");
 
-  let currentVariant = 'white';
-  let currentIndex = 0;
+  function loadVariant(variantName) {
+    const images = variantImages[variantName];
 
-  function loadVariant(variant) {
-    currentVariant = variant;
-    currentIndex = 0;
+    mainImage.src = images[0];
+    thumbnailContainer.innerHTML = "";
 
-    // update main image
-    mainImage.src = variants[variant][0];
+    images.forEach((img, index) => {
+      const thumb = document.createElement("img");
+      thumb.src = img;
+      thumb.classList.add("thumbnail");
+      thumb.dataset.index = index;
 
-    // thumbnails
-    thumbnails.forEach((thumb, idx) => {
-      thumb.src = variants[variant][idx];
-      thumb.classList.toggle('active', idx === 0);
+      if (index === 0) thumb.classList.add("active");
+
+      thumb.addEventListener("click", () => {
+        mainImage.src = img;
+        document.querySelectorAll(".thumbnail").forEach(t => t.classList.remove("active"));
+        thumb.classList.add("active");
+      });
+
+      thumbnailContainer.appendChild(thumb);
     });
-
-    // update variant-thumb active
-    variantThumbs.forEach(vt => vt.classList.toggle('active', vt.getAttribute('data-variant') === variant));
   }
 
-  // click handlers
-  variantThumbs.forEach(vt => {
-    vt.addEventListener('click', () => {
-      const v = vt.getAttribute('data-variant');
-      loadVariant(v);
+  variantThumbs.forEach(variant => {
+    variant.addEventListener("click", () => {
+      const selectedVariant = variant.dataset.variant;
+
+      document.querySelectorAll(".variant-thumb").forEach(v => v.classList.remove("active"));
+      variant.classList.add("active");
+
+      loadVariant(selectedVariant);
     });
   });
 
-  thumbnails.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const idx = parseInt(thumb.getAttribute('data-index'));
-      currentIndex = idx;
-      mainImage.src = variants[currentVariant][idx];
-
-      thumbnails.forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-    });
-  });
-
-  // default load
-  loadVariant(currentVariant);
-
-  // quote form handler
-  const quoteForm = document.getElementById('quoteForm');
-  if (quoteForm) {
-    quoteForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const quantity = document.getElementById('quantity').value;
-      const message = document.getElementById('message').value;
-
-      const whatsappMessage = `Hi Lobo Prints, I want a quote for Classic Cotton T-Shirt. Name: ${name}, Email: ${email}, Phone: ${phone}, Quantity: ${quantity}, Message: ${message}`;
-      const whatsappUrl = `https://wa.me/919742998799?text=${encodeURIComponent(whatsappMessage)}`;
-      window.open(whatsappUrl, '_blank');
-    });
-  }
+  loadVariant("white");
 });
