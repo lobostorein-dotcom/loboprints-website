@@ -47,26 +47,26 @@
       <div class="row">
         <div class="col-md-6">
           <!-- Main Product Image -->
-          <div class="product-image-container">
-            <img id="mainProductImage" src="images/product-item-1.jpg" class="img-fluid main-product-image" alt="Classic Cotton T-Shirt">
-          </div>
-          
-          <!-- Variant Thumbnails -->
-          <div class="variant-thumbnails mt-3">
-            <div class="thumbnail active" data-variant="white">
-              <img src="images/product-item-1.jpg" alt="White" class="img-thumbnail">
+          <div class="product-gallery">
+            <div class="main-image-container">
+              <img id="mainProductImage" src="images/product-item-1.jpg" alt="Classic Cotton T-Shirt" class="main-image">
             </div>
-            <div class="thumbnail" data-variant="black">
-              <img src="images/product-item-2.jpg" alt="Black" class="img-thumbnail">
+            
+            <!-- Thumbnails -->
+            <div class="thumbnails">
+              <img src="images/product-item-2.jpg" alt="Thumbnail 1" class="thumbnail active" data-index="0">
+              <img src="images/product-item-3.jpg" alt="Thumbnail 2" class="thumbnail" data-index="1">
+              <img src="images/product-item-4.jpg" alt="Thumbnail 3" class="thumbnail" data-index="2">
+              <img src="images/product-item-5.jpg" alt="Thumbnail 4" class="thumbnail" data-index="3">
             </div>
-            <div class="thumbnail" data-variant="yellow">
-              <img src="images/product-item-3.jpg" alt="Yellow" class="img-thumbnail">
-            </div>
-            <div class="thumbnail" data-variant="blue">
-              <img src="images/product-item-4.jpg" alt="Blue" class="img-thumbnail">
-            </div>
-            <div class="thumbnail" data-variant="red">
-              <img src="images/product-item-5.jpg" alt="Red" class="img-thumbnail">
+            
+            <!-- Color Variants -->
+            <div class="color-variants">
+              <button class="color-btn active" data-color="white" style="background-color: #ffffff; border: 1px solid #ddd;"></button>
+              <button class="color-btn" data-color="black" style="background-color: #000000;"></button>
+              <button class="color-btn" data-color="yellow" style="background-color: #ffff00;"></button>
+              <button class="color-btn" data-color="blue" style="background-color: #0000ff;"></button>
+              <button class="color-btn" data-color="red" style="background-color: #ff0000;"></button>
             </div>
           </div>
         </div>
@@ -169,35 +169,88 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Product Variant Image Switching
+    // Modern Product Gallery with Variants
     const variants = {
-      'white': 'images/product-item-1.jpg',
-      'black': 'images/product-item-2.jpg',
-      'yellow': 'images/product-item-3.jpg',
-      'blue': 'images/product-item-4.jpg',
-      'red': 'images/product-item-5.jpg'
+      white: [
+        "images/product-item-1.jpg",
+        "images/product-item-2.jpg",
+        "images/product-item-3.jpg",
+        "images/product-item-4.jpg"
+      ],
+      black: [
+        "images/product-item-2.jpg",
+        "images/product-item-3.jpg",
+        "images/product-item-4.jpg",
+        "images/product-item-5.jpg"
+      ],
+      yellow: [
+        "images/product-item-3.jpg",
+        "images/product-item-4.jpg",
+        "images/product-item-5.jpg",
+        "images/product-item-1.jpg"
+      ],
+      blue: [
+        "images/product-item-4.jpg",
+        "images/product-item-5.jpg",
+        "images/product-item-1.jpg",
+        "images/product-item-2.jpg"
+      ],
+      red: [
+        "images/product-item-5.jpg",
+        "images/product-item-1.jpg",
+        "images/product-item-2.jpg",
+        "images/product-item-3.jpg"
+      ]
     };
 
     const mainImage = document.getElementById('mainProductImage');
-    const thumbnails = document.querySelectorAll('.thumbnail');
+    const thumbnails = document.querySelectorAll('.thumbnails .thumbnail');
+    const colorBtns = document.querySelectorAll('.color-btn');
 
-    // Set default variant (first one)
-    const defaultVariant = Object.keys(variants)[0];
-    mainImage.src = variants[defaultVariant];
-    document.querySelector(`[data-variant="${defaultVariant}"]`).classList.add('active');
+    let currentVariant = 'white';
+    let currentIndex = 0;
 
-    // Add click event to thumbnails
-    thumbnails.forEach(thumbnail => {
-      thumbnail.addEventListener('click', function() {
-        const variant = this.getAttribute('data-variant');
-        mainImage.src = variants[variant];
+    // Load default variant (white)
+    loadVariant('white');
+
+    // Color variant click
+    colorBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const color = this.getAttribute('data-color');
+        loadVariant(color);
         
-        // Remove active class from all thumbnails
-        thumbnails.forEach(t => t.classList.remove('active'));
-        // Add active class to clicked thumbnail
+        // Update active color button
+        colorBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
       });
     });
+
+    // Thumbnail click
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        currentIndex = index;
+        mainImage.src = variants[currentVariant][index];
+        
+        // Update active thumbnail
+        thumbnails.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    function loadVariant(variant) {
+      currentVariant = variant;
+      currentIndex = 0;
+      
+      // Set main image to first image of variant
+      mainImage.src = variants[variant][0];
+      
+      // Update thumbnails
+      thumbnails.forEach((thumb, index) => {
+        thumb.src = variants[variant][index];
+        thumb.classList.toggle('active', index === 0);
+      });
+    }
 
     document.getElementById('quoteForm').addEventListener('submit', function(e) {
       e.preventDefault();
