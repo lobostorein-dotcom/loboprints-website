@@ -1659,24 +1659,41 @@ a.btn-link.text-light:after {
   margin-top: 10px;
 }
 
+/* Variant images in product details */
+.variant-section {
+  padding: 15px 0;
+}
+
+.variant-section h6 {
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.variant-images {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .variant-thumb {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
-  border: 2px solid #e0e0e0;
-  border-radius: 4px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
   cursor: pointer;
   transition: border-color 0.3s ease, transform 0.2s ease;
 }
 
 .variant-thumb:hover {
-  border-color: #FFA500;
+  border-color: #111;
   transform: scale(1.05);
 }
 
 .variant-thumb.active {
-  border-color: #FFA500;
-  box-shadow: 0 0 6px rgba(255, 165, 0, 0.4);
+  border-color: #111;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive */
