@@ -102,43 +102,62 @@
   <section class="bg-light py-5">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h2 class="text-center mb-4">Request a Quote</h2>
-          <form id="quoteForm">
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="name" class="form-label">Name *</label>
-                <input type="text" class="form-control" id="name" required>
+        <div class="col-lg-8">
+          <div class="card shadow-lg p-5">
+            <h2 class="mb-4">Request a Quote</h2>
+            <form id="quoteForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="name" name="name" required>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="email" class="form-label">Email *</label>
-                <input type="email" class="form-control" id="email" required>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="email" name="email" required>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="phone" class="form-label">Phone *</label>
-                <input type="tel" class="form-control" id="phone" required>
+
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" min="1">
+
+              <div class="mb-3">
+                <label for="category" class="form-label">Product Category *</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="">Select a category</option>
+                  <option value="T-Shirts" selected>T-Shirts</option>
+                  <option value="Hoodies">Hoodies</option>
+                  <option value="Trackpants">Trackpants</option>
+                  <option value="Shorts">Shorts</option>
+                  <option value="Caps">Caps</option>
+                  <option value="Badges">Badges</option>
+                  <option value="ID Cards">ID Cards</option>
+                  <option value="ID Tags">ID Tags</option>
+                  <option value="Aprons">Aprons</option>
+                  <option value="Mobile Cases">Mobile Cases</option>
+                </select>
               </div>
-            </div>
-            <div class="mb-3">
-              <label for="design" class="form-label">Upload Design (Optional)</label>
-              <input type="file" class="form-control" id="design" accept="image/*,.pdf">
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" id="message" rows="4" placeholder="Describe your customization requirements..."></textarea>
-            </div>
-            <div class="text-center">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSea5mePYUYpcivwrzHGxD7HhlCHkrS5W8RH8zU3ZQl06uy3bw/viewform" target="_blank">
-                <button class="btn btn-primary btn-lg">Upload Design & Request Quote</button>
-              </a>
-            </div>
-          </form>
+
+              <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity *</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" min="1" placeholder="e.g., 100" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="details" class="form-label">Details / Special Requirements</label>
+                <textarea class="form-control" id="details" name="details" rows="4" placeholder="Describe your custom apparel requirements, colors, designs, etc."></textarea>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex">
+                <button type="button" class="btn btn-success btn-lg flex-fill" onclick="sendViaWhatsApp()">
+                  Send via WhatsApp
+                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSea5mePYUYpcivwrzHGxD7HhlCHkrS5W8RH8zU3ZQl06uy3bw/viewform" target="_blank" class="btn btn-primary btn-lg flex-fill">
+                  Upload Design & Request Quote
+                </a>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
