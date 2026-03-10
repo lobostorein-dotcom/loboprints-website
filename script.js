@@ -54,3 +54,48 @@ I will attach my design file here if needed.`;
   window.open(url,"_blank");
 
 });
+
+// Quote form functions
+function sendViaWhatsApp() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const category = document.getElementById('category').value;
+  const quantity = document.getElementById('quantity').value;
+  const details = document.getElementById('details').value;
+
+  const message = `Hi Lobo Prints,
+
+I would like a quote for custom apparel.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Category: ${category}
+Quantity: ${quantity}
+Details: ${details}
+
+Please get back to me with a quote.`;
+
+  const whatsappURL = `https://wa.me/919742998799?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, '_blank');
+}
+
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const category = document.getElementById('category').value;
+  const quantity = document.getElementById('quantity').value;
+  const details = document.getElementById('details').value;
+
+  const emailBody = `Name: ${name}
+Phone: ${phone}
+Category: ${category}
+Quantity: ${quantity}
+Details: ${details}`;
+
+  window.location.href = `mailto:business@loboprints.in?subject=Quote Request - ${category}&body=${encodeURIComponent(emailBody)}`;
+});
