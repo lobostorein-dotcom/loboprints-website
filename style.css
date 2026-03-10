@@ -61,6 +61,21 @@ body {
 
 body {
   letter-spacing: 0.03rem;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 h1,
