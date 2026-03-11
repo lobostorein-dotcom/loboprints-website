@@ -1869,12 +1869,14 @@ a.btn-link.text-light:after {
     width: 100%;
     min-width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
   }
   
-  .thumbnails .thumbnail {
+  .thumbnails .thumbnail,
+  .thumb-img {
     width: 100%;
+    height: auto;
     aspect-ratio: 1 / 1;
   }
   
