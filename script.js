@@ -1,5 +1,67 @@
-let selectedColor = "White";
+let selectedColor = "white";
 let selectedSize = "Multiple Sizes";
+
+const variantImages = {
+  white: [
+    "images/basic plain white 01.jpg.jpeg",
+    "images/basic plain white 02.jpg.jpeg",
+    "images/basic plain white 03.jpg.jpeg",
+    "images/basic plain white 04.jpg.jpeg",
+    "images/basic plain white 05.jpg.jpeg"
+  ],
+  black: [
+    "images/basic plain black 01.jpg.jpeg",
+    "images/basic plain black 02.jpg.jpeg",
+    "images/basic plain black 03.jpg.jpeg",
+    "images/basic plain black 04.jpg.jpeg",
+    "images/basic plain black 05.jpg.jpeg"
+  ],
+  yellow: [
+    "images/basic plain yellow 01.jpg.jpeg",
+    "images/basic plain yellow 02.jpg.jpeg",
+    "images/basic plain yellow 03.jpg.jpeg",
+    "images/basic plain yellow 04.jpg.jpeg",
+    "images/basic plain yellow 05.jpg.jpeg"
+  ],
+  blue: [
+    "images/basic plain blue 01.jpg.jpeg",
+    "images/basic plain blue 02.jpg.jpeg",
+    "images/basic plain blue 03.jpg.jpeg",
+    "images/basic plain blue 04.jpg.jpeg",
+    "images/basic plain blue 05.jpg.jpeg"
+  ],
+  red: [
+    "images/basic plain Red 01.jpg.jpeg",
+    "images/basic plain Red 02.jpg.jpeg",
+    "images/basic plain Red 03.jpg.jpeg",
+    "images/basic plain Red 04.jpg.jpeg",
+    "images/basic plain Red 05.jpg.jpeg"
+  ]
+};
+
+function renderThumbnails(variantKey) {
+  const thumbsWrap = document.querySelector(".thumbnails");
+  const mainImage = document.getElementById("mainProductImage");
+  if (!thumbsWrap || !mainImage || !variantImages[variantKey]) return;
+
+  const images = variantImages[variantKey];
+  mainImage.src = images[0];
+
+  thumbsWrap.innerHTML = "";
+  images.forEach((imageSrc, index) => {
+    const img = document.createElement("img");
+    img.src = imageSrc;
+    img.alt = `${variantKey} view ${index + 1}`;
+    img.className = "thumb-img" + (index === 0 ? " active" : "");
+    img.loading = "lazy";
+    img.addEventListener("click", function () {
+      document.querySelectorAll(".thumb-img").forEach(el => el.classList.remove("active"));
+      img.classList.add("active");
+      mainImage.src = imageSrc;
+    });
+    thumbsWrap.appendChild(img);
+  });
+}
 
 
 // COLOR SELECT
@@ -13,8 +75,11 @@ document.querySelectorAll(".variant-thumb").forEach(img => {
     this.classList.add("active");
 
     selectedColor = this.dataset.variant;
+    renderThumbnails(selectedColor);
   });
 });
+
+renderThumbnails("white");
 
 
 // SIZE SELECT
@@ -39,11 +104,13 @@ document.querySelector(".btn-primary.btn-lg").addEventListener("click", function
 
   let quantity = document.getElementById("quantity").value || "Not specified";
 
+  const displayColor = selectedColor.charAt(0).toUpperCase() + selectedColor.slice(1);
+
   let message =
 `Hi Lobo Prints, I want a quote for:
 
-Product: Classic Cotton T-Shirt
-Color: ${selectedColor}
+Product: Cotton Basic Round Neck T-Shirt
+Color: ${displayColor}
 Size: ${selectedSize}
 Quantity: ${quantity}
 
