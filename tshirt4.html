@@ -26,13 +26,102 @@
   <meta property="og:url" content="https://loboprints.in/tshirt4.html">
   <meta property="og:site_name" content="Lobo Prints">
   <meta property="og:locale" content="en_IN">
-  <meta property="og:image" content="https://loboprints.in/images/product-item-4.jpg">
+  <meta property="og:image" content="https://loboprints.in/images/240gsm%20oversize%20tshirt%20aqua%20blue%20%20colours-01.jpeg">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Cotton Premium Oversized T-Shirt 240 GSM in Bangalore | Lobo Prints">
   <meta name="twitter:description" content="Premium oversized T-shirts from Lobo Prints in Bangalore.">
-  <meta name="twitter:image" content="https://loboprints.in/images/product-item-4.jpg">
+  <meta name="twitter:image" content="https://loboprints.in/images/240gsm%20oversize%20tshirt%20aqua%20blue%20%20colours-01.jpeg">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    .product-main-image-wrap {
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .product-main-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #f8f9fa;
+      padding: 0.5rem;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .product-main-image:hover {
+      transform: scale(1.06);
+    }
+
+    .product-thumb {
+      width: 84px;
+      height: 84px;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .product-thumb.active,
+    .product-thumb:hover {
+      border-color: var(--bs-primary);
+    }
+
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .variant-more-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .variant-option-thumb {
+      width: 56px;
+      height: 56px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 0;
+      background: #fff;
+    }
+
+    .variant-option-thumb.active,
+    .variant-option-thumb:hover {
+      border-color: var(--bs-primary);
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+    }
+
+    .variant-option-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .size-btn {
+      border: 1px solid #d9d9d9;
+      background: #fff;
+      color: #212529;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      min-width: 52px;
+      transition: all 0.2s ease;
+    }
+
+    .size-btn.active,
+    .size-btn:hover {
+      border-color: var(--bs-primary);
+      color: var(--bs-primary);
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -45,6 +134,7 @@
           <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item"><a class="nav-link" href="tel:9742998799">Call: 9742998799</a></li>
+          <li class="nav-item"><a class="nav-link ms-2" href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote%20for%20Cotton%20Premium%20Oversized%20T-Shirt%20(240%20GSM)" style="background-color: #25D366; color: white; padding: 8px 12px; border-radius: 4px; display: inline-block;">WhatsApp</a></li>
         </ul>
       </div>
     </div>
@@ -52,20 +142,288 @@
 
   <section class="py-5" style="margin-top: 70px;">
     <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-6">
-          <img src="images/product-item-4.jpg" alt="Cotton Premium Oversized T-Shirt (240 GSM)" class="img-fluid rounded">
+      <div class="row align-items-start g-5">
+        <div class="col-lg-7">
+          <div class="bg-white rounded-4 shadow-sm p-3 p-md-4">
+            <div class="product-main-image-wrap mb-3">
+              <img id="premiumOversizedMainImage" src="images/240gsm oversize tshirt aqua blue  colours-01.jpeg" alt="Cotton Premium Oversized T-Shirt (240 GSM) in aqua blue" class="img-fluid product-main-image">
+            </div>
+            <div id="premiumOversizedThumbnailRow" class="d-flex flex-wrap gap-3"></div>
+          </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-5">
           <h1 class="display-6 mb-3">Cotton Premium Oversized T-Shirt (240 GSM)</h1>
-          <p class="lead">Detailed variant gallery for this t-shirt type will be added with its dedicated image sets.</p>
-          <a href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20need%20a%20quote%20for%20Cotton%20Premium%20Oversized%20T-Shirt%20(240%20GSM)" class="btn btn-primary btn-lg me-2">Get Quote via WhatsApp</a>
-          <a href="tshirts.html" class="btn btn-outline-primary btn-lg">Back to T-Shirts</a>
+          <p class="lead">Heavyweight 240 GSM oversized cotton T-shirt with a premium hand feel and structured silhouette for elevated merch, streetwear drops, and brand collections.</p>
+          <div class="d-flex flex-wrap gap-2 mb-2">
+            <span class="badge bg-dark-subtle text-dark-emphasis px-3 py-2">240 GSM</span>
+            <span class="badge bg-dark-subtle text-dark-emphasis px-3 py-2">Oversized Fit</span>
+            <span class="badge bg-dark-subtle text-dark-emphasis px-3 py-2">Premium Cotton</span>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="badge bg-secondary-subtle text-secondary-emphasis px-3 py-2">Screen Print</span>
+            <span class="badge bg-secondary-subtle text-secondary-emphasis px-3 py-2">DTG</span>
+            <span class="badge bg-secondary-subtle text-secondary-emphasis px-3 py-2">Heat Transfer</span>
+          </div>
+
+          <div class="mb-4">
+            <h2 class="h5 mb-3">Colors</h2>
+            <div class="d-flex flex-wrap gap-2" id="premiumOversizedVariantButtons">
+              <button type="button" class="variant-option-thumb active" data-variant="aqua" aria-label="Aqua Blue color">
+                <img src="images/240gsm oversize tshirt aqua blue  colours-01.jpeg" alt="Aqua Blue">
+              </button>
+              <button type="button" class="variant-option-thumb" data-variant="black" aria-label="Black color">
+                <img src="images/240gsm oversize tshirt black 01.jpeg" alt="Black">
+              </button>
+              <button type="button" class="variant-option-thumb" data-variant="blue" aria-label="Blue color">
+                <img src="images/240gsm oversize tshirt blue 01.jpeg" alt="Blue">
+              </button>
+              <button type="button" class="variant-option-thumb" data-variant="green" aria-label="Green color">
+                <img src="images/240gsm oversize tshirt green 01.jpeg" alt="Green">
+              </button>
+              <button type="button" class="variant-option-thumb" data-variant="yellow" aria-label="Yellow color">
+                <img src="images/240gsm oversize tshirt yellow colours-01.jpeg" alt="Yellow">
+              </button>
+              <button type="button" class="btn btn-outline-secondary variant-more-btn" data-bs-toggle="modal" data-bs-target="#premiumOversizedMoreColorsModal" aria-label="More colors available">+</button>
+            </div>
+          </div>
+
+          <div class="size-section mt-4 mb-4">
+            <h2 class="h5">Size</h2>
+            <div class="d-flex flex-wrap gap-2" id="premiumOversizedSizeButtons">
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn active">M</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">XL</button>
+              <button type="button" class="size-btn">XXL</button>
+            </div>
+          </div>
+
+          <div class="bg-light rounded-4 p-4 mb-4">
+            <h2 class="h5">Why choose this style?</h2>
+            <ul class="mb-0 ps-3 text-muted">
+              <li>Heavy 240 GSM fabric for a premium, structured fall.</li>
+              <li>Strong base for oversized streetwear branding and prints.</li>
+              <li>Ideal for fashion drops, creator merch, and premium uniforms.</li>
+            </ul>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20need%20a%20quote%20for%20Cotton%20Premium%20Oversized%20T-Shirt%20(240%20GSM)" class="btn btn-primary btn-lg me-3">Get Quote via WhatsApp</a>
+            <a href="contact.html#quoteForm" class="btn btn-outline-primary btn-lg">Contact Form</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg p-5">
+            <h2 class="mb-4">Request a Quote</h2>
+            <form id="quoteForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address *</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="category" class="form-label">Product Category *</label>
+                <select class="form-select" id="category" name="category" required>
+                  <option value="">Select a category</option>
+                  <option value="T-Shirts" selected>T-Shirts</option>
+                  <option value="Hoodies">Hoodies</option>
+                  <option value="Trackpants">Trackpants</option>
+                  <option value="Shorts">Shorts</option>
+                  <option value="Caps">Caps</option>
+                  <option value="Badges">Badges</option>
+                  <option value="ID's">ID's</option>
+                  <option value="Mugs">Mugs</option>
+                  <option value="Jackets">Jackets</option>
+                  <option value="Jerseys">Jerseys</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity *</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" min="1" placeholder="e.g., 100" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="details" class="form-label">Details / Special Requirements</label>
+                <textarea class="form-control" id="details" name="details" rows="4" placeholder="Describe your custom apparel requirements, colors, designs, etc."></textarea>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex">
+                <button type="button" class="btn btn-success btn-lg flex-fill" onclick="sendViaWhatsApp()">
+                  Send via WhatsApp
+                </button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSea5mePYUYpcivwrzHGxD7HhlCHkrS5W8RH8zU3ZQl06uy3bw/viewform" target="_blank" class="btn btn-primary btn-lg flex-fill">
+                  Upload Design & Request Quote
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="premiumOversizedMoreColorsModal" tabindex="-1" aria-labelledby="premiumOversizedMoreColorsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-body p-4 text-center">
+          <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h2 id="premiumOversizedMoreColorsLabel" class="h5">More colors available</h2>
+          <p class="text-muted small mb-3">Contact us to know more about extra shades and current stock availability.</p>
+          <a href="contact.html#quoteForm" class="btn btn-primary btn-sm">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer" class="mt-5">
+    <div class="container"><div class="row d-flex flex-wrap justify-content-between py-5"><div class="col-md-4 col-sm-6"><div class="footer-menu footer-menu-001"><div class="footer-intro mb-4"><a href="index.html"><img src="images/LOBO PRINTS FOR WEBSITE-04.png" alt="Lobo Prints"></a></div><p>We create custom apparel and uniforms for teams, businesses, schools, and events with reliable quality and fast delivery.</p></div></div><div class="col-md-4 col-sm-6"><div class="footer-menu footer-menu-003"><h5 class="widget-title text-uppercase mb-4">Quick Links</h5><ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6"><li class="menu-item"><a href="index.html" class="item-anchor">Home</a></li><li class="menu-item"><a href="categories.html" class="item-anchor">Categories</a></li><li class="menu-item"><a href="tshirts.html" class="item-anchor">T-Shirts</a></li><li class="menu-item"><a href="contact.html" class="item-anchor">Contact</a></li><li class="menu-item"><a href="sitemap.xml" class="item-anchor">Sitemap</a></li></ul></div></div><div class="col-md-4 col-sm-6"><div class="footer-menu footer-menu-004 border-animation-left"><h5 class="widget-title text-uppercase mb-4">Contact Us</h5><p>Have a question? <a href="mailto:business@loboprints.in" class="item-anchor">business@loboprints.in</a></p><p>Call anytime: <a href="tel:9742998799" class="item-anchor">9742998799</a></p><p><a href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote" class="item-anchor">Message on WhatsApp</a></p></div></div></div></div>
+    <div class="border-top py-4"><div class="container"><div class="row"><div class="col-md-6"><p class="mb-0">Custom Apparel • Fast Delivery • Quality Guaranteed</p></div><div class="col-md-6 text-end"><p class="mb-0">© 2026 Lobo Prints. All rights reserved.</p></div></div></div></div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const premiumOversizedVariants = {
+      aqua: {
+        label: 'Aqua Blue',
+        alt: 'Cotton Premium Oversized T-Shirt (240 GSM) in aqua blue',
+        images: [
+          'images/240gsm oversize tshirt aqua blue  colours-01.jpeg',
+          'images/240gsm oversize tshirt aqua blue  colours-02.jpeg',
+          'images/240gsm oversize tshirt aqua blue  colours-03.jpeg',
+          'images/240gsm oversize tshirt aqua blue  colours-04.jpeg'
+        ]
+      },
+      black: {
+        label: 'Black',
+        alt: 'Cotton Premium Oversized T-Shirt (240 GSM) in black',
+        images: [
+          'images/240gsm oversize tshirt black 01.jpeg',
+          'images/240gsm oversize tshirt black 02.jpeg',
+          'images/240gsm oversize tshirt black 03.jpeg',
+          'images/240gsm oversize tshirt black 04.jpeg'
+        ]
+      },
+      blue: {
+        label: 'Blue',
+        alt: 'Cotton Premium Oversized T-Shirt (240 GSM) in blue',
+        images: [
+          'images/240gsm oversize tshirt blue 01.jpeg',
+          'images/240gsm oversize tshirt blue 02.jpeg',
+          'images/240gsm oversize tshirt blue 03.jpeg',
+          'images/240gsm oversize tshirt blue 04.jpeg'
+        ]
+      },
+      green: {
+        label: 'Green',
+        alt: 'Cotton Premium Oversized T-Shirt (240 GSM) in green',
+        images: [
+          'images/240gsm oversize tshirt green 01.jpeg',
+          'images/240gsm oversize tshirt green 02.jpeg',
+          'images/240gsm oversize tshirt green 03.jpeg',
+          'images/240gsm oversize tshirt green 04.jpeg'
+        ]
+      },
+      yellow: {
+        label: 'Yellow',
+        alt: 'Cotton Premium Oversized T-Shirt (240 GSM) in yellow',
+        images: [
+          'images/240gsm oversize tshirt yellow colours-01.jpeg',
+          'images/240gsm oversize tshirt yellow colours-02.jpeg',
+          'images/240gsm oversize tshirt yellow colours-03.jpeg',
+          'images/240gsm oversize tshirt yellow colours-04.jpeg'
+        ]
+      }
+    };
+
+    function initializeGallery(mainImageId, thumbnailsId, buttonsSelector, variants, defaultVariant) {
+      const mainImage = document.getElementById(mainImageId);
+      const thumbnails = document.getElementById(thumbnailsId);
+      const buttons = document.querySelectorAll(buttonsSelector);
+
+      function setActiveImage(variantKey, imageSrc, thumbButton) {
+        const variant = variants[variantKey];
+        mainImage.src = imageSrc;
+        mainImage.alt = variant.alt;
+        thumbnails.querySelectorAll('.product-thumb').forEach((button) => button.classList.remove('active'));
+        if (thumbButton) {
+          thumbButton.classList.add('active');
+        }
+      }
+
+      function renderVariant(variantKey) {
+        const variant = variants[variantKey];
+        buttons.forEach((button) => button.classList.toggle('active', button.dataset.variant === variantKey));
+        thumbnails.innerHTML = '';
+
+        variant.images.forEach((imageSrc, index) => {
+          const thumbButton = document.createElement('button');
+          thumbButton.type = 'button';
+          thumbButton.className = `product-thumb${index === 0 ? ' active' : ''}`;
+          thumbButton.setAttribute('aria-label', `${variant.label} view ${index + 1}`);
+
+          const thumbImage = document.createElement('img');
+          thumbImage.src = imageSrc;
+          thumbImage.alt = `${variant.alt} view ${index + 1}`;
+          thumbButton.appendChild(thumbImage);
+
+          thumbButton.addEventListener('click', () => setActiveImage(variantKey, imageSrc, thumbButton));
+          thumbnails.appendChild(thumbButton);
+        });
+
+        setActiveImage(variantKey, variant.images[0], thumbnails.querySelector('.product-thumb'));
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => renderVariant(button.dataset.variant));
+      });
+
+      renderVariant(defaultVariant);
+    }
+
+    function initializeSizes(sizeSelector) {
+      document.querySelectorAll(sizeSelector).forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll(sizeSelector).forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+        });
+      });
+    }
+
+    function sendViaWhatsApp() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const category = document.getElementById('category').value;
+      const quantity = document.getElementById('quantity').value;
+      const details = document.getElementById('details').value;
+      const message = `Hi Lobo Prints,%0A%0AI would like a quote for custom apparel.%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0ACategory: ${encodeURIComponent(category)}%0AQuantity: ${encodeURIComponent(quantity)}%0ADetails: ${encodeURIComponent(details)}%0A%0APlease get back to me with a quote.`;
+      window.open(`https://wa.me/919742998799?text=${message}`, '_blank');
+    }
+
+    document.getElementById('quoteForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+    });
+
+    initializeGallery('premiumOversizedMainImage', 'premiumOversizedThumbnailRow', '#premiumOversizedVariantButtons [data-variant]', premiumOversizedVariants, 'aqua');
+    initializeSizes('#premiumOversizedSizeButtons .size-btn');
+  </script>
 </body>
 </html>

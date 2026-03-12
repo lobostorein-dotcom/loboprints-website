@@ -39,6 +39,81 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    .uniform-card-grid .card {
+      position: relative;
+      border: 1px solid var(--bs-border-color);
+      border-radius: 1rem;
+      overflow: hidden;
+      background: var(--bs-body-bg);
+      box-shadow: var(--bs-box-shadow-sm);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .uniform-card-grid .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 62%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.08) 100%);
+      opacity: 0;
+      pointer-events: none;
+      border-radius: 1rem 1rem 0 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .uniform-card-grid .card-img-top {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .uniform-card-grid .card-body {
+      padding: 1rem 1rem 1.15rem;
+    }
+
+    .uniform-card-grid .card-title {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .uniform-card-grid .card:hover {
+      border-color: var(--bs-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--bs-box-shadow);
+    }
+
+    .uniform-card-grid .card:hover::after {
+      opacity: 1;
+    }
+
+    .uniform-card-grid .card:hover .card-img-top {
+      transform: scale(1.04);
+    }
+
+    .uniform-card-grid .btn-outline-primary {
+      border-width: 1.5px;
+      border-radius: 999px;
+      font-weight: 600;
+      padding: 0.45rem 1rem;
+      background: linear-gradient(180deg, rgba(13, 110, 253, 0.04) 0%, rgba(13, 110, 253, 0.01) 100%);
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .uniform-card-grid .btn-outline-primary:hover,
+    .uniform-card-grid .btn-outline-primary:focus {
+      color: #fff;
+      border-color: var(--bs-primary);
+      background: var(--bs-primary);
+      box-shadow: 0 0.35rem 1rem rgba(13, 110, 253, 0.25);
+    }
+
+  </style>
 </head>
 
 <body>
@@ -81,10 +156,9 @@
 
           <div class="col">
             <div class="card h-100 text-center">
-              <img src="images/basic plain white 01.jpg.jpeg" class="card-img-top" alt="Cotton Basic Round Neck T-Shirt">
+              <img src="images/basic plain white 05.jpg.jpeg" class="card-img-top" alt="Cotton Basic Round Neck T-Shirt in white">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Cotton Basic Round Neck T-Shirt</h5>
-                <p class="card-text text-muted small">An everyday cotton round neck option for promotions, events, and bulk custom printing.</p>
                 <a href="tshirt1.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -92,10 +166,9 @@
 
           <div class="col">
             <div class="card h-100 text-center">
-              <img src="images/product-item-2.jpg" class="card-img-top" alt="Cotton Premium Round Neck T-Shirt 200 GSM">
+              <img src="images/primeum tshirt black colours 01.jpeg" class="card-img-top" alt="Cotton Premium Round Neck T-Shirt 200 GSM in black">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Cotton Premium Round Neck T-Shirt (200 GSM)</h5>
-                <p class="card-text text-muted small">A thicker premium cotton round neck t-shirt with better structure and a refined finish.</p>
                 <a href="tshirt2.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -103,10 +176,9 @@
 
           <div class="col">
             <div class="card h-100 text-center">
-              <img src="images/product-item-3.jpg" class="card-img-top" alt="Cotton Affordable Oversized T-Shirt 200 GSM">
+              <img src="images/oversized 200gsm tshirt ivory  images colours-01.jpeg" class="card-img-top" alt="Cotton Affordable Oversized T-Shirt 200 GSM in ivory">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Cotton Affordable Oversized T-Shirt (200 GSM)</h5>
-                <p class="card-text text-muted small">A value oversized cotton fit made for streetwear looks, campaigns, and team drops.</p>
                 <a href="tshirt3.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -114,10 +186,9 @@
 
           <div class="col">
             <div class="card h-100 text-center">
-              <img src="images/product-item-4.jpg" class="card-img-top" alt="Cotton Premium Oversized T-Shirt 240 GSM">
+              <img src="images/240gsm oversize tshirt aqua blue  colours-01.jpeg" class="card-img-top" alt="Cotton Premium Oversized T-Shirt 240 GSM in aqua blue">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Cotton Premium Oversized T-Shirt (240 GSM)</h5>
-                <p class="card-text text-muted small">A heavyweight oversized cotton t-shirt with premium feel, ideal for elevated merch.</p>
                 <a href="tshirt4.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -125,10 +196,9 @@
 
           <div class="col">
             <div class="card h-100 text-center">
-              <img src="images/product-item-5.jpg" class="card-img-top" alt="Cotton Affordable Polo T-Shirt">
+              <img src="images/Affordable Blue polo tshirts colours-01.jpeg" class="card-img-top" alt="Cotton Affordable Polo T-Shirt in blue">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Cotton Affordable Polo T-Shirt</h5>
-                <p class="card-text text-muted small">A budget-friendly cotton polo suited for uniforms, staff wear, and events.</p>
                 <a href="tshirt5.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -136,10 +206,9 @@
 
           <div class="col">
             <div class="card h-100 text-center">
-              <img src="images/product-item-6.jpg" class="card-img-top" alt="Cotton Premium Polo T-Shirt">
+              <img src="images/Premium polo tshirts  pink colours-01.jpeg" class="card-img-top" alt="Cotton Premium Polo T-Shirt in pink">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Cotton Premium Polo T-Shirt</h5>
-                <p class="card-text text-muted small">A polished premium cotton polo offering comfort, durability, and a professional look.</p>
                 <a href="tshirt6.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -150,7 +219,6 @@
               <img src="images/product-item-7.jpg" class="card-img-top" alt="Polyester Basic Round Neck T-Shirt">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Polyester Basic Round Neck T-Shirt</h5>
-                <p class="card-text text-muted small">A lightweight polyester round neck option for sportswear, events, and quick-dry use.</p>
                 <a href="tshirt7.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -161,7 +229,6 @@
               <img src="images/product-item-8.jpg" class="card-img-top" alt="Polyester Premium Round Neck T-Shirt">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Polyester Premium Round Neck T-Shirt</h5>
-                <p class="card-text text-muted small">A premium polyester round neck t-shirt with better finish and performance comfort.</p>
                 <a href="tshirt8.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -172,7 +239,6 @@
               <img src="images/product-item-9.jpg" class="card-img-top" alt="Polyester Basic Polo T-Shirt">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Polyester Basic Polo T-Shirt</h5>
-                <p class="card-text text-muted small">A practical polyester polo ideal for teams, field staff, uniforms, and bulk orders.</p>
                 <a href="tshirt9.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -183,7 +249,6 @@
               <img src="images/product-item-10.jpg" class="card-img-top" alt="Polyester Premium Polo T-Shirt">
               <div class="card-body d-flex flex-column align-items-center">
                 <h5 class="card-title">Polyester Premium Polo T-Shirt</h5>
-                <p class="card-text text-muted small">A premium polyester polo with a smart finish, suitable for branded corporate wear.</p>
                 <a href="tshirt10.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
               </div>
             </div>
@@ -285,6 +350,9 @@
               </li>
               <li class="menu-item">
                 <a href="contact.html" class="item-anchor">Contact</a>
+              </li>
+              <li class="menu-item">
+                <a href="sitemap.xml" class="item-anchor">Sitemap</a>
               </li>
               <li class="menu-item">
                 <a href="tel:9742998799" class="item-anchor">Call Us</a>
