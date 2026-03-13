@@ -25,7 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const navbarContainer = document.querySelector('.navbar .container');
   const collapse = navbarContainer ? navbarContainer.querySelector('.navbar-collapse') : null;
+  const toggler = navbarContainer ? navbarContainer.querySelector('.navbar-toggler') : null;
   if (!collapse) return;
+
+  const isMobileDrawerViewport = function () {
+    return window.matchMedia('(max-width: 768px)').matches;
+  };
 
   const normalizeText = function (value) {
     return (value || '')
@@ -43,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
   toggleButton.className = 'header-search-toggle';
   toggleButton.setAttribute('aria-label', 'Search products');
   toggleButton.setAttribute('aria-expanded', 'false');
-  toggleButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18a7 7 0 1 1 0-14a7 7 0 0 1 0 14Zm9.71 2.29l-3.4-3.4a1 1 0 1 0-1.42 1.42l3.4 3.4a1 1 0 0 0 1.42-1.42Z"/></svg>';
+  toggleButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="16.65" y1="16.65" x2="21" y2="21"></line></svg>';
 
   const panel = document.createElement('div');
   panel.className = 'header-search-panel';
@@ -68,7 +73,31 @@ document.addEventListener('DOMContentLoaded', function () {
   searchWrapper.appendChild(toggleButton);
   searchWrapper.appendChild(panel);
 
-  collapse.appendChild(searchWrapper);
+  navbarContainer.appendChild(searchWrapper);
+
+  const drawerOverlay = document.createElement('div');
+  drawerOverlay.className = 'mobile-drawer-overlay';
+  document.body.appendChild(drawerOverlay);
+
+  const openDrawer = function () {
+    if (!isMobileDrawerViewport()) return;
+    collapse.classList.add('mobile-drawer-enabled', 'mobile-drawer-active');
+    document.body.classList.add('mobile-drawer-open');
+  };
+
+  const closeDrawer = function () {
+    collapse.classList.remove('mobile-drawer-active');
+    document.body.classList.remove('mobile-drawer-open');
+  };
+
+  const syncDrawerMode = function () {
+    if (isMobileDrawerViewport()) {
+      collapse.classList.add('mobile-drawer-enabled');
+    } else {
+      collapse.classList.remove('mobile-drawer-enabled', 'mobile-drawer-active');
+      document.body.classList.remove('mobile-drawer-open');
+    }
+  };
 
   const setPanelPosition = function () {
     const rect = toggleButton.getBoundingClientRect();
@@ -227,6 +256,33 @@ document.addEventListener('DOMContentLoaded', function () {
     openSearch();
   });
 
+  if (toggler) {
+    toggler.addEventListener('click', function (event) {
+      if (!isMobileDrawerViewport()) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      if (collapse.classList.contains('mobile-drawer-active')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    }, true);
+  }
+
+  drawerOverlay.addEventListener('click', function () {
+    closeDrawer();
+  });
+
+  collapse.addEventListener('click', function (event) {
+    if (!isMobileDrawerViewport()) return;
+    const closeTrigger = event.target.closest('a, button');
+    if (closeTrigger) {
+      closeDrawer();
+    }
+  });
+
   document.addEventListener('click', function (event) {
     if (!searchWrapper.contains(event.target)) {
       closeSearch();
@@ -236,11 +292,13 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
       closeSearch();
+      closeDrawer();
       input.blur();
     }
   });
 
   window.addEventListener('resize', function () {
+    syncDrawerMode();
     if (searchWrapper.classList.contains('open')) {
       setPanelPosition();
     }
@@ -251,4 +309,6 @@ document.addEventListener('DOMContentLoaded', function () {
       setPanelPosition();
     }
   }, true);
+
+  syncDrawerMode();
 });
