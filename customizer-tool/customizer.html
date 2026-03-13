@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Customizer</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="customizer-body">
+  <header class="customizer-header">
+    <div class="toolbar-top">
+      <a href="index.html" class="btn btn-ghost">Back to Products</a>
+      <h1 id="productTitle">Customize Product</h1>
+      <div class="toolbar-actions">
+        <div class="side-switch" role="tablist" aria-label="Preview side">
+          <button id="frontSideBtn" class="side-btn active" type="button" data-side="front">Front</button>
+          <button id="backSideBtn" class="side-btn" type="button" data-side="back">Back</button>
+        </div>
+
+        <label class="control-label" for="colorSelect">Choose Colour</label>
+        <select id="colorSelect" class="control-select"></select>
+
+        <button id="addImageBtn" class="btn btn-ghost" type="button">Add Image</button>
+        <button id="addTextBtn" class="btn btn-ghost" type="button">Add Text</button>
+
+        <select id="fontSelect" class="control-select">
+          <option value="Arial">Arial</option>
+          <option value="Helvetica">Helvetica</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Impact">Impact</option>
+          <option value="Montserrat">Montserrat</option>
+        </select>
+
+        <input id="textColor" type="color" value="#111827" aria-label="Text color">
+      </div>
+    </div>
+  </header>
+
+  <main class="customizer-layout">
+    <aside class="toolbar-left">
+      <button id="leftUploadBtn" class="icon-btn" type="button" title="Upload image">
+        <img src="assets/icons/upload.svg" alt="Upload image">
+      </button>
+      <button id="leftTextBtn" class="icon-btn" type="button" title="Add text">
+        <img src="assets/icons/text.svg" alt="Add text">
+      </button>
+      <button id="deleteObjectBtn" class="icon-btn danger" type="button" title="Delete selected object">
+        <img src="assets/icons/delete.svg" alt="Delete selected object">
+      </button>
+    </aside>
+
+    <section class="workspace" aria-label="Design workspace">
+      <div class="mockup-stage" id="mockupStage">
+        <img id="modelBgLayer" class="mockup-layer model-bg" src="assets/mockups/model-bg.svg" alt="Model background">
+        <img id="shirtBaseLayer" class="mockup-layer shirt-base" src="" alt="Shirt base">
+        <div class="active-side-indicator" id="activeSideIndicator">Front View</div>
+
+        <div class="canvas-wrapper" id="canvasWrapper">
+          <canvas id="designCanvasFront" class="design-surface" width="700" height="760"></canvas>
+          <canvas id="designCanvasBack" class="design-surface hidden" width="700" height="760"></canvas>
+          <div class="print-zone" id="printZone" aria-hidden="true"></div>
+        </div>
+
+        <img id="shirtOverlayLayer" class="mockup-layer shirt-overlay" src="" alt="Fabric wrinkle overlay">
+      </div>
+
+      <div class="workspace-meta">
+        <p>Print area is restricted to chest zone. Drag, resize, and rotate objects inside the highlighted region.</p>
+      </div>
+    </section>
+
+    <section class="quote-panel">
+      <div class="preview-summary">
+        <div class="placement-card">
+          <div class="placement-card__header">
+            <span>Front Preview</span>
+          </div>
+          <img id="frontPlacementPreview" class="placement-preview-image" alt="Front design placement preview">
+        </div>
+        <div class="placement-card">
+          <div class="placement-card__header">
+            <span>Back Preview</span>
+          </div>
+          <img id="backPlacementPreview" class="placement-preview-image" alt="Back design placement preview">
+        </div>
+      </div>
+
+      <h2>Get Quote</h2>
+      <p>Share your design and we will contact you with pricing.</p>
+
+      <button id="exportDesignBtn" class="btn btn-primary" type="button">Generate Design Preview</button>
+      <img id="designPreview" class="design-preview" alt="Generated design preview" hidden>
+
+      <form id="quoteForm" class="quote-form">
+        <input id="customerName" name="name" type="text" placeholder="Name" required>
+        <input id="customerPhone" name="phone" type="tel" placeholder="Phone number" required>
+        <input id="customerEmail" name="email" type="email" placeholder="Email" required>
+        <textarea id="customerNotes" name="notes" placeholder="Notes"></textarea>
+        <input id="designFrontData" name="design_front_base64" type="hidden">
+        <input id="designBackData" name="design_back_base64" type="hidden">
+        <input id="designImageData" name="design_image_base64" type="hidden">
+        <input id="designImageFile" name="design_image_file" type="file" accept="image/png" hidden>
+        <button class="btn btn-primary" type="submit">Submit Quote Request</button>
+      </form>
+      <p id="formStatus" class="form-status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <input id="imageUploadInput" type="file" accept="image/png,image/jpeg,image/jpg" hidden>
+
+  <script src="https://cdn.jsdelivr.net/npm/fabric@5.3.0/dist/fabric.min.js"></script>
+  <script src="js/customizer.js"></script>
+</body>
+</html>

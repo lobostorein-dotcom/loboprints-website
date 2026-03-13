@@ -277,10 +277,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   collapse.addEventListener('click', function (event) {
     if (!isMobileDrawerViewport()) return;
-    const closeTrigger = event.target.closest('a, button');
-    if (closeTrigger) {
+
+    const tappedLink = event.target.closest('a[href]');
+    if (!tappedLink) return;
+
+    // Let the native link click/navigation happen first, then close drawer.
+    window.setTimeout(function () {
       closeDrawer();
-    }
+    }, 120);
   });
 
   document.addEventListener('click', function (event) {
