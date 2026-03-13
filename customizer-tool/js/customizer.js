@@ -2,7 +2,8 @@
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
   const MODEL_BG_SRC = 'assets/mockups/model-bg.svg';
-  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxF0LD9y1ED2EgXv9lfti1ZlJaJKL_wnyxKqGxFl-iN8zKxGuP8GGjbiEdM-6k-IjdUrg/exec';
+  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwbjy2QLckaOkMBpctSK-f0vKYFEBTbIRnZvJV9eV0SuZLY9StKlJb29YRqHaxKPJey_g/exec';
+  const SUBMISSION_IMAGE_TYPE = 'image/png';
   const PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
   const ROUNDNECK_BASE_SOURCES = {
     front: 'assets/mockups/roundneck-front-base.png',
@@ -358,6 +359,18 @@
     reader.readAsDataURL(file);
   }
 
+  function splitDataUrlImage(dataUrl) {
+    const match = /^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/.exec(dataUrl || '');
+    if (!match) {
+      throw new Error('Invalid image data URL');
+    }
+
+    return {
+      mimeType: match[1],
+      base64: match[2]
+    };
+  }
+
   function deleteSelection() {
     const canvas = getCurrentCanvas();
     const active = canvas.getActiveObject();
@@ -469,7 +482,14 @@
     leftUploadBtn.addEventListener('click', function () { imageUploadInput.click(); });
     imageUploadInput.addEventListener('change', function () {
       if (imageUploadInput.files && imageUploadInput.files[0]) {
-        addImage(imageUploadInput.files[0]);
+        const file = imageUploadInput.files[0];
+        if (!file.type || file.type.indexOf('image/') !== 0) {
+          formStatus.textContent = 'Please upload a valid image file.';
+          imageUploadInput.value = '';
+          return;
+        }
+
+        addImage(file);
         imageUploadInput.value = '';
       }
     });
@@ -512,29 +532,44 @@
       event.preventDefault();
 
       try {
-        const frontImage = canvases.front.toDataURL('image/jpeg', 0.7).replace(/^data:image\/jpeg;base64,/, '');
-        const backImage = canvases.back.toDataURL('image/jpeg', 0.7).replace(/^data:image\/jpeg;base64,/, '');
+        const frontData = splitDataUrlImage(canvasElements.front.toDataURL(SUBMISSION_IMAGE_TYPE));
+        const backData = splitDataUrlImage(canvasElements.back.toDataURL(SUBMISSION_IMAGE_TYPE));
 
         const data = {
           name: document.getElementById('customerName').value,
           phone: document.getElementById('customerPhone').value,
           email: document.getElementById('customerEmail').value,
           notes: document.getElementById('customerNotes').value,
-          frontImage: frontImage,
-          backImage: backImage
+          frontImage: frontData.base64,
+          backImage: backData.base64,
+          frontMimeType: frontData.mimeType,
+          backMimeType: backData.mimeType
         };
 
         fetch(APPS_SCRIPT_ENDPOINT, {
           method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
           body: JSON.stringify(data)
         })
-          .then(function (response) {
-            if (!response.ok) throw new Error('Request failed');
+          .then(function () {
+            // no-cors returns an opaque response; treat resolved fetch as sent.
             formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
             quoteForm.reset();
           })
           .catch(function () {
-            formStatus.textContent = 'Could not send request. Please try again.';
+            // Some environments block fetch to Apps Script, but beacon can still send.
+            if (navigator.sendBeacon) {
+              const sent = navigator.sendBeacon(APPS_SCRIPT_ENDPOINT, JSON.stringify(data));
+              if (sent) {
+                formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
+                quoteForm.reset();
+                return;
+              }
+            }
+            formStatus.textContent = 'Could not send request. Please check browser/network and try again.';
           });
       } catch (error) {
         formStatus.textContent = 'Could not prepare design images for submission.';
