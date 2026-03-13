@@ -568,11 +568,13 @@
 
       fetch(APPS_SCRIPT_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: body
       })
-        .then(function () {
+        .then(function (res) {
+          if (!res.ok) {
+            throw new Error('Server responded with status ' + res.status);
+          }
           formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
           quoteForm.reset();
         })
