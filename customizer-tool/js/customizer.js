@@ -3,7 +3,8 @@
   const STAGE_HEIGHT = 760;
   const MODEL_BG_SRC = 'assets/mockups/model-bg.svg';
   const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwbjy2QLckaOkMBpctSK-f0vKYFEBTbIRnZvJV9eV0SuZLY9StKlJb29YRqHaxKPJey_g/exec';
-  const SUBMISSION_IMAGE_TYPE = 'image/png';
+  const SUBMISSION_IMAGE_TYPE = 'image/jpeg';
+  const SUBMISSION_IMAGE_QUALITY = 0.7;
   const PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
   const ROUNDNECK_BASE_SOURCES = {
     front: 'assets/mockups/roundneck-front-base.png',
@@ -530,50 +531,63 @@
 
     quoteForm.addEventListener('submit', function (event) {
       event.preventDefault();
+      formStatus.textContent = 'Sending your request\u2026';
 
+      var frontDataUrl, backDataUrl;
       try {
-        const frontData = splitDataUrlImage(canvasElements.front.toDataURL(SUBMISSION_IMAGE_TYPE));
-        const backData = splitDataUrlImage(canvasElements.back.toDataURL(SUBMISSION_IMAGE_TYPE));
-
-        const data = {
-          name: document.getElementById('customerName').value,
-          phone: document.getElementById('customerPhone').value,
-          email: document.getElementById('customerEmail').value,
-          notes: document.getElementById('customerNotes').value,
-          frontImage: frontData.base64,
-          backImage: backData.base64,
-          frontMimeType: frontData.mimeType,
-          backMimeType: backData.mimeType
-        };
-
-        fetch(APPS_SCRIPT_ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
-          body: JSON.stringify(data)
-        })
-          .then(function () {
-            // no-cors returns an opaque response; treat resolved fetch as sent.
-            formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
-            quoteForm.reset();
-          })
-          .catch(function () {
-            // Some environments block fetch to Apps Script, but beacon can still send.
-            if (navigator.sendBeacon) {
-              const sent = navigator.sendBeacon(APPS_SCRIPT_ENDPOINT, JSON.stringify(data));
-              if (sent) {
-                formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
-                quoteForm.reset();
-                return;
-              }
-            }
-            formStatus.textContent = 'Could not send request. Please check browser/network and try again.';
-          });
-      } catch (error) {
-        formStatus.textContent = 'Could not prepare design images for submission.';
+        frontDataUrl = canvasElements.front.toDataURL(SUBMISSION_IMAGE_TYPE, SUBMISSION_IMAGE_QUALITY);
+        backDataUrl  = canvasElements.back.toDataURL(SUBMISSION_IMAGE_TYPE, SUBMISSION_IMAGE_QUALITY);
+      } catch (e) {
+        console.error('toDataURL failed:', e);
+        formStatus.textContent = 'Could not export design: ' + e.message;
+        return;
       }
+
+      var frontData, backData;
+      try {
+        frontData = splitDataUrlImage(frontDataUrl);
+        backData  = splitDataUrlImage(backDataUrl);
+      } catch (e) {
+        console.error('splitDataUrlImage failed:', e);
+        formStatus.textContent = 'Could not prepare design images: ' + e.message;
+        return;
+      }
+
+      var data = {
+        name:          document.getElementById('customerName').value,
+        phone:         document.getElementById('customerPhone').value,
+        email:         document.getElementById('customerEmail').value,
+        notes:         document.getElementById('customerNotes').value,
+        frontImage:    frontData.base64,
+        backImage:     backData.base64,
+        frontMimeType: frontData.mimeType,
+        backMimeType:  backData.mimeType
+      };
+
+      var body = JSON.stringify(data);
+
+      fetch(APPS_SCRIPT_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: body
+      })
+        .then(function () {
+          formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
+          quoteForm.reset();
+        })
+        .catch(function (err) {
+          console.warn('fetch failed, trying sendBeacon:', err);
+          if (navigator.sendBeacon) {
+            var sent = navigator.sendBeacon(APPS_SCRIPT_ENDPOINT, body);
+            if (sent) {
+              formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
+              quoteForm.reset();
+              return;
+            }
+          }
+          formStatus.textContent = 'Submission failed: ' + (err && err.message ? err.message : 'network error') + '. Please try again.';
+        });
     });
   }
 
