@@ -114,6 +114,12 @@ body {
   background: linear-gradient(135deg, #fff, #f3f7ff);
 }
 
+.btn-ghost.active {
+  border-color: #60a5fa;
+  color: #1d4ed8;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+}
+
 .customizer-body {
   min-height: 100vh;
 }
@@ -324,18 +330,6 @@ body {
   pointer-events: none;
 }
 
-.print-zone {
-  position: absolute;
-  left: 235px;
-  top: 270px;
-  width: 230px;
-  height: 260px;
-  border: 2px dashed rgba(37, 99, 235, 0.9);
-  background: rgba(59, 130, 246, 0.06);
-  pointer-events: none;
-  border-radius: 8px;
-}
-
 .workspace-meta p {
   margin: 0.8rem 0 0;
   color: var(--muted);
@@ -476,10 +470,4 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .print-zone {
-    left: 33.6%;
-    top: 35.5%;
-    width: 32.8%;
-    height: 34.2%;
-  }
 }

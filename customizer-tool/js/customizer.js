@@ -4,7 +4,8 @@
   const MODEL_BG_SRC = 'assets/mockups/model-bg.svg';
   const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwbjy2QLckaOkMBpctSK-f0vKYFEBTbIRnZvJV9eV0SuZLY9StKlJb29YRqHaxKPJey_g/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
-  const PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
+  const DEFAULT_PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
+  const MIN_PRINT_AREA = { width: 120, height: 120 };
   const ROUNDNECK_BASE_SOURCES = {
     front: 'assets/mockups/roundneck-front-base.png',
     back: 'assets/mockups/roundneck-back-base.png'
@@ -48,6 +49,8 @@
   const imageUploadInput = document.getElementById('imageUploadInput');
   const addImageBtn = document.getElementById('addImageBtn');
   const addTextBtn = document.getElementById('addTextBtn');
+  const editPrintAreaBtn = document.getElementById('editPrintAreaBtn');
+  const lockPrintAreaBtn = document.getElementById('lockPrintAreaBtn');
   const leftUploadBtn = document.getElementById('leftUploadBtn');
   const leftTextBtn = document.getElementById('leftTextBtn');
   const deleteObjectBtn = document.getElementById('deleteObjectBtn');
@@ -80,9 +83,20 @@
     back: null
   };
 
+  const printAreas = {
+    front: Object.assign({}, DEFAULT_PRINT_AREA),
+    back: Object.assign({}, DEFAULT_PRINT_AREA)
+  };
+
+  const printAreaGuides = {
+    front: null,
+    back: null
+  };
+
   const imageCache = new Map();
   let modelBgImage = null;
   let previewTimer = null;
+  let isPrintAreaEditMode = false;
 
   function svgDataUri(markup) {
     return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(markup);
@@ -188,23 +202,58 @@
     return canvases[state.activeSide];
   }
 
-  function applyClip(canvas) {
+  function getPrintArea(side) {
+    return printAreas[side || state.activeSide];
+  }
+
+  function normalizePrintArea(left, top, width, height) {
+    const normalizedWidth = Math.min(
+      Math.max(width, MIN_PRINT_AREA.width),
+      STAGE_WIDTH
+    );
+    const normalizedHeight = Math.min(
+      Math.max(height, MIN_PRINT_AREA.height),
+      STAGE_HEIGHT
+    );
+
+    const normalizedLeft = Math.min(
+      Math.max(left, 0),
+      STAGE_WIDTH - normalizedWidth
+    );
+    const normalizedTop = Math.min(
+      Math.max(top, 0),
+      STAGE_HEIGHT - normalizedHeight
+    );
+
+    return {
+      left: normalizedLeft,
+      top: normalizedTop,
+      width: normalizedWidth,
+      height: normalizedHeight
+    };
+  }
+
+  function applyClip(canvas, side) {
+    const area = getPrintArea(side);
     canvas.clipPath = new fabric.Rect({
-      left: PRINT_AREA.left,
-      top: PRINT_AREA.top,
-      width: PRINT_AREA.width,
-      height: PRINT_AREA.height,
+      left: area.left,
+      top: area.top,
+      width: area.width,
+      height: area.height,
       absolutePositioned: true
     });
   }
 
-  function clampObjectToPrintArea(obj) {
+  function clampObjectToPrintArea(obj, side) {
     if (!obj) return;
+    if (obj.isPrintAreaGuide) return;
+
+    const area = getPrintArea(side);
 
     // Use canvas-space bounds so clamping remains correct after viewport scaling.
     const bounds = obj.getBoundingRect(false, true);
-    if (bounds.width > PRINT_AREA.width || bounds.height > PRINT_AREA.height) {
-      const ratio = Math.min(PRINT_AREA.width / bounds.width, PRINT_AREA.height / bounds.height, 1);
+    if (bounds.width > area.width || bounds.height > area.height) {
+      const ratio = Math.min(area.width / bounds.width, area.height / bounds.height, 1);
       obj.scaleX *= ratio;
       obj.scaleY *= ratio;
       obj.setCoords();
@@ -214,14 +263,133 @@
     let dx = 0;
     let dy = 0;
 
-    if (next.left < PRINT_AREA.left) dx = PRINT_AREA.left - next.left;
-    if (next.top < PRINT_AREA.top) dy = PRINT_AREA.top - next.top;
-    if (next.left + next.width > PRINT_AREA.left + PRINT_AREA.width) dx = (PRINT_AREA.left + PRINT_AREA.width) - (next.left + next.width);
-    if (next.top + next.height > PRINT_AREA.top + PRINT_AREA.height) dy = (PRINT_AREA.top + PRINT_AREA.height) - (next.top + next.height);
+    if (next.left < area.left) dx = area.left - next.left;
+    if (next.top < area.top) dy = area.top - next.top;
+    if (next.left + next.width > area.left + area.width) dx = (area.left + area.width) - (next.left + next.width);
+    if (next.top + next.height > area.top + area.height) dy = (area.top + area.height) - (next.top + next.height);
 
     obj.left += dx;
     obj.top += dy;
     obj.setCoords();
+  }
+
+  function syncPrintAreaGuide(side) {
+    const area = getPrintArea(side);
+    const guide = printAreaGuides[side];
+    if (!guide) return;
+
+    guide.set({
+      left: area.left,
+      top: area.top,
+      width: area.width,
+      height: area.height,
+      scaleX: 1,
+      scaleY: 1
+    });
+    guide.setCoords();
+  }
+
+  function clampAllDesignObjects(side) {
+    const canvas = canvases[side];
+    canvas.getObjects().forEach(function (obj) {
+      clampObjectToPrintArea(obj, side);
+    });
+    canvas.requestRenderAll();
+  }
+
+  function updatePrintAreaFromGuide(side) {
+    const guide = printAreaGuides[side];
+    if (!guide) return;
+
+    const area = normalizePrintArea(
+      guide.left,
+      guide.top,
+      guide.getScaledWidth(),
+      guide.getScaledHeight()
+    );
+
+    printAreas[side] = area;
+    syncPrintAreaGuide(side);
+    applyClip(canvases[side], side);
+    clampAllDesignObjects(side);
+
+    if (side === state.activeSide) {
+      schedulePlacementPreviewUpdate();
+    }
+  }
+
+  function setPrintAreaEditMode(enabled, silent) {
+    isPrintAreaEditMode = enabled;
+    if (editPrintAreaBtn) {
+      editPrintAreaBtn.classList.toggle('active', enabled);
+      editPrintAreaBtn.disabled = enabled;
+    }
+    if (lockPrintAreaBtn) {
+      lockPrintAreaBtn.hidden = !enabled;
+    }
+
+    Object.keys(printAreaGuides).forEach(function (side) {
+      const guide = printAreaGuides[side];
+      if (!guide) return;
+
+      const editable = enabled && side === state.activeSide;
+      guide.set({
+        selectable: editable,
+        evented: editable,
+        hasControls: editable,
+        borderColor: editable ? '#2563eb' : 'rgba(37, 99, 235, 0)',
+        cornerColor: editable ? '#2563eb' : 'rgba(37, 99, 235, 0)'
+      });
+    });
+
+    const activeCanvas = getCurrentCanvas();
+    if (!enabled) {
+      activeCanvas.discardActiveObject();
+      if (!silent) {
+        formStatus.textContent = 'Print area locked. Design objects stay inside the highlighted region.';
+      }
+    } else {
+      activeCanvas.setActiveObject(printAreaGuides[state.activeSide]);
+      if (!silent) {
+        formStatus.textContent = 'Print area edit mode enabled. Drag corners to resize the print region.';
+      }
+    }
+
+    activeCanvas.requestRenderAll();
+  }
+
+  function createPrintAreaGuide(side) {
+    const area = getPrintArea(side);
+    const guide = new fabric.Rect({
+      left: area.left,
+      top: area.top,
+      width: area.width,
+      height: area.height,
+      fill: 'rgba(59, 130, 246, 0.08)',
+      stroke: '#2563eb',
+      strokeWidth: 2,
+      strokeDashArray: [10, 8],
+      rx: 8,
+      ry: 8,
+      selectable: false,
+      evented: false,
+      hasControls: false,
+      lockRotation: true,
+      lockScalingFlip: true,
+      transparentCorners: false,
+      cornerStyle: 'circle',
+      cornerSize: 10,
+      borderScaleFactor: 2,
+      excludeFromExport: true
+    });
+
+    guide.isPrintAreaGuide = true;
+    guide.controls.mtr.visible = false;
+
+    const canvas = canvases[side];
+    canvas.add(guide);
+    canvas.bringToFront(guide);
+    printAreaGuides[side] = guide;
   }
 
   function setSideButtonState() {
@@ -287,7 +455,12 @@
     setSideButtonState();
     shirtBaseLayer.src = state.sources[side].base;
     shirtOverlayLayer.src = state.sources[side].overlay;
+    syncPrintAreaGuide(side);
+    if (printAreaGuides[side]) {
+      canvases[side].bringToFront(printAreaGuides[side]);
+    }
     canvases[side].calcOffset();
+    setPrintAreaEditMode(isPrintAreaEditMode, true);
     syncSelectedTextControls();
     schedulePlacementPreviewUpdate();
   }
@@ -309,9 +482,10 @@
 
   function addText() {
     const canvas = getCurrentCanvas();
+    const area = getPrintArea();
     const textObj = new fabric.IText('Your Text', {
-      left: PRINT_AREA.left + 20,
-      top: PRINT_AREA.top + 20,
+      left: area.left + 20,
+      top: area.top + 20,
       fontSize: 32,
       fill: textColor.value,
       fontFamily: fontSelect.value,
@@ -334,14 +508,15 @@
     const reader = new FileReader();
     reader.onload = function (event) {
       fabric.Image.fromURL(event.target.result, function (img) {
-        const maxWidth = PRINT_AREA.width * 0.75;
+        const area = getPrintArea();
+        const maxWidth = area.width * 0.75;
         if (img.width > maxWidth) {
           img.scaleToWidth(maxWidth);
         }
 
         img.set({
-          left: PRINT_AREA.left + 22,
-          top: PRINT_AREA.top + 24,
+          left: area.left + 22,
+          top: area.top + 24,
           cornerColor: '#2563eb',
           borderColor: '#2563eb',
           cornerSize: 10,
@@ -375,6 +550,7 @@
     const canvas = getCurrentCanvas();
     const active = canvas.getActiveObject();
     if (!active) return;
+    if (active.isPrintAreaGuide) return;
 
     if (active.type === 'activeSelection') {
       active.forEachObject(function (obj) {
@@ -397,12 +573,39 @@
     }
   }
 
-  function bindCanvasEvents(canvas) {
-    canvas.on('object:moving', function (event) { clampObjectToPrintArea(event.target); });
-    canvas.on('object:scaling', function (event) { clampObjectToPrintArea(event.target); });
-    canvas.on('object:rotating', function (event) { clampObjectToPrintArea(event.target); });
-    canvas.on('object:modified', schedulePlacementPreviewUpdate);
-    canvas.on('object:added', schedulePlacementPreviewUpdate);
+  function bindCanvasEvents(canvas, side) {
+    canvas.on('object:moving', function (event) {
+      if (event.target && event.target.isPrintAreaGuide) {
+        updatePrintAreaFromGuide(side);
+        return;
+      }
+      clampObjectToPrintArea(event.target, side);
+    });
+
+    canvas.on('object:scaling', function (event) {
+      if (event.target && event.target.isPrintAreaGuide) {
+        updatePrintAreaFromGuide(side);
+        return;
+      }
+      clampObjectToPrintArea(event.target, side);
+    });
+
+    canvas.on('object:rotating', function (event) { clampObjectToPrintArea(event.target, side); });
+
+    canvas.on('object:modified', function (event) {
+      if (event.target && event.target.isPrintAreaGuide) {
+        updatePrintAreaFromGuide(side);
+      }
+      schedulePlacementPreviewUpdate();
+    });
+
+    canvas.on('object:added', function () {
+      if (printAreaGuides[side]) {
+        canvas.bringToFront(printAreaGuides[side]);
+      }
+      schedulePlacementPreviewUpdate();
+    });
+
     canvas.on('object:removed', schedulePlacementPreviewUpdate);
     canvas.on('selection:created', syncSelectedTextControls);
     canvas.on('selection:updated', syncSelectedTextControls);
@@ -477,6 +680,22 @@
   function wireControls() {
     addTextBtn.addEventListener('click', addText);
     leftTextBtn.addEventListener('click', addText);
+
+    if (editPrintAreaBtn) {
+      editPrintAreaBtn.addEventListener('click', function () {
+        if (!isPrintAreaEditMode) {
+          setPrintAreaEditMode(true);
+        }
+      });
+    }
+
+    if (lockPrintAreaBtn) {
+      lockPrintAreaBtn.addEventListener('click', function () {
+        if (isPrintAreaEditMode) {
+          setPrintAreaEditMode(false);
+        }
+      });
+    }
 
     addImageBtn.addEventListener('click', function () { imageUploadInput.click(); });
     leftUploadBtn.addEventListener('click', function () { imageUploadInput.click(); });
@@ -616,8 +835,9 @@
   populateColorOptions();
   colorSelect.value = state.activeColor.value;
   Object.keys(canvases).forEach(function (side) {
-    applyClip(canvases[side]);
-    bindCanvasEvents(canvases[side]);
+    applyClip(canvases[side], side);
+    bindCanvasEvents(canvases[side], side);
+    createPrintAreaGuide(side);
     canvasContainers[side] =
       canvases[side].wrapperEl ||
       (canvases[side].upperCanvasEl && canvases[side].upperCanvasEl.parentElement) ||
@@ -625,6 +845,7 @@
       null;
   });
   setSideButtonState();
+  setPrintAreaEditMode(false, true);
   wireControls();
   window.addEventListener('resize', resizeCanvases);
   resizeCanvases();
