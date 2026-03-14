@@ -316,18 +316,15 @@ document.addEventListener('DOMContentLoaded', function () {
   collapse.addEventListener('click', function (event) {
     if (!isMobileDrawerViewport()) return;
     event.stopPropagation();
-  });
-
-  collapse.addEventListener('click', function (event) {
-    if (!isMobileDrawerViewport()) return;
 
     const tappedLink = event.target.closest('a[href]');
     if (!tappedLink) return;
 
-    // Let the native link click/navigation happen first, then close drawer.
-    window.setTimeout(function () {
-      closeDrawer();
-    }, 120);
+    const href = tappedLink.getAttribute('href');
+    if (!href || href === '#') return;
+
+    event.preventDefault();
+    window.location.href = tappedLink.href;
   });
 
   document.addEventListener('click', function (event) {

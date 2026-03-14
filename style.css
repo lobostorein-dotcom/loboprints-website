@@ -2329,7 +2329,11 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.28s ease;
-  z-index: 1998;
+  z-index: 2998;
+}
+
+.mobile-drawer-close {
+  display: none;
 }
 
 body.mobile-drawer-open {
@@ -2456,16 +2460,28 @@ body.mobile-drawer-open .mobile-drawer-overlay {
     transition: transform 0.3s ease;
     display: block !important;
     overflow-y: auto !important;
-    z-index: 1999;
+    z-index: 3000;
+    pointer-events: none;
   }
 
   .navbar-collapse.mobile-drawer-enabled.mobile-drawer-active {
     transform: translateX(0);
+    pointer-events: auto;
   }
 
   .navbar-collapse.mobile-drawer-enabled .navbar-nav {
     align-items: flex-start !important;
     gap: 0.35rem;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .navbar-collapse.mobile-drawer-enabled .nav-item,
+  .navbar-collapse.mobile-drawer-enabled .nav-link {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
   }
 
   .mobile-drawer-close {
