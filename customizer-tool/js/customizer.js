@@ -337,9 +337,16 @@
         selectable: editable,
         evented: editable,
         hasControls: editable,
-        borderColor: editable ? '#2563eb' : 'rgba(37, 99, 235, 0)',
-        cornerColor: editable ? '#2563eb' : 'rgba(37, 99, 235, 0)'
+        borderColor: '#2563eb',
+        cornerColor: editable ? '#2563eb' : 'rgba(37, 99, 235, 0)',
+        stroke: editable ? '#1d4ed8' : 'rgba(37, 99, 235, 0.92)',
+        fill: editable ? 'rgba(59, 130, 246, 0.11)' : 'rgba(59, 130, 246, 0.06)',
+        strokeWidth: editable ? 2.5 : 2,
+        strokeDashArray: editable ? [12, 8] : [10, 8],
+        opacity: 1
       });
+
+      canvases[side].bringToFront(guide);
     });
 
     const activeCanvas = getCurrentCanvas();
