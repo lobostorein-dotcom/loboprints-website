@@ -2,7 +2,7 @@
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
   const MODEL_BG_SRC = 'assets/mockups/model-bg.svg';
-  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwbjy2QLckaOkMBpctSK-f0vKYFEBTbIRnZvJV9eV0SuZLY9StKlJb29YRqHaxKPJey_g/exec';
+  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFAOyYxTchKlBAMBMuiZuB4nWOECaCGyx62C5OSocjJWG7BvCc26EVs-uDaREA5V04/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
   const DEFAULT_PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
   const MIN_PRINT_AREA = { width: 120, height: 120 };
