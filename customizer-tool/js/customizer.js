@@ -79,10 +79,30 @@
   const formStatus = document.getElementById('formStatus');
   const frontSideBtn = document.getElementById('frontSideBtn');
   const backSideBtn = document.getElementById('backSideBtn');
+  const controlsToggleBtn = document.getElementById('controlsToggleBtn');
+  const mobileControlsFab = document.getElementById('mobileControlsFab');
+  const mobileControlsCloseBtn = document.getElementById('mobileControlsCloseBtn');
+  const mobileControlsBackdrop = document.getElementById('mobileControlsBackdrop');
+  const toolbarLeft = document.querySelector('.toolbar-left');
+  const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
 
   const canvases = {
-    front: new fabric.Canvas('designCanvasFront', { preserveObjectStacking: true, selection: true, centeredScaling: false }),
-    back: new fabric.Canvas('designCanvasBack', { preserveObjectStacking: true, selection: true, centeredScaling: false })
+    front: new fabric.Canvas('designCanvasFront', {
+      preserveObjectStacking: true,
+      selection: true,
+      centeredScaling: false,
+      allowTouchScrolling: false,
+      fireRightClick: false,
+      stopContextMenu: true
+    }),
+    back: new fabric.Canvas('designCanvasBack', {
+      preserveObjectStacking: true,
+      selection: true,
+      centeredScaling: false,
+      allowTouchScrolling: false,
+      fireRightClick: false,
+      stopContextMenu: true
+    })
   };
 
   const canvasElements = {
@@ -109,6 +129,71 @@
   let modelBgImage = null;
   let previewTimer = null;
   let isPrintAreaEditMode = false;
+
+  function setMobileControlsOpen(opened) {
+    if (!toolbarLeft) return;
+    const isOpen = Boolean(opened);
+    toolbarLeft.classList.toggle('mobile-expanded', isOpen);
+    document.body.classList.toggle('mobile-controls-open', isOpen);
+
+    if (controlsToggleBtn) {
+      controlsToggleBtn.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    if (mobileControlsFab) {
+      mobileControlsFab.setAttribute('aria-expanded', String(isOpen));
+    }
+  }
+
+  function wireMobileControlsPanel() {
+    if (!toolbarLeft || !isMobileViewport) return;
+
+    if (controlsToggleBtn) {
+      controlsToggleBtn.addEventListener('click', function () {
+        setMobileControlsOpen(!toolbarLeft.classList.contains('mobile-expanded'));
+      });
+    }
+
+    if (mobileControlsFab) {
+      mobileControlsFab.addEventListener('click', function () {
+        setMobileControlsOpen(!toolbarLeft.classList.contains('mobile-expanded'));
+      });
+    }
+
+    if (mobileControlsCloseBtn) {
+      mobileControlsCloseBtn.addEventListener('click', function () {
+        setMobileControlsOpen(false);
+      });
+    }
+
+    if (mobileControlsBackdrop) {
+      mobileControlsBackdrop.addEventListener('click', function () {
+        setMobileControlsOpen(false);
+      });
+    }
+  }
+
+  function applyMobileCanvasTouchTuning() {
+    if (!isMobileViewport) return;
+
+    // Keep touch gestures on canvas dedicated to object manipulation on mobile.
+    Object.keys(canvases).forEach(function (side) {
+      const canvas = canvases[side];
+      if (canvas.upperCanvasEl) {
+        canvas.upperCanvasEl.style.touchAction = 'none';
+      }
+      if (canvas.lowerCanvasEl) {
+        canvas.lowerCanvasEl.style.touchAction = 'none';
+      }
+
+      canvas.selectionFullyContained = false;
+      canvas.uniformScaling = false;
+    });
+
+    fabric.Object.prototype.touchCornerSize = 26;
+    fabric.Object.prototype.cornerSize = 12;
+    fabric.Object.prototype.padding = 4;
+  }
 
   function svgDataUri(markup) {
     return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(markup);
@@ -444,7 +529,8 @@
       centeredRotation: false,
       transparentCorners: false,
       cornerStyle: 'circle',
-      cornerSize: 10,
+      cornerSize: isMobileViewport ? 12 : 10,
+      touchCornerSize: isMobileViewport ? 28 : 24,
       borderScaleFactor: 2,
       objectCaching: false,
       noScaleCache: false,
@@ -715,7 +801,8 @@
       fontFamily: fontSelect.value,
       cornerColor: '#2563eb',
       borderColor: '#2563eb',
-      cornerSize: 10,
+      cornerSize: isMobileViewport ? 12 : 10,
+      touchCornerSize: isMobileViewport ? 28 : 24,
       transparentCorners: false
     });
 
@@ -743,7 +830,8 @@
           top: area.top + 24,
           cornerColor: '#2563eb',
           borderColor: '#2563eb',
-          cornerSize: 10,
+          cornerSize: isMobileViewport ? 12 : 10,
+          touchCornerSize: isMobileViewport ? 28 : 24,
           transparentCorners: false
         });
 
@@ -1107,6 +1195,8 @@
   setSideButtonState();
   setPrintAreaEditMode(false, true);
   wireControls();
+  wireMobileControlsPanel();
+  applyMobileCanvasTouchTuning();
   window.addEventListener('resize', resizeCanvases);
   resizeCanvases();
   updateLayerSources().then(function () {

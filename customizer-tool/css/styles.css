@@ -423,6 +423,15 @@ body {
   display: none;
 }
 
+.mobile-controls-backdrop {
+  display: none;
+}
+
+.mobile-controls-header,
+.mobile-controls-close-btn {
+  display: none;
+}
+
 /* Desktop guard: keep original desktop behavior unchanged */
 @media (min-width: 769px) {
   .controls-toggle-btn,
@@ -631,6 +640,12 @@ body {
     border: none;
   }
 
+  .canvas-wrapper,
+  .canvas-wrapper .canvas-container,
+  .canvas-wrapper canvas {
+    touch-action: none;
+  }
+
   .active-side-indicator {
     top: 8px;
     right: 8px;
@@ -640,6 +655,24 @@ body {
 
   .workspace-meta {
     display: none;
+  }
+
+  .mobile-controls-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(15, 23, 42, 0.38);
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .customizer-body.mobile-controls-open .mobile-controls-backdrop {
+    display: block;
   }
 
   .mobile-controls-fab,
@@ -661,8 +694,15 @@ body {
 
   .toolbar-left.mobile-expanded {
     display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    max-height: 72vh;
+    overflow: auto;
     border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    box-shadow: 0 -16px 36px rgba(15, 23, 42, 0.22);
   }
 
   /* Hide old full-width text toggle row */
@@ -693,6 +733,33 @@ body {
     align-items: start;
   }
 
+  .mobile-controls-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+    margin-bottom: 0.2rem;
+  }
+
+  .mobile-controls-header strong {
+    font-size: 0.95rem;
+  }
+
+  .mobile-controls-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    font-weight: 700;
+    color: #334155;
+    cursor: pointer;
+  }
+
   /* Hide desktop title/subtitle — toggle button replaces them */
   .controls-body .tools-title,
   .controls-body .tools-subtitle {
@@ -711,7 +778,7 @@ body {
     grid-column: 1 / -1;
   }
 
-  .controls-body > *:nth-child(8) {
+  .controls-body > *:nth-child(9) {
     grid-column: 1 / -1;
   }
 
@@ -784,6 +851,10 @@ body {
     display: none;
   }
 
+  .mobile-controls-backdrop {
+    display: none !important;
+  }
+
   /* In landscape sidebar mode: always show controls, hide toggle */
   .controls-toggle-btn { display: none; }
 
@@ -810,7 +881,10 @@ body {
   }
 
   .toolbar-left.mobile-expanded {
+    position: static;
+    max-height: none;
     display: flex;
+    box-shadow: none;
   }
 
   .workspace-meta { display: none; }

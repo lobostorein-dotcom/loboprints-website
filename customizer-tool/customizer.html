@@ -15,15 +15,20 @@
     </div>
   </header>
 
+  <button id="mobileControlsBackdrop" class="mobile-controls-backdrop" type="button" aria-label="Close design controls"></button>
+
   <main class="customizer-layout">
     <aside class="toolbar-left" aria-label="Design controls">
-      <button class="controls-toggle-btn" type="button"
-        onclick="var p=this.closest('.toolbar-left');p.classList.toggle('mobile-expanded');this.setAttribute('aria-expanded',p.classList.contains('mobile-expanded'));"
+      <button id="controlsToggleBtn" class="controls-toggle-btn" type="button"
         aria-expanded="false" aria-controls="controlsBody">
         ⚙ Design Controls <span class="toggle-chevron" aria-hidden="true">▾</span>
       </button>
 
       <div class="controls-body" id="controlsBody">
+        <div class="mobile-controls-header">
+          <strong>Design Controls</strong>
+          <button id="mobileControlsCloseBtn" type="button" class="mobile-controls-close-btn" aria-label="Close design controls">X</button>
+        </div>
         <h2 class="tools-title">Design Controls</h2>
         <p class="tools-subtitle">Tip: Add your logo first, then text, then adjust print area if needed.</p>
 
@@ -78,8 +83,7 @@
 
     <section class="workspace" aria-label="Design workspace">
       <div class="mockup-stage" id="mockupStage">
-        <button class="mobile-controls-fab" type="button"
-          onclick="var p=document.querySelector('.toolbar-left');if(!p){return;}p.classList.toggle('mobile-expanded');this.setAttribute('aria-expanded',p.classList.contains('mobile-expanded'));"
+        <button id="mobileControlsFab" class="mobile-controls-fab" type="button"
           aria-expanded="false" title="Open design controls" aria-label="Open design controls">⚙</button>
 
         <div class="quick-actions-mobile" aria-label="Quick actions">
