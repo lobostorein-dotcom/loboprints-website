@@ -2329,7 +2329,7 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.28s ease;
-  z-index: 2998;
+  z-index: 1025;
 }
 
 .mobile-drawer-close {
@@ -2453,20 +2453,22 @@ body.mobile-drawer-open .mobile-drawer-overlay {
     width: 60vw;
     min-width: 260px;
     max-width: 340px;
-    background: #fff;
+    background: #ffffff !important;
     box-shadow: 0.95rem 0 1.7rem rgba(15, 23, 42, 0.18);
     padding: 4.6rem 1rem 1.2rem;
     transform: translateX(-105%);
     transition: transform 0.3s ease;
     display: block !important;
     overflow-y: auto !important;
-    z-index: 3000;
+    z-index: 1035;
     pointer-events: none;
+    isolation: isolate;
+    touch-action: pan-y;
   }
 
   .navbar-collapse.mobile-drawer-enabled.mobile-drawer-active {
     transform: translateX(0);
-    pointer-events: auto;
+    pointer-events: auto !important;
   }
 
   .navbar-collapse.mobile-drawer-enabled .navbar-nav {
@@ -2474,14 +2476,19 @@ body.mobile-drawer-open .mobile-drawer-overlay {
     gap: 0.35rem;
     position: relative;
     z-index: 2;
-    pointer-events: auto;
+    pointer-events: auto !important;
   }
 
   .navbar-collapse.mobile-drawer-enabled .nav-item,
   .navbar-collapse.mobile-drawer-enabled .nav-link {
     position: relative;
     z-index: 2;
-    pointer-events: auto;
+    pointer-events: auto !important;
+  }
+
+  .navbar-collapse.mobile-drawer-enabled,
+  .navbar-collapse.mobile-drawer-enabled * {
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-drawer-close {
