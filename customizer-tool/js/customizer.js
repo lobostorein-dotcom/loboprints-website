@@ -615,7 +615,7 @@
 
     canvas.on('object:scaling', function (event) {
       if (event.target && event.target.isPrintAreaGuide) {
-        updatePrintAreaFromGuide(side);
+        // Avoid mutating guide geometry mid-transform; commit on object:modified.
         return;
       }
       clampObjectToPrintArea(event.target, side);
