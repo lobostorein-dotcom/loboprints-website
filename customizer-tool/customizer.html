@@ -11,21 +11,49 @@
     <div class="toolbar-top">
       <a href="index.html" class="btn btn-ghost">Back to Products</a>
       <h1 id="productTitle">Customize Product</h1>
-      <div class="toolbar-actions">
+      <p class="toolbar-note">Use the left tools panel to add images, text, and edit print area.</p>
+    </div>
+  </header>
+
+  <main class="customizer-layout">
+    <aside class="toolbar-left" aria-label="Design controls">
+      <h2 class="tools-title">Design Controls</h2>
+      <p class="tools-subtitle">Tip: Add your logo first, then text, then adjust print area if needed.</p>
+
+      <div class="tool-group">
+        <label class="control-label" for="frontSideBtn">Choose Side</label>
         <div class="side-switch" role="tablist" aria-label="Preview side">
-          <button id="frontSideBtn" class="side-btn active" type="button" data-side="front">Front</button>
-          <button id="backSideBtn" class="side-btn" type="button" data-side="back">Back</button>
+          <button id="frontSideBtn" class="side-btn active" type="button" data-side="front" title="Edit front side design">Front</button>
+          <button id="backSideBtn" class="side-btn" type="button" data-side="back" title="Edit back side design">Back</button>
         </div>
+      </div>
 
-        <label class="control-label" for="colorSelect">Choose Colour</label>
-        <select id="colorSelect" class="control-select"></select>
+      <div class="tool-group">
+        <label class="control-label" for="colorSelect">Shirt Colour</label>
+        <select id="colorSelect" class="control-select" title="Select shirt color"></select>
+      </div>
 
-        <button id="addImageBtn" class="btn btn-ghost" type="button">Add Image</button>
-        <button id="addTextBtn" class="btn btn-ghost" type="button">Add Text</button>
-        <button id="editPrintAreaBtn" class="btn btn-ghost" type="button">Edit Print Area</button>
-        <button id="lockPrintAreaBtn" class="btn btn-ghost" type="button" hidden>Lock Print Area</button>
+      <div class="tool-group">
+        <label class="control-label">Add Design</label>
+        <button id="addImageBtn" class="btn btn-ghost tool-btn" type="button" title="Upload logo or artwork image">Add Image</button>
+        <button id="addTextBtn" class="btn btn-ghost tool-btn" type="button" title="Insert editable text">Add Text</button>
+      </div>
 
-        <select id="fontSelect" class="control-select">
+      <div class="tool-group inline-tools">
+        <button id="leftUploadBtn" class="icon-btn" type="button" title="Quick upload image">
+          <img src="assets/icons/upload.svg" alt="Upload image">
+        </button>
+        <button id="leftTextBtn" class="icon-btn" type="button" title="Quick add text">
+          <img src="assets/icons/text.svg" alt="Add text">
+        </button>
+        <button id="deleteObjectBtn" class="icon-btn danger" type="button" title="Delete selected object">
+          <img src="assets/icons/delete.svg" alt="Delete selected object">
+        </button>
+      </div>
+
+      <div class="tool-group">
+        <label class="control-label" for="fontSelect">Text Font</label>
+        <select id="fontSelect" class="control-select" title="Choose font for selected text">
           <option value="Arial">Arial</option>
           <option value="Helvetica">Helvetica</option>
           <option value="Georgia">Georgia</option>
@@ -33,23 +61,23 @@
           <option value="Impact">Impact</option>
           <option value="Montserrat">Montserrat</option>
         </select>
-
-        <input id="textColor" type="color" value="#111827" aria-label="Text color">
       </div>
-    </div>
-  </header>
 
-  <main class="customizer-layout">
-    <aside class="toolbar-left">
-      <button id="leftUploadBtn" class="icon-btn" type="button" title="Upload image">
-        <img src="assets/icons/upload.svg" alt="Upload image">
-      </button>
-      <button id="leftTextBtn" class="icon-btn" type="button" title="Add text">
-        <img src="assets/icons/text.svg" alt="Add text">
-      </button>
-      <button id="deleteObjectBtn" class="icon-btn danger" type="button" title="Delete selected object">
-        <img src="assets/icons/delete.svg" alt="Delete selected object">
-      </button>
+      <div class="tool-group">
+        <label class="control-label" for="textColor">Text Colour</label>
+        <input id="textColor" type="color" value="#111827" aria-label="Text color" title="Set color for selected text">
+      </div>
+
+      <div class="tool-group">
+        <label class="control-label">Print Area</label>
+        <button id="editPrintAreaBtn" class="btn btn-ghost tool-btn" type="button" title="Enable print area resize mode">Edit Print Area</button>
+        <button id="lockPrintAreaBtn" class="btn btn-ghost tool-btn" type="button" title="Lock current print area" hidden>Lock Print Area</button>
+        <p class="tools-hint">Suggestion: Keep 12-18 px safe margin from box edge to avoid clipping in print.</p>
+      </div>
+
+      <div class="tool-group">
+        <button id="exportDesignBtn" class="btn btn-primary tool-btn" type="button" title="Generate front and back preview images">Generate Design Preview</button>
+      </div>
     </aside>
 
     <section class="workspace" aria-label="Design workspace">
@@ -90,7 +118,6 @@
       <h2>Get Quote</h2>
       <p>Share your design and we will contact you with pricing.</p>
 
-      <button id="exportDesignBtn" class="btn btn-primary" type="button">Generate Design Preview</button>
       <img id="designPreview" class="design-preview" alt="Generated design preview" hidden>
 
       <form id="quoteForm" class="quote-form">
