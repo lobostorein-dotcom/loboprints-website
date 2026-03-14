@@ -417,6 +417,75 @@ body {
 /* Notes toggle — hidden on desktop, text is always visible */
 .notes-toggle-btn { display: none; }
 
+/* Mobile canvas action controls (hidden on desktop) */
+.mobile-controls-fab,
+.quick-actions-mobile {
+  display: none;
+}
+
+/* Desktop guard: keep original desktop behavior unchanged */
+@media (min-width: 769px) {
+  .controls-toggle-btn,
+  .mobile-controls-fab,
+  .quick-actions-mobile,
+  .notes-toggle-btn {
+    display: none !important;
+  }
+
+  .controls-body {
+    display: contents !important;
+  }
+
+  .workspace-note-p {
+    display: block !important;
+  }
+}
+
+.mobile-controls-fab {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 7;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #c9d6ee;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.quick-actions-mobile {
+  position: absolute;
+  top: 58px;
+  left: 10px;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-mobile-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #c9d6ee;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.14);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.quick-mobile-btn.danger {
+  color: #b91c1c;
+  border-color: #fecdd3;
+}
+
 .quote-panel {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -569,71 +638,36 @@ body {
     padding: 0.28rem 0.55rem;
   }
 
-  /* Notes area — collapsed by default, toggle to read */
   .workspace-meta {
-    background: var(--panel);
-    border-top: 1px solid var(--line);
-  }
-
-  .workspace-meta p,
-  .workspace-note-p {
     display: none;
-    margin: 0;
-    padding: 0 0.9rem 0.65rem;
-    font-size: 0.78rem;
   }
 
-  .workspace-note-p.notes-open {
-    display: block;
-  }
-
-  .notes-toggle-btn {
+  .mobile-controls-fab,
+  .quick-actions-mobile {
     display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    width: 100%;
-    padding: 0.55rem 0.9rem;
-    background: none;
-    border: none;
-    font: inherit;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--muted);
-    cursor: pointer;
-    text-align: left;
   }
 
-  /* ② Controls — collapsible drawer */
+  /* ② Controls — hidden by default, opened by corner gear */
   .toolbar-left {
     order: 2;
     border-radius: 0;
-    border: 0;
+    border: none;
     box-shadow: none;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+    display: none;
     gap: 0;
-    align-items: stretch;
     background: var(--panel);
+  }
+
+  .toolbar-left.mobile-expanded {
+    display: block;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
 
-  /* Show mobile toggle button */
+  /* Hide old full-width text toggle row */
   .controls-toggle-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.78rem 1rem;
-    background: none;
-    border: none;
-    font: inherit;
-    font-size: 0.93rem;
-    font-weight: 700;
-    color: var(--text);
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
+    display: none;
   }
 
   .toggle-chevron {
@@ -655,7 +689,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
-    padding: 0 0.75rem 0.75rem;
+    padding: 0.75rem;
     align-items: start;
   }
 
@@ -745,6 +779,11 @@ body {
     border: none;
   }
 
+  .mobile-controls-fab,
+  .quick-actions-mobile {
+    display: none;
+  }
+
   /* In landscape sidebar mode: always show controls, hide toggle */
   .controls-toggle-btn { display: none; }
 
@@ -768,6 +807,10 @@ body {
     gap: 0;
     grid-column: 2;
     overflow: hidden;
+  }
+
+  .toolbar-left.mobile-expanded {
+    display: flex;
   }
 
   .workspace-meta { display: none; }
