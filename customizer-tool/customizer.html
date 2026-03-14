@@ -17,7 +17,6 @@
 
   <main class="customizer-layout">
     <aside class="toolbar-left" aria-label="Design controls">
-      <!-- Mobile-only collapse toggle -->
       <button class="controls-toggle-btn" type="button"
         onclick="var p=this.closest('.toolbar-left');p.classList.toggle('mobile-expanded');this.setAttribute('aria-expanded',p.classList.contains('mobile-expanded'));"
         aria-expanded="false" aria-controls="controlsBody">
@@ -79,6 +78,16 @@
 
     <section class="workspace" aria-label="Design workspace">
       <div class="mockup-stage" id="mockupStage">
+        <button class="mobile-controls-fab" type="button"
+          onclick="var p=document.querySelector('.toolbar-left');if(!p){return;}p.classList.toggle('mobile-expanded');this.setAttribute('aria-expanded',p.classList.contains('mobile-expanded'));"
+          aria-expanded="false" title="Open design controls" aria-label="Open design controls">⚙</button>
+
+        <div class="quick-actions-mobile" aria-label="Quick actions">
+          <button type="button" class="quick-mobile-btn" title="Add image" aria-label="Add image" onclick="document.getElementById('addImageBtn').click();">🖼</button>
+          <button type="button" class="quick-mobile-btn" title="Add text" aria-label="Add text" onclick="document.getElementById('addTextBtn').click();">T</button>
+          <button type="button" class="quick-mobile-btn danger" title="Delete selected" aria-label="Delete selected" onclick="document.getElementById('deleteObjectBtn').click();">🗑</button>
+        </div>
+
         <img id="modelBgLayer" class="mockup-layer model-bg" src="assets/mockups/model-bg.svg" alt="Model background">
         <img id="shirtBaseLayer" class="mockup-layer shirt-base" src="" alt="Shirt base">
         <div class="active-side-indicator" id="activeSideIndicator">Front View</div>
