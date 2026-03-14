@@ -176,9 +176,34 @@
   function applyMobileCanvasTouchTuning() {
     if (!isMobileViewport) return;
 
-    // Keep touch gestures on canvas dedicated to object manipulation on mobile.
+    // Improve mobile touch controls.
+    fabric.Object.prototype.set({
+      cornerSize: 26,
+      cornerStyle: 'circle',
+      transparentCorners: false,
+      borderColor: '#2563eb',
+      cornerColor: '#2563eb',
+      padding: 12
+    });
+
+    // Mobile touch optimisation.
     Object.keys(canvases).forEach(function (side) {
       const canvas = canvases[side];
+      canvas.allowTouchScrolling = true;
+
+      canvas.on('touch:gesture', function (event) {
+        if (!event || !event.e || !event.e.touches || event.e.touches.length !== 2) {
+          return;
+        }
+
+        if (!event.self) {
+          event.self = { scale: 1 };
+        }
+
+        event.self.scale = event.self.scale || 1;
+        event.self.scale *= event.self.scale;
+      });
+
       if (canvas.upperCanvasEl) {
         canvas.upperCanvasEl.style.touchAction = 'none';
       }
@@ -190,9 +215,16 @@
       canvas.uniformScaling = false;
     });
 
-    fabric.Object.prototype.touchCornerSize = 26;
-    fabric.Object.prototype.cornerSize = 12;
-    fabric.Object.prototype.padding = 4;
+    function improveMobileDrag(canvas) {
+      canvas.on('object:moving', function (event) {
+        const obj = event && event.target;
+        if (!obj) return;
+        obj.setCoords();
+      });
+    }
+
+    improveMobileDrag(canvases.front);
+    improveMobileDrag(canvases.back);
   }
 
   function svgDataUri(markup) {
@@ -803,7 +835,8 @@
       borderColor: '#2563eb',
       cornerSize: isMobileViewport ? 12 : 10,
       touchCornerSize: isMobileViewport ? 28 : 24,
-      transparentCorners: false
+      transparentCorners: false,
+      padding: isMobileViewport ? 14 : 0
     });
 
     canvas.add(textObj);
@@ -832,7 +865,8 @@
           borderColor: '#2563eb',
           cornerSize: isMobileViewport ? 12 : 10,
           touchCornerSize: isMobileViewport ? 28 : 24,
-          transparentCorners: false
+          transparentCorners: false,
+          padding: isMobileViewport ? 14 : 0
         });
 
         const canvas = getCurrentCanvas();
