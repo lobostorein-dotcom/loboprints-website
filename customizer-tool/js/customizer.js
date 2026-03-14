@@ -69,8 +69,8 @@
   const backSideBtn = document.getElementById('backSideBtn');
 
   const canvases = {
-    front: new fabric.Canvas('designCanvasFront', { preserveObjectStacking: true, selection: true }),
-    back: new fabric.Canvas('designCanvasBack', { preserveObjectStacking: true, selection: true })
+    front: new fabric.Canvas('designCanvasFront', { preserveObjectStacking: true, selection: true, centeredScaling: false }),
+    back: new fabric.Canvas('designCanvasBack', { preserveObjectStacking: true, selection: true, centeredScaling: false })
   };
 
   const canvasElements = {
@@ -318,6 +318,28 @@
     }
   }
 
+  function updatePrintAreaPositionFromGuide(side) {
+    const guide = printAreaGuides[side];
+    if (!guide) return;
+
+    const current = getPrintArea(side);
+    const area = normalizePrintArea(
+      guide.left,
+      guide.top,
+      current.width,
+      current.height
+    );
+
+    printAreas[side] = area;
+    syncPrintAreaGuide(side);
+    applyClip(canvases[side], side);
+    clampAllDesignObjects(side);
+
+    if (side === state.activeSide) {
+      schedulePlacementPreviewUpdate();
+    }
+  }
+
   function setPrintAreaEditMode(enabled, silent) {
     isPrintAreaEditMode = enabled;
     if (editPrintAreaBtn) {
@@ -383,6 +405,8 @@
       hasControls: false,
       lockRotation: true,
       lockScalingFlip: true,
+      centeredScaling: false,
+      centeredRotation: false,
       transparentCorners: false,
       cornerStyle: 'circle',
       cornerSize: 10,
@@ -583,7 +607,7 @@
   function bindCanvasEvents(canvas, side) {
     canvas.on('object:moving', function (event) {
       if (event.target && event.target.isPrintAreaGuide) {
-        updatePrintAreaFromGuide(side);
+        updatePrintAreaPositionFromGuide(side);
         return;
       }
       clampObjectToPrintArea(event.target, side);
@@ -842,6 +866,7 @@
   populateColorOptions();
   colorSelect.value = state.activeColor.value;
   Object.keys(canvases).forEach(function (side) {
+    canvases[side].centeredScaling = false;
     applyClip(canvases[side], side);
     bindCanvasEvents(canvases[side], side);
     createPrintAreaGuide(side);
