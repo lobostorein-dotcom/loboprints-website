@@ -22,6 +22,8 @@
 
         <button id="addImageBtn" class="btn btn-ghost" type="button">Add Image</button>
         <button id="addTextBtn" class="btn btn-ghost" type="button">Add Text</button>
+        <button id="editPrintAreaBtn" class="btn btn-ghost" type="button">Edit Print Area</button>
+        <button id="lockPrintAreaBtn" class="btn btn-ghost" type="button" hidden>Lock Print Area</button>
 
         <select id="fontSelect" class="control-select">
           <option value="Arial">Arial</option>
@@ -59,14 +61,13 @@
         <div class="canvas-wrapper" id="canvasWrapper">
           <canvas id="designCanvasFront" class="design-surface" width="700" height="760"></canvas>
           <canvas id="designCanvasBack" class="design-surface hidden" width="700" height="760"></canvas>
-          <div class="print-zone" id="printZone" aria-hidden="true"></div>
         </div>
 
         <img id="shirtOverlayLayer" class="mockup-layer shirt-overlay" src="" alt="Fabric wrinkle overlay">
       </div>
 
       <div class="workspace-meta">
-        <p>Print area is restricted to chest zone. Drag, resize, and rotate objects inside the highlighted region.</p>
+        <p>Use Edit Print Area to resize the printable zone. Design objects stay constrained inside the highlighted region.</p>
       </div>
     </section>
 
