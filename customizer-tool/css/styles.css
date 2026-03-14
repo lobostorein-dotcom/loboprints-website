@@ -509,69 +509,181 @@ body {
   }
 
   .toolbar-top {
-    width: calc(100% - 0.6rem);
+    width: 100%;
+    padding: 0.55rem 0.75rem;
     flex-wrap: wrap;
-    gap: 0.45rem;
-  }
-
-  .toolbar-top h1 {
-    width: 100%;
-    order: -1;
-  }
-
-  .toolbar-note {
-    margin: 0;
-    width: 100%;
-  }
-
-  .customizer-layout {
-    width: calc(100% - 0.6rem);
-    padding: 0.45rem 0 1rem;
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-  }
-
-  .workspace {
-    order: 1;
-    padding: 0.45rem;
-  }
-
-  .toolbar-left {
-    order: 2;
-    padding: 0.7rem;
-    gap: 0.65rem;
-  }
-
-  .tool-group {
     gap: 0.35rem;
   }
 
-  .control-select,
-  #textColor,
-  .tool-btn,
-  .icon-btn {
-    min-height: 42px;
-    font-size: 0.96rem;
+  .toolbar-top h1 {
+    font-size: 0.95rem;
+    order: -1;
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+  }
+
+  /* Hide the long note — wastes header space on mobile */
+  .toolbar-note {
+    display: none;
+  }
+
+  /* Full-bleed single-column layout */
+  .customizer-layout {
+    width: 100%;
+    padding: 0;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* ① Canvas first — no padding, no chrome, full viewport width */
+  .workspace {
+    order: 1;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    border-bottom: 1px solid var(--line);
   }
 
   .mockup-stage {
     width: 100%;
-    max-height: 74vh;
-    margin: 0 auto;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+  }
+
+  .active-side-indicator {
+    top: 8px;
+    right: 8px;
+    font-size: 0.73rem;
+    padding: 0.28rem 0.55rem;
+  }
+
+  .workspace-meta {
+    padding: 0.5rem 0.8rem;
+    background: var(--panel);
   }
 
   .workspace-meta p {
-    margin-top: 0.55rem;
-    font-size: 0.82rem;
+    margin: 0;
+    font-size: 0.78rem;
   }
 
-  .quote-panel {
+  /* ② Controls panel — 2-column grid so tool groups pair up */
+  .toolbar-left {
     order: 2;
-    padding: 0.85rem;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
   }
 
+  /*
+   * Make the first 4 children (title, subtitle, Choose Side, Shirt Colour)
+   * span both columns so they stay full-width.
+   * Children 5–8 (Add Design, Font, Text Color, Print Area) pair as 2-col.
+   */
+  .toolbar-left > *:nth-child(-n+4) {
+    grid-column: 1 / -1;
+  }
+
+  .tool-group {
+    gap: 0.3rem;
+    padding: 0.5rem;
+  }
+
+  .control-select,
+  #textColor {
+    min-height: 42px;
+    font-size: 0.96rem;
+  }
+
+  .tool-btn,
+  .side-btn,
+  .icon-btn {
+    min-height: 44px;
+    font-size: 0.96rem;
+  }
+
+  /* ③ Quote panel last */
+  .quote-panel {
+    order: 3;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0.85rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Keep front/back preview cards side by side */
+  .preview-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Very small phones — stack the preview cards */
+@media (max-width: 420px) {
   .preview-summary {
     grid-template-columns: 1fr;
   }
+}
 
+/* Landscape phones — canvas left, controls right, scrollable */
+@media (orientation: landscape) and (max-height: 520px) {
+  .customizer-layout {
+    width: 100%;
+    padding: 0;
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 0;
+  }
+
+  .workspace {
+    order: 1;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    grid-row: 1 / 3;
+    border-right: 1px solid var(--line);
+  }
+
+  .mockup-stage {
+    width: 100%;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .toolbar-left {
+    order: 2;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    overflow-y: auto;
+    max-height: calc(100dvh - 52px);
+    padding: 0.6rem;
+    gap: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    grid-column: 2;
+  }
+
+  .quote-panel {
+    order: 3;
+    overflow-y: auto;
+    max-height: calc(100dvh - 52px);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    border-top: 1px solid var(--line);
+    grid-column: 2;
+  }
 }
