@@ -446,7 +446,7 @@ body {
 }
 
 .quote-panel h2 {
-  margin: 0;
+  margin: 0.7rem 0 0;
 }
 
 .quote-panel p {
@@ -458,7 +458,13 @@ body {
   width: 100%;
   border-radius: 12px;
   border: 1px solid #dbe2ee;
-  margin-top: 0.8rem;
+  margin-top: 0.65rem;
+}
+
+.preview-generate-btn {
+  display: block;
+  margin: 0.15rem auto 0;
+  min-width: 220px;
 }
 
 .quote-form {
