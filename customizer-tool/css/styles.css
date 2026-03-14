@@ -399,11 +399,23 @@ body {
   pointer-events: none;
 }
 
-.workspace-meta p {
+.workspace-meta p,
+.workspace-note-p {
   margin: 0.8rem 0 0;
   color: var(--muted);
   font-size: 0.88rem;
 }
+
+/* Mobile-only toggle button — hidden on desktop */
+.controls-toggle-btn { display: none; }
+
+/* Controls body — on desktop behave as transparent wrapper */
+.controls-body {
+  display: contents;
+}
+
+/* Notes toggle — hidden on desktop, text is always visible */
+.notes-toggle-btn { display: none; }
 
 .quote-panel {
   background: var(--panel);
@@ -520,16 +532,12 @@ body {
     order: -1;
     flex: 1;
     min-width: 0;
-    width: auto;
     margin: 0;
   }
 
-  /* Hide the long note — wastes header space on mobile */
-  .toolbar-note {
-    display: none;
-  }
+  .toolbar-note { display: none; }
 
-  /* Full-bleed single-column layout */
+  /* Single-column, full-bleed */
   .customizer-layout {
     width: 100%;
     padding: 0;
@@ -537,7 +545,7 @@ body {
     gap: 0;
   }
 
-  /* ① Canvas first — no padding, no chrome, full viewport width */
+  /* ① Canvas — fills full width, no chrome */
   .workspace {
     order: 1;
     padding: 0;
@@ -545,7 +553,6 @@ body {
     border: none;
     box-shadow: none;
     background: transparent;
-    border-bottom: 1px solid var(--line);
   }
 
   .mockup-stage {
@@ -562,36 +569,115 @@ body {
     padding: 0.28rem 0.55rem;
   }
 
+  /* Notes area — collapsed by default, toggle to read */
   .workspace-meta {
-    padding: 0.5rem 0.8rem;
     background: var(--panel);
+    border-top: 1px solid var(--line);
   }
 
-  .workspace-meta p {
+  .workspace-meta p,
+  .workspace-note-p {
+    display: none;
     margin: 0;
+    padding: 0 0.9rem 0.65rem;
     font-size: 0.78rem;
   }
 
-  /* ② Controls panel — 2-column grid so tool groups pair up */
+  .workspace-note-p.notes-open {
+    display: block;
+  }
+
+  .notes-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: 100%;
+    padding: 0.55rem 0.9rem;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    text-align: left;
+  }
+
+  /* ② Controls — collapsible drawer */
   .toolbar-left {
     order: 2;
     border-radius: 0;
-    border: none;
+    border: 0;
     box-shadow: none;
-    padding: 0.75rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    align-items: start;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
 
+  /* Show mobile toggle button */
+  .controls-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.78rem 1rem;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 0.93rem;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+  }
+
+  .toggle-chevron {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    font-style: normal;
+  }
+
+  .toolbar-left.mobile-expanded .toggle-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Controls body — hidden when collapsed */
+  .controls-body {
+    display: none;
+  }
+
+  .toolbar-left.mobile-expanded .controls-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0 0.75rem 0.75rem;
+    align-items: start;
+  }
+
+  /* Hide desktop title/subtitle — toggle button replaces them */
+  .controls-body .tools-title,
+  .controls-body .tools-subtitle {
+    display: none;
+  }
+
   /*
-   * Make the first 4 children (title, subtitle, Choose Side, Shirt Colour)
-   * span both columns so they stay full-width.
-   * Children 5–8 (Add Design, Font, Text Color, Print Area) pair as 2-col.
+   * Children inside controls-body:
+   * 1) h2 (hidden)  2) p (hidden)  3) Choose Side  4) Shirt Colour
+   * 5) Add Design   6) Text Font   7) Text Colour  8) Print Area
+   * first 5 (3+4+5: Choose Side, Shirt Colour, Add Design) = full width
+   * 6+7 (Font, Text Colour) = 2-col pair
+   * 8 Print Area = full width
    */
-  .toolbar-left > *:nth-child(-n+4) {
+  .controls-body > *:nth-child(-n+5) {
+    grid-column: 1 / -1;
+  }
+
+  .controls-body > *:nth-child(8) {
     grid-column: 1 / -1;
   }
 
@@ -606,14 +692,12 @@ body {
     font-size: 0.96rem;
   }
 
-  .tool-btn,
-  .side-btn,
-  .icon-btn {
+  .tool-btn, .side-btn, .icon-btn {
     min-height: 44px;
     font-size: 0.96rem;
   }
 
-  /* ③ Quote panel last */
+  /* ③ Quote panel */
   .quote-panel {
     order: 3;
     border-radius: 0;
@@ -623,20 +707,19 @@ body {
     border-top: 1px solid var(--line);
   }
 
-  /* Keep front/back preview cards side by side */
   .preview-summary {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* Very small phones — stack the preview cards */
+/* Very small phones — stack preview cards */
 @media (max-width: 420px) {
   .preview-summary {
     grid-template-columns: 1fr;
   }
 }
 
-/* Landscape phones — canvas left, controls right, scrollable */
+/* Landscape phones — canvas left, controls sidebar */
 @media (orientation: landscape) and (max-height: 520px) {
   .customizer-layout {
     width: 100%;
@@ -662,19 +745,32 @@ body {
     border: none;
   }
 
+  /* In landscape sidebar mode: always show controls, hide toggle */
+  .controls-toggle-btn { display: none; }
+
+  .controls-body {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.6rem;
+    overflow-y: auto;
+    max-height: calc(100dvh - 52px);
+  }
+
   .toolbar-left {
     order: 2;
     border-radius: 0;
     border: none;
     box-shadow: none;
-    overflow-y: auto;
-    max-height: calc(100dvh - 52px);
-    padding: 0.6rem;
-    gap: 0.4rem;
     display: flex;
     flex-direction: column;
+    padding: 0;
+    gap: 0;
     grid-column: 2;
+    overflow: hidden;
   }
+
+  .workspace-meta { display: none; }
 
   .quote-panel {
     order: 3;

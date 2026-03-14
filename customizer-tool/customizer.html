@@ -17,56 +17,64 @@
 
   <main class="customizer-layout">
     <aside class="toolbar-left" aria-label="Design controls">
-      <h2 class="tools-title">Design Controls</h2>
-      <p class="tools-subtitle">Tip: Add your logo first, then text, then adjust print area if needed.</p>
+      <!-- Mobile-only collapse toggle -->
+      <button class="controls-toggle-btn" type="button"
+        onclick="var p=this.closest('.toolbar-left');p.classList.toggle('mobile-expanded');this.setAttribute('aria-expanded',p.classList.contains('mobile-expanded'));"
+        aria-expanded="false" aria-controls="controlsBody">
+        ⚙ Design Controls <span class="toggle-chevron" aria-hidden="true">▾</span>
+      </button>
 
-      <div class="tool-group">
-        <label class="control-label" for="frontSideBtn">Choose Side</label>
-        <div class="side-switch" role="tablist" aria-label="Preview side">
-          <button id="frontSideBtn" class="side-btn active" type="button" data-side="front" title="Edit front side design">Front</button>
-          <button id="backSideBtn" class="side-btn" type="button" data-side="back" title="Edit back side design">Back</button>
+      <div class="controls-body" id="controlsBody">
+        <h2 class="tools-title">Design Controls</h2>
+        <p class="tools-subtitle">Tip: Add your logo first, then text, then adjust print area if needed.</p>
+
+        <div class="tool-group">
+          <label class="control-label" for="frontSideBtn">Choose Side</label>
+          <div class="side-switch" role="tablist" aria-label="Preview side">
+            <button id="frontSideBtn" class="side-btn active" type="button" data-side="front" title="Edit front side design">Front</button>
+            <button id="backSideBtn" class="side-btn" type="button" data-side="back" title="Edit back side design">Back</button>
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <label class="control-label" for="colorSelect">Shirt Colour</label>
+          <select id="colorSelect" class="control-select" title="Select shirt color"></select>
+          <div class="custom-color-row">
+            <input id="customColorName" class="control-input" type="text" maxlength="24" placeholder="Custom color name" title="Enter a custom color name">
+            <input id="customColorValue" type="color" value="#4f46e5" title="Choose custom color value">
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <label class="control-label">Add Design</label>
+          <button id="addImageBtn" class="btn btn-ghost tool-btn" type="button" title="Upload logo or artwork image">Add Image</button>
+          <button id="addTextBtn" class="btn btn-ghost tool-btn" type="button" title="Insert editable text">Add Text</button>
+          <button id="deleteObjectBtn" class="btn btn-ghost tool-btn danger-btn" type="button" title="Delete selected object">Delete Selected</button>
+        </div>
+
+        <div class="tool-group">
+          <label class="control-label" for="fontSelect">Text Font</label>
+          <select id="fontSelect" class="control-select" title="Choose font for selected text">
+            <option value="Arial">Arial</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Impact">Impact</option>
+            <option value="Montserrat">Montserrat</option>
+          </select>
+        </div>
+
+        <div class="tool-group">
+          <label class="control-label" for="textColor">Text Colour</label>
+          <input id="textColor" type="color" value="#111827" aria-label="Text color" title="Set color for selected text">
+        </div>
+
+        <div class="tool-group">
+          <label class="control-label">Print Area</label>
+          <button id="editPrintAreaBtn" class="btn btn-ghost tool-btn" type="button" title="Enable print area resize mode">Edit Print Area</button>
+          <p class="tools-hint">Suggestion: Keep 12-18 px safe margin from box edge to avoid clipping in print.</p>
         </div>
       </div>
-
-      <div class="tool-group">
-        <label class="control-label" for="colorSelect">Shirt Colour</label>
-        <select id="colorSelect" class="control-select" title="Select shirt color"></select>
-        <div class="custom-color-row">
-          <input id="customColorName" class="control-input" type="text" maxlength="24" placeholder="Custom color name" title="Enter a custom color name">
-          <input id="customColorValue" type="color" value="#4f46e5" title="Choose custom color value">
-        </div>
-      </div>
-
-      <div class="tool-group">
-        <label class="control-label">Add Design</label>
-        <button id="addImageBtn" class="btn btn-ghost tool-btn" type="button" title="Upload logo or artwork image">Add Image</button>
-        <button id="addTextBtn" class="btn btn-ghost tool-btn" type="button" title="Insert editable text">Add Text</button>
-        <button id="deleteObjectBtn" class="btn btn-ghost tool-btn danger-btn" type="button" title="Delete selected object">Delete Selected</button>
-      </div>
-
-      <div class="tool-group">
-        <label class="control-label" for="fontSelect">Text Font</label>
-        <select id="fontSelect" class="control-select" title="Choose font for selected text">
-          <option value="Arial">Arial</option>
-          <option value="Helvetica">Helvetica</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Times New Roman">Times New Roman</option>
-          <option value="Impact">Impact</option>
-          <option value="Montserrat">Montserrat</option>
-        </select>
-      </div>
-
-      <div class="tool-group">
-        <label class="control-label" for="textColor">Text Colour</label>
-        <input id="textColor" type="color" value="#111827" aria-label="Text color" title="Set color for selected text">
-      </div>
-
-      <div class="tool-group">
-        <label class="control-label">Print Area</label>
-        <button id="editPrintAreaBtn" class="btn btn-ghost tool-btn" type="button" title="Enable print area resize mode">Edit Print Area</button>
-        <p class="tools-hint">Suggestion: Keep 12-18 px safe margin from box edge to avoid clipping in print.</p>
-      </div>
-
     </aside>
 
     <section class="workspace" aria-label="Design workspace">
@@ -84,7 +92,9 @@
       </div>
 
       <div class="workspace-meta">
-        <p>* Use Edit Print Area to resize the printable zone. Design objects stay constrained inside the highlighted region. * T-shirt color shown in the mockup is for reference only; our graphic designer will redesign it with the actual T-shirt color you choose and send it to you for approval before it goes to print. * Please keep high-quality images ready in case we request originals for print quality.</p>
+        <button class="notes-toggle-btn" type="button"
+          onclick="var p=this.nextElementSibling;p.classList.toggle('notes-open');this.querySelector('.notes-chevron').style.transform=p.classList.contains('notes-open')?'rotate(180deg)':'';">Notes &amp; Tips <span class="notes-chevron" style="display:inline-block;transition:transform .2s">▾</span></button>
+        <p class="workspace-note-p">* Use Edit Print Area to resize the printable zone. Design objects stay constrained inside the highlighted region. * T-shirt color shown in the mockup is for reference only; our graphic designer will redesign it with the actual T-shirt color you choose and send it to you for approval before it goes to print. * Please keep high-quality images ready in case we request originals for print quality.</p>
       </div>
     </section>
 
