@@ -23,8 +23,17 @@
     { name: 'White', value: '#ffffff', stroke: '#cbd5e1' },
     { name: 'Black', value: '#111827', stroke: '#374151' },
     { name: 'Navy', value: '#1e3a8a', stroke: '#172554' },
+    { name: 'Royal Blue', value: '#2563eb', stroke: '#1e3a8a' },
+    { name: 'Sky Blue', value: '#38bdf8', stroke: '#0284c7' },
     { name: 'Red', value: '#b91c1c', stroke: '#7f1d1d' },
-    { name: 'Green', value: '#15803d', stroke: '#14532d' }
+    { name: 'Maroon', value: '#7f1d1d', stroke: '#5f1414' },
+    { name: 'Orange', value: '#ea580c', stroke: '#9a3412' },
+    { name: 'Yellow', value: '#facc15', stroke: '#a16207' },
+    { name: 'Green', value: '#15803d', stroke: '#14532d' },
+    { name: 'Mint', value: '#10b981', stroke: '#047857' },
+    { name: 'Purple', value: '#7c3aed', stroke: '#5b21b6' },
+    { name: 'Pink', value: '#ec4899', stroke: '#be185d' },
+    { name: 'Grey', value: '#6b7280', stroke: '#4b5563' }
   ];
 
   const state = {
@@ -46,11 +55,12 @@
   const shirtOverlayLayer = document.getElementById('shirtOverlayLayer');
   const activeSideIndicator = document.getElementById('activeSideIndicator');
   const colorSelect = document.getElementById('colorSelect');
+  const customColorName = document.getElementById('customColorName');
+  const customColorValue = document.getElementById('customColorValue');
   const imageUploadInput = document.getElementById('imageUploadInput');
   const addImageBtn = document.getElementById('addImageBtn');
   const addTextBtn = document.getElementById('addTextBtn');
   const editPrintAreaBtn = document.getElementById('editPrintAreaBtn');
-  const lockPrintAreaBtn = document.getElementById('lockPrintAreaBtn');
   const leftUploadBtn = document.getElementById('leftUploadBtn');
   const leftTextBtn = document.getElementById('leftTextBtn');
   const deleteObjectBtn = document.getElementById('deleteObjectBtn');
@@ -63,6 +73,8 @@
   const designFrontData = document.getElementById('designFrontData');
   const designBackData = document.getElementById('designBackData');
   const designImageData = document.getElementById('designImageData');
+  const shirtColorNameData = document.getElementById('shirtColorNameData');
+  const shirtColorHexData = document.getElementById('shirtColorHexData');
   const quoteForm = document.getElementById('quoteForm');
   const formStatus = document.getElementById('formStatus');
   const frontSideBtn = document.getElementById('frontSideBtn');
@@ -244,6 +256,16 @@
     });
   }
 
+  function applyStageClip(canvas) {
+    canvas.clipPath = new fabric.Rect({
+      left: 0,
+      top: 0,
+      width: STAGE_WIDTH,
+      height: STAGE_HEIGHT,
+      absolutePositioned: true
+    });
+  }
+
   function clampObjectToPrintArea(obj, side) {
     if (!obj) return;
     if (obj.isPrintAreaGuide) return;
@@ -310,7 +332,11 @@
 
     printAreas[side] = area;
     syncPrintAreaGuide(side);
-    applyClip(canvases[side], side);
+    if (isPrintAreaEditMode && side === state.activeSide) {
+      applyStageClip(canvases[side]);
+    } else {
+      applyClip(canvases[side], side);
+    }
     clampAllDesignObjects(side);
 
     if (side === state.activeSide) {
@@ -332,7 +358,11 @@
 
     printAreas[side] = area;
     syncPrintAreaGuide(side);
-    applyClip(canvases[side], side);
+    if (isPrintAreaEditMode && side === state.activeSide) {
+      applyStageClip(canvases[side]);
+    } else {
+      applyClip(canvases[side], side);
+    }
     clampAllDesignObjects(side);
 
     if (side === state.activeSide) {
@@ -344,15 +374,19 @@
     isPrintAreaEditMode = enabled;
     if (editPrintAreaBtn) {
       editPrintAreaBtn.classList.toggle('active', enabled);
-      editPrintAreaBtn.disabled = enabled;
-    }
-    if (lockPrintAreaBtn) {
-      lockPrintAreaBtn.hidden = !enabled;
+      editPrintAreaBtn.textContent = enabled ? 'Lock Print Area' : 'Edit Print Area';
+      editPrintAreaBtn.title = enabled ? 'Lock current print area' : 'Enable print area resize mode';
     }
 
     Object.keys(printAreaGuides).forEach(function (side) {
       const guide = printAreaGuides[side];
       if (!guide) return;
+
+      if (enabled && side === state.activeSide) {
+        applyStageClip(canvases[side]);
+      } else {
+        applyClip(canvases[side], side);
+      }
 
       const editable = enabled && side === state.activeSide;
       guide.set({
@@ -397,6 +431,7 @@
       fill: 'rgba(59, 130, 246, 0.08)',
       stroke: '#2563eb',
       strokeWidth: 2,
+      strokeUniform: true,
       strokeDashArray: [10, 8],
       rx: 8,
       ry: 8,
@@ -411,6 +446,8 @@
       cornerStyle: 'circle',
       cornerSize: 10,
       borderScaleFactor: 2,
+      objectCaching: false,
+      noScaleCache: false,
       excludeFromExport: true
     });
 
@@ -496,19 +533,175 @@
     schedulePlacementPreviewUpdate();
   }
 
+  function normalizeHexColor(value) {
+    var raw = (value || '').trim().replace(/^#/, '');
+    if (/^[0-9a-fA-F]{3}$/.test(raw)) {
+      raw = raw.split('').map(function (ch) { return ch + ch; }).join('');
+    }
+    if (!/^[0-9a-fA-F]{6}$/.test(raw)) {
+      return '';
+    }
+    return '#' + raw.toLowerCase();
+  }
+
+  function adjustHexColor(hex, factor) {
+    var normalized = normalizeHexColor(hex);
+    if (!normalized) return '#334155';
+
+    var intValue = parseInt(normalized.slice(1), 16);
+    var r = (intValue >> 16) & 255;
+    var g = (intValue >> 8) & 255;
+    var b = intValue & 255;
+
+    function scale(channel) {
+      var next = Math.round(channel * factor);
+      return Math.max(0, Math.min(255, next));
+    }
+
+    var rr = scale(r).toString(16).padStart(2, '0');
+    var gg = scale(g).toString(16).padStart(2, '0');
+    var bb = scale(b).toString(16).padStart(2, '0');
+    return '#' + rr + gg + bb;
+  }
+
+  function findColorByHex(hex) {
+    var normalized = normalizeHexColor(hex);
+    if (!normalized) return null;
+
+    return SHIRT_COLORS.find(function (item) {
+      return item.value.toLowerCase() === normalized;
+    }) || null;
+  }
+
+  function findColorMentionInText(text) {
+    var lower = String(text || '').toLowerCase();
+    if (!lower) return null;
+    var compact = lower.replace(/[\s_-]+/g, '');
+
+    var direct = SHIRT_COLORS.find(function (item) {
+      return lower.indexOf(item.name.toLowerCase()) !== -1;
+    });
+    if (direct) return direct;
+
+    var aliasToHex = {
+      blue: '#2563eb',
+      lightblue: '#38bdf8',
+      skyblue: '#38bdf8',
+      navy: '#1e3a8a',
+      red: '#b91c1c',
+      maroon: '#7f1d1d',
+      orange: '#ea580c',
+      yellow: '#facc15',
+      green: '#15803d',
+      mint: '#10b981',
+      purple: '#7c3aed',
+      violet: '#7c3aed',
+      pink: '#ec4899',
+      black: '#111827',
+      white: '#ffffff',
+      grey: '#6b7280',
+      gray: '#6b7280'
+    };
+
+    var alias = Object.keys(aliasToHex).find(function (key) {
+      return lower.indexOf(key) !== -1 || compact.indexOf(key.replace(/[\s_-]+/g, '')) !== -1;
+    });
+
+    return alias ? findColorByHex(aliasToHex[alias]) : null;
+  }
+
+  function syncCustomColorInputsFromActiveColor(mode) {
+    if (customColorValue) {
+      customColorValue.value = state.activeColor.value;
+    }
+    if (customColorName) {
+      customColorName.value = mode === 'preset' ? '' : state.activeColor.name;
+    }
+    if (shirtColorNameData) {
+      shirtColorNameData.value = state.activeColor.name;
+    }
+    if (shirtColorHexData) {
+      shirtColorHexData.value = state.activeColor.value;
+    }
+  }
+
+  function upsertCustomColor(name, hex) {
+    var normalizedHex = normalizeHexColor(hex);
+    if (!normalizedHex) return null;
+
+    var label = (name || '').trim() || normalizedHex.toUpperCase();
+    var existing = SHIRT_COLORS.find(function (item) {
+      return item.name.toLowerCase() === label.toLowerCase() || item.value.toLowerCase() === normalizedHex;
+    });
+
+    if (existing) {
+      existing.name = label;
+      existing.value = normalizedHex;
+      existing.stroke = adjustHexColor(normalizedHex, 0.65);
+      return existing;
+    }
+
+    var next = {
+      name: label,
+      value: normalizedHex,
+      stroke: adjustHexColor(normalizedHex, 0.65)
+    };
+    SHIRT_COLORS.push(next);
+    return next;
+  }
+
+  function applyCustomColorFromInputs(source) {
+    var name = (customColorName && customColorName.value ? customColorName.value : '').trim();
+    var hex = normalizeHexColor(customColorValue ? customColorValue.value : '');
+
+    if (source === 'name') {
+      var typedHex = normalizeHexColor(name);
+      if (typedHex) {
+        hex = typedHex;
+        if (customColorValue) customColorValue.value = typedHex;
+        name = typedHex.toUpperCase();
+      } else {
+        var mentioned = findColorMentionInText(name);
+        if (mentioned) {
+          if (customColorValue) customColorValue.value = mentioned.value;
+          applySelectedColor(mentioned.value, 'custom');
+          return;
+        }
+      }
+    }
+
+    if (!hex) return;
+
+    var entry = upsertCustomColor(name, hex);
+    if (!entry) return;
+
+    populateColorOptions();
+    applySelectedColor(entry.value, 'custom');
+  }
+
+  function applySelectedColor(value, mode) {
+    state.activeColor = SHIRT_COLORS.find(function (item) {
+      return item.value.toLowerCase() === String(value || '').toLowerCase();
+    }) || SHIRT_COLORS[0];
+
+    colorSelect.value = state.activeColor.value;
+    syncCustomColorInputsFromActiveColor(mode || 'preset');
+    updateLayerSources().then(function () {
+      schedulePlacementPreviewUpdate();
+    });
+  }
+
   function populateColorOptions() {
     colorSelect.innerHTML = SHIRT_COLORS.map(function (color) {
       return '<option value="' + color.value + '">' + color.name + '</option>';
     }).join('');
 
-    colorSelect.addEventListener('change', function () {
-      state.activeColor = SHIRT_COLORS.find(function (item) {
-        return item.value === colorSelect.value;
-      }) || SHIRT_COLORS[0];
-      updateLayerSources().then(function () {
-        schedulePlacementPreviewUpdate();
+    if (!colorSelect.dataset.bound) {
+      colorSelect.addEventListener('change', function () {
+        applySelectedColor(colorSelect.value, 'preset');
       });
-    });
+      colorSelect.dataset.bound = '1';
+    }
   }
 
   function addText() {
@@ -710,26 +903,56 @@
 
   function wireControls() {
     addTextBtn.addEventListener('click', addText);
-    leftTextBtn.addEventListener('click', addText);
+    if (leftTextBtn) {
+      leftTextBtn.addEventListener('click', addText);
+    }
 
     if (editPrintAreaBtn) {
       editPrintAreaBtn.addEventListener('click', function () {
-        if (!isPrintAreaEditMode) {
-          setPrintAreaEditMode(true);
-        }
+        setPrintAreaEditMode(!isPrintAreaEditMode);
       });
     }
 
-    if (lockPrintAreaBtn) {
-      lockPrintAreaBtn.addEventListener('click', function () {
-        if (isPrintAreaEditMode) {
-          setPrintAreaEditMode(false);
+    if (customColorName) {
+      customColorName.addEventListener('input', function () {
+        var typed = customColorName.value;
+        var typedHex = normalizeHexColor(typed);
+
+        if (typedHex) {
+          if (customColorValue) customColorValue.value = typedHex;
+          return;
         }
+
+        var mentioned = findColorMentionInText(typed);
+        if (mentioned && customColorValue) {
+          customColorValue.value = mentioned.value;
+          applySelectedColor(mentioned.value, 'custom');
+        }
+      });
+
+      customColorName.addEventListener('change', function () {
+        applyCustomColorFromInputs('name');
+      });
+    }
+
+    if (customColorValue) {
+      customColorValue.addEventListener('change', function () {
+        var pickedHex = normalizeHexColor(customColorValue.value);
+        if (!pickedHex) return;
+
+        var known = findColorByHex(pickedHex);
+        if (customColorName) {
+          customColorName.value = known ? known.name : pickedHex.toUpperCase();
+        }
+
+        applyCustomColorFromInputs('picker');
       });
     }
 
     addImageBtn.addEventListener('click', function () { imageUploadInput.click(); });
-    leftUploadBtn.addEventListener('click', function () { imageUploadInput.click(); });
+    if (leftUploadBtn) {
+      leftUploadBtn.addEventListener('click', function () { imageUploadInput.click(); });
+    }
     imageUploadInput.addEventListener('change', function () {
       if (imageUploadInput.files && imageUploadInput.files[0]) {
         const file = imageUploadInput.files[0];
@@ -808,6 +1031,8 @@
             phone:         formFields.phone,
             email:         formFields.email,
             notes:         formFields.notes,
+            shirtColorName: state.activeColor.name,
+            shirtColorHex: state.activeColor.value,
             frontImage:    frontData.base64,
             backImage:     backData.base64,
             frontMimeType: frontData.mimeType,
@@ -864,7 +1089,10 @@
 
   productTitle.textContent = 'Customize ' + product.name;
   populateColorOptions();
-  colorSelect.value = state.activeColor.value;
+  applySelectedColor(state.activeColor.value, 'preset');
+  if (customColorValue) {
+    customColorValue.value = state.activeColor.value;
+  }
   Object.keys(canvases).forEach(function (side) {
     canvases[side].centeredScaling = false;
     applyClip(canvases[side], side);
