@@ -307,15 +307,27 @@ document.addEventListener('DOMContentLoaded', function () {
     closeDrawer();
   });
 
+  drawerOverlay.addEventListener('touchend', function (event) {
+    if (!isMobileDrawerViewport()) return;
+    event.preventDefault();
+    closeDrawer();
+  }, { passive: false });
+
   drawerCloseButton.addEventListener('click', function (event) {
     event.preventDefault();
     event.stopPropagation();
     closeDrawer();
   });
 
-  collapse.addEventListener('click', function (event) {
+  ['touchstart', 'touchend', 'click'].forEach(function (eventName) {
+    collapse.addEventListener(eventName, function (event) {
+      if (!isMobileDrawerViewport()) return;
+      event.stopPropagation();
+    }, { passive: false });
+  });
+
+  const handleDrawerLinkNavigation = function (event) {
     if (!isMobileDrawerViewport()) return;
-    event.stopPropagation();
 
     const tappedLink = event.target.closest('a[href]');
     if (!tappedLink) return;
@@ -324,8 +336,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!href || href === '#') return;
 
     event.preventDefault();
-    window.location.href = tappedLink.href;
-  });
+    event.stopPropagation();
+    window.location.assign(tappedLink.href);
+  };
+
+  collapse.addEventListener('click', handleDrawerLinkNavigation);
+  collapse.addEventListener('touchend', handleDrawerLinkNavigation, { passive: false });
 
   document.addEventListener('click', function (event) {
     if (!searchWrapper.contains(event.target)) {
