@@ -178,31 +178,22 @@
 
     // Improve mobile touch controls.
     fabric.Object.prototype.set({
-      cornerSize: 26,
+      cornerSize: 18,
       cornerStyle: 'circle',
       transparentCorners: false,
       borderColor: '#2563eb',
       cornerColor: '#2563eb',
-      padding: 12
+      padding: 14,
+      borderScaleFactor: 2.2
     });
 
     // Mobile touch optimisation.
     Object.keys(canvases).forEach(function (side) {
       const canvas = canvases[side];
-      canvas.allowTouchScrolling = true;
-
-      canvas.on('touch:gesture', function (event) {
-        if (!event || !event.e || !event.e.touches || event.e.touches.length !== 2) {
-          return;
-        }
-
-        if (!event.self) {
-          event.self = { scale: 1 };
-        }
-
-        event.self.scale = event.self.scale || 1;
-        event.self.scale *= event.self.scale;
-      });
+      canvas.allowTouchScrolling = false;
+      canvas.targetFindTolerance = 10;
+      canvas.perPixelTargetFind = false;
+      canvas.uniScaleKey = null;
 
       if (canvas.upperCanvasEl) {
         canvas.upperCanvasEl.style.touchAction = 'none';
@@ -225,6 +216,25 @@
 
     improveMobileDrag(canvases.front);
     improveMobileDrag(canvases.back);
+  }
+
+  function applyMobileObjectBehavior(obj) {
+    if (!obj || !isMobileViewport) return;
+
+    obj.set({
+      lockRotation: true,
+      centeredRotation: false,
+      cornerSize: 16,
+      touchCornerSize: 34,
+      padding: 14,
+      transparentCorners: false,
+      borderScaleFactor: 2.2
+    });
+
+    // Keep mobile controls simple and finger-friendly: resize + move only.
+    if (obj.controls && obj.controls.mtr) {
+      obj.controls.mtr.visible = false;
+    }
   }
 
   function svgDataUri(markup) {
@@ -839,6 +849,8 @@
       padding: isMobileViewport ? 14 : 0
     });
 
+    applyMobileObjectBehavior(textObj);
+
     canvas.add(textObj);
     canvas.setActiveObject(textObj);
     clampObjectToPrintArea(textObj);
@@ -868,6 +880,8 @@
           transparentCorners: false,
           padding: isMobileViewport ? 14 : 0
         });
+
+        applyMobileObjectBehavior(img);
 
         const canvas = getCurrentCanvas();
         canvas.add(img);
@@ -925,6 +939,13 @@
         updatePrintAreaPositionFromGuide(side);
         return;
       }
+
+      if (isMobileViewport) {
+        // Let fingers move freely on mobile; constrain on object:modified.
+        if (event.target) event.target.setCoords();
+        return;
+      }
+
       clampObjectToPrintArea(event.target, side);
     });
 
@@ -933,6 +954,13 @@
         // Avoid mutating guide geometry mid-transform; commit on object:modified.
         return;
       }
+
+      if (isMobileViewport) {
+        // Avoid jitter during pinch/resize on mobile; clamp once gesture ends.
+        if (event.target) event.target.setCoords();
+        return;
+      }
+
       clampObjectToPrintArea(event.target, side);
     });
 
@@ -941,6 +969,8 @@
     canvas.on('object:modified', function (event) {
       if (event.target && event.target.isPrintAreaGuide) {
         updatePrintAreaFromGuide(side);
+      } else {
+        clampObjectToPrintArea(event.target, side);
       }
       schedulePlacementPreviewUpdate();
     });
@@ -958,13 +988,32 @@
   }
 
   function composeSidePreview(side) {
+    const canvas = canvases[side];
+    const guide = printAreaGuides[side];
+
     return ensureStaticPreviewLayersLoaded().then(function () {
+      let designLayerData;
+
+      if (guide) {
+        // Keep print-area helpers out of exported previews.
+        var wasVisible = guide.visible;
+        var wasEvented = guide.evented;
+        var wasSelectable = guide.selectable;
+        guide.set({ visible: false, evented: false, selectable: false });
+        canvas.requestRenderAll();
+        designLayerData = canvas.toDataURL({ format: 'png', multiplier: 1, enableRetinaScaling: true });
+        guide.set({ visible: wasVisible, evented: wasEvented, selectable: wasSelectable });
+        canvas.requestRenderAll();
+      } else {
+        designLayerData = canvas.toDataURL({ format: 'png', multiplier: 1, enableRetinaScaling: true });
+      }
+
       return Promise.all([
-      Promise.resolve(modelBgImage),
-      loadImage(state.sources[side].base),
-      loadImage(state.sources[side].overlay),
-      loadImage(canvases[side].toDataURL({ format: 'png', multiplier: 1, enableRetinaScaling: true }))
-    ]);
+        Promise.resolve(modelBgImage),
+        loadImage(state.sources[side].base),
+        loadImage(state.sources[side].overlay),
+        loadImage(designLayerData)
+      ]);
     }).then(function (images) {
       const offscreen = document.createElement('canvas');
       offscreen.width = STAGE_WIDTH;
