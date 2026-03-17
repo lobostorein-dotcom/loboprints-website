@@ -399,6 +399,31 @@
 
     const area = getPrintArea(side);
 
+    if (
+      isMobileViewport &&
+      obj.originX === 'left' &&
+      obj.originY === 'top' &&
+      (!obj.angle || Math.abs(obj.angle) % 360 < 0.0001)
+    ) {
+      var width = obj.getScaledWidth();
+      var height = obj.getScaledHeight();
+
+      if (width > area.width || height > area.height) {
+        var ratio = Math.min(area.width / width, area.height / height, 1);
+        obj.scaleX *= ratio;
+        obj.scaleY *= ratio;
+        obj.setCoords();
+        width = obj.getScaledWidth();
+        height = obj.getScaledHeight();
+      }
+
+      var nextLeft = Math.min(Math.max(obj.left, area.left), area.left + area.width - width);
+      var nextTop = Math.min(Math.max(obj.top, area.top), area.top + area.height - height);
+      obj.set({ left: nextLeft, top: nextTop });
+      obj.setCoords();
+      return;
+    }
+
     // Use canvas-space bounds so clamping remains correct after viewport scaling.
     const bounds = obj.getBoundingRect(false, true);
     if (bounds.width > area.width || bounds.height > area.height) {
@@ -838,6 +863,8 @@
     const textObj = new fabric.IText('Your Text', {
       left: area.left + 20,
       top: area.top + 20,
+      originX: 'left',
+      originY: 'top',
       fontSize: 32,
       fill: textColor.value,
       fontFamily: fontSelect.value,
@@ -873,6 +900,8 @@
         img.set({
           left: area.left + 22,
           top: area.top + 24,
+          originX: 'left',
+          originY: 'top',
           cornerColor: '#2563eb',
           borderColor: '#2563eb',
           cornerSize: isMobileViewport ? 12 : 10,
@@ -987,15 +1016,17 @@
     canvas.on('selection:updated', syncSelectedTextControls);
   }
 
-  function composeSidePreview(side) {
+  function composeSidePreview(side, options) {
+    const opts = options || {};
+    const hideGuide = !!opts.hideGuide;
     const canvas = canvases[side];
     const guide = printAreaGuides[side];
 
     return ensureStaticPreviewLayersLoaded().then(function () {
       let designLayerData;
 
-      if (guide) {
-        // Keep print-area helpers out of exported previews.
+      if (guide && hideGuide) {
+        // Hide print-area helper only for final generated preview export.
         var wasVisible = guide.visible;
         var wasEvented = guide.evented;
         var wasSelectable = guide.selectable;
@@ -1029,7 +1060,10 @@
   }
 
   function exportCombinedPreview() {
-    return Promise.all([composeSidePreview('front'), composeSidePreview('back')]).then(function (sources) {
+    return Promise.all([
+      composeSidePreview('front', { hideGuide: true }),
+      composeSidePreview('back', { hideGuide: true })
+    ]).then(function (sources) {
       const combined = document.createElement('canvas');
       combined.width = STAGE_WIDTH * 2;
       combined.height = STAGE_HEIGHT;
@@ -1061,7 +1095,10 @@
 
   function updatePlacementPreviews() {
     const token = ++state.previewRenderToken;
-    Promise.all([composeSidePreview('front'), composeSidePreview('back')]).then(function (sources) {
+    Promise.all([
+      composeSidePreview('front', { hideGuide: false }),
+      composeSidePreview('back', { hideGuide: false })
+    ]).then(function (sources) {
       if (token !== state.previewRenderToken) return;
       frontPlacementPreview.src = sources[0];
       backPlacementPreview.src = sources[1];
