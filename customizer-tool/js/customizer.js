@@ -6,9 +6,27 @@
   const SUBMISSION_IMAGE_TYPE = 'image/png';
   const DEFAULT_PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
   const MIN_PRINT_AREA = { width: 120, height: 120 };
-  const ROUNDNECK_BASE_SOURCES = {
-    front: 'assets/mockups/roundneck-front-base.png',
-    back: 'assets/mockups/roundneck-back-base.png'
+  const PRODUCT_BASE_SOURCES = {
+    roundneck: {
+      front: 'assets/mockups/round neck tshirt white front base.png',
+      back: 'assets/mockups/round neck tshirt white back base.png'
+    },
+    polo: {
+      front: 'assets/mockups/white polo tshirt front base.png',
+      back: 'assets/mockups/white polo tshirt  back base.png'
+    },
+    oversized: {
+      front: 'assets/mockups/OVERSIZED TSHIRT front base.png',
+      back: 'assets/mockups/OVERSIZED TSHIRT back base.png'
+    },
+    hoodie: {
+      front: 'assets/mockups/white hoodie front base.png',
+      back: 'assets/mockups/white hoodie back base.png'
+    },
+    jersey: {
+      front: 'assets/mockups/jersey front base.png',
+      back: 'assets/mockups/jersey back base.png'
+    }
   };
 
   const PRODUCT_CONFIG = {
@@ -330,8 +348,8 @@
   }
 
   function getBaseSource(kind, side, color) {
-    if (kind === 'roundneck') {
-      return Promise.resolve(ROUNDNECK_BASE_SOURCES[side]);
+    if (PRODUCT_BASE_SOURCES[kind] && PRODUCT_BASE_SOURCES[kind][side]) {
+      return Promise.resolve(PRODUCT_BASE_SOURCES[kind][side]);
     }
 
     return Promise.resolve(svgDataUri(getBaseMarkup(kind, side, color)));
