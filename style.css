@@ -2261,6 +2261,17 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   border-color: rgba(15, 23, 42, 0.12) !important;
   border-radius: 999px !important;
   font-weight: 600 !important;
+  font-size: 0.82rem;
+  line-height: 1.25;
+  padding: 0.34rem 0.78rem;
+  min-height: 34px;
+  max-width: 100%;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   letter-spacing: 0.02em;
   color: #111827 !important;
   text-decoration: none !important;
@@ -2279,20 +2290,32 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
 }
 
 .uniform-card-grid .card-title {
-  display: flex;
-  justify-content: center;
+  text-align: center;
+  font-size: 0.96rem;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.3em * 2);
 }
 
 .uniform-card-grid .card-title .card-title-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: -webkit-box;
   width: 100%;
-  min-height: 42px;
-  padding: 0.5rem 0.95rem;
+  min-height: 34px;
+  padding: 0.34rem 0.78rem;
+  font-size: 0.82rem;
+  line-height: 1.25;
   border: 1px solid rgba(15, 23, 42, 0.12);
   border-radius: 999px;
   font-weight: 600;
+  white-space: normal;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   letter-spacing: 0.02em;
   color: #111827 !important;
   text-decoration: none !important;
