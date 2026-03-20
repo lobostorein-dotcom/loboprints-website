@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Track Your Order | Lobo Prints</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="Lobo Prints">
+  <meta name="description" content="Track your custom apparel order from Lobo Prints in JP Nagar, Bangalore. Enter your tracking code to see the current status of your order.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#8C907E">
+  <link rel="canonical" href="https://loboprints.in/track-order.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Track Your Order | Lobo Prints">
+  <meta property="og:description" content="Check the live status of your custom apparel order from Lobo Prints, Bangalore.">
+  <meta property="og:url" content="https://loboprints.in/track-order.html">
+  <meta property="og:site_name" content="Lobo Prints">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://loboprints.in/images/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap"
+    rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",        "item": "https://loboprints.in/" },
+      { "@type": "ListItem", "position": 2, "name": "Track Order", "item": "https://loboprints.in/track-order.html" }
+    ]
+  }
+  </script>
+  <style>
+    body { padding-top: 70px; }
+
+    /* ── Page hero ─────────────────────────────── */
+    .page-hero {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-bottom: 1px solid var(--bs-border-color);
+      padding: 2.5rem 0 2rem;
+    }
+
+    /* ── Card ──────────────────────────────────── */
+    .tracker-card {
+      background: #fff;
+      border: 1px solid var(--bs-border-color);
+      border-radius: 1rem;
+      box-shadow: var(--bs-box-shadow-sm);
+      padding: 2.25rem 2rem;
+    }
+
+    /* ── Input ─────────────────────────────────── */
+    #trackingCode {
+      border-radius: 0.6rem 0 0 0.6rem;
+      font-size: 1rem;
+      font-family: inherit;
+      text-transform: uppercase;
+    }
+    #trackingCode::placeholder { text-transform: none; }
+    #trackBtn {
+      border-radius: 0 0.6rem 0.6rem 0;
+      padding: 0.5rem 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #1f2937 0%, #374151 45%, #111827 100%);
+      border-color: #111827;
+    }
+    #trackBtn:hover,
+    #trackBtn:focus {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 45%, #1d4ed8 100%);
+      border-color: #1d4ed8;
+    }
+
+    /* ── Result header ─────────────────────────── */
+    .status-badge {
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+
+    /* ── Stepper – shared ──────────────────────── */
+    .order-stepper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      padding: 0.5rem 0 0.25rem;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1 1 0;
+      position: relative;
+      text-align: center;
+      min-width: 60px;
+    }
+
+    /* horizontal connector line */
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 19px;
+      left: calc(50% + 20px);
+      right: -50%;
+      height: 2px;
+      background: #dee2e6;
+      z-index: 0;
+    }
+    .step.completed:not(:last-child)::after { background: #198754; }
+    .step.active:not(:last-child)::after    { background: #198754; }
+
+    /* circle icon */
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #dee2e6;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #adb5bd;
+      position: relative;
+      z-index: 1;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    }
+    .step.completed .step-icon {
+      background: #198754;
+      border-color: #198754;
+      color: #fff;
+    }
+    .step.active .step-icon {
+      background: #0d6efd;
+      border-color: #0d6efd;
+      color: #fff;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0   rgba(13, 110, 253, 0.38); }
+      65%  { box-shadow: 0 0 0 9px rgba(13, 110, 253, 0);    }
+      100% { box-shadow: 0 0 0 0   rgba(13, 110, 253, 0);    }
+    }
+
+    /* checkmark vs number */
+    .step-check { display: none; }
+    .step.completed .step-check { display: block; }
+    .step.completed .step-num   { display: none;  }
+
+    /* label */
+    .step-label {
+      font-size: 0.72rem;
+      margin-top: 0.45rem;
+      color: #adb5bd;
+      font-weight: 500;
+      line-height: 1.25;
+      word-break: break-word;
+    }
+    .step.completed .step-label,
+    .step.active .step-label {
+      color: #212529;
+      font-weight: 600;
+    }
+
+    /* ── Mobile: vertical stepper ──────────────── */
+    @media (max-width: 575.98px) {
+      .tracker-card { padding: 1.5rem 1.25rem; }
+
+      .order-stepper {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.25rem 0;
+      }
+      .step {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        flex: 0 0 auto;
+        width: 100%;
+        gap: 0.9rem;
+        min-width: 0;
+      }
+      /* vertical connector */
+      .step:not(:last-child) { padding-bottom: 1.25rem; }
+      .step:not(:last-child)::after {
+        left: 19px;
+        top: 40px;
+        right: auto;
+        width: 2px;
+        height: 1.25rem;
+      }
+      .step-label {
+        margin-top: 0;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/LOBO PRINTS FOR WEBSITE-04.png" alt="Lobo Prints" height="60"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="track-order.html">Track Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="tel:9742998799">Call: 9742998799</a></li>
+          <li class="nav-item"><a class="nav-link ms-2" href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote" style="background-color: #25D366; color: white; padding: 8px 12px; border-radius: 4px; display: inline-block;">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="mb-1 fs-3 fw-bold">Track Your Order</h1>
+      <p class="text-muted mb-0">Enter your tracking code to see the current status of your order.</p>
+    </div>
+  </div>
+
+  <!-- Tracking Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+
+          <div class="tracker-card">
+
+            <!-- Input -->
+            <label class="form-label fw-semibold mb-2" for="trackingCode">Tracking Code</label>
+            <div class="input-group">
+              <input
+                type="text"
+                id="trackingCode"
+                class="form-control"
+                placeholder="e.g. LB001"
+                aria-label="Tracking code"
+                maxlength="32"
+                autocomplete="off"
+                spellcheck="false">
+              <button class="btn btn-primary" id="trackBtn" type="button" onclick="trackOrder()">
+                Track
+              </button>
+            </div>
+            <p class="text-muted small mt-2 mb-0">Your tracking code was shared with you when your order was placed.</p>
+
+            <!-- Loading -->
+            <div id="loadingSpinner" class="text-center py-4 d-none">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mt-2 text-muted small mb-0">Fetching your order details&hellip;</p>
+            </div>
+
+            <!-- Not found -->
+            <div id="errorMsg" class="alert alert-warning mt-4 mb-0 d-none" role="alert">
+              <strong>Order not found.</strong> Please double&#8209;check your tracking code and try again.
+            </div>
+
+            <!-- Network error -->
+            <div id="networkErrMsg" class="alert alert-danger mt-4 mb-0 d-none" role="alert">
+              <strong>Connection error.</strong> Please check your internet connection and try again.
+            </div>
+
+            <!-- Result -->
+            <div id="resultPanel" class="mt-4 d-none">
+              <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
+                <div>
+                  <span class="text-muted small d-block">Order Code</span>
+                  <span class="fw-bold fs-5" id="displayCode"></span>
+                </div>
+                <div class="text-end">
+                  <span class="text-muted small d-block">Current Stage</span>
+                  <span class="status-badge" id="displayStage"></span>
+                </div>
+              </div>
+              <hr class="my-3">
+              <p class="fw-semibold mb-3 text-center small text-uppercase letter-spacing-1 text-muted">Order Progress</p>
+              <div
+                class="order-stepper"
+                id="orderStepper"
+                role="list"
+                aria-label="Order progress stages"></div>
+            </div>
+
+          </div><!-- /.tracker-card -->
+
+          <p class="text-center text-muted small mt-3">
+            Need help? <a href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20need%20help%20tracking%20my%20order" class="text-decoration-none">Contact us on WhatsApp</a>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="mt-5">
+    <div class="container">
+      <div class="row d-flex flex-wrap justify-content-between py-5">
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-001">
+            <div class="footer-intro mb-4">
+              <a href="index.html">
+                <img src="images/LOBO PRINTS FOR WEBSITE-04.png" alt="Lobo Prints">
+              </a>
+            </div>
+            <p>We create custom apparel and uniforms for teams, businesses, schools, and events with reliable quality and fast delivery.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-003">
+            <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item"><a href="index.html" class="item-anchor">Home</a></li>
+              <li class="menu-item"><a href="categories.html" class="item-anchor">Categories</a></li>
+              <li class="menu-item"><a href="contact.html" class="item-anchor">Contact</a></li>
+              <li class="menu-item"><a href="track-order.html" class="item-anchor">Track Order</a></li>
+              <li class="menu-item"><a href="sitemap.xml" class="item-anchor">Sitemap</a></li>
+              <li class="menu-item"><a href="tel:9742998799" class="item-anchor">Call Us</a></li>
+              <li class="menu-item"><a href="https://wa.me/919742998799" class="item-anchor">WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-004 border-animation-left">
+            <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
+            <p>Have a question? <a href="mailto:business@loboprints.in" class="item-anchor">business@loboprints.in</a></p>
+            <p>Call anytime: <a href="tel:9742998799" class="item-anchor">9742998799</a></p>
+            <p>Location: JP Nagar, Bangalore, Karnataka</p>
+            <p><a href="https://wa.me/919742998799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote" class="item-anchor">Message on WhatsApp</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-top py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">Custom Apparel &bull; Fast Delivery &bull; Quality Guaranteed</p>
+          </div>
+          <div class="col-md-6 text-end">
+            <p class="mb-0">&copy; 2026 Lobo Prints. All rights reserved. Design by <a href="mailto:lakshmikanthds2@gmail.com" class="text-decoration-none">lakshmikanthds2@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+  <script>
+    const STAGES = ['Designing', 'Cutting', 'Stitching', 'Printing', 'Packing', 'Delivery'];
+
+    function showEl(id) { document.getElementById(id).classList.remove('d-none'); }
+    function hideEl(id) { document.getElementById(id).classList.add('d-none'); }
+
+    function resetState() {
+      ['loadingSpinner', 'errorMsg', 'networkErrMsg', 'resultPanel'].forEach(hideEl);
+    }
+
+    function buildStepper(activeStage) {
+      const stepper = document.getElementById('orderStepper');
+      stepper.innerHTML = '';
+      const activeIdx = STAGES.findIndex(function(s) {
+        return s.toLowerCase() === activeStage.toLowerCase();
+      });
+      STAGES.forEach(function(stage, idx) {
+        var state = idx < activeIdx ? 'completed' : (idx === activeIdx ? 'active' : '');
+        var ariaLabel = stage + (state === 'completed' ? ' – completed' : state === 'active' ? ' – in progress' : ' – upcoming');
+
+        var step = document.createElement('div');
+        step.className = 'step' + (state ? ' ' + state : '');
+        step.setAttribute('role', 'listitem');
+        step.setAttribute('aria-label', ariaLabel);
+
+        // Build inner HTML using only known/safe values (stage from STAGES array, idx+1 number)
+        step.innerHTML =
+          '<div class="step-icon" aria-hidden="true">' +
+            '<svg class="step-check" width="18" height="18" viewBox="0 0 24 24" fill="none" ' +
+                 'stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">' +
+              '<polyline points="20 6 9 17 4 12"/>' +
+            '</svg>' +
+            '<span class="step-num">' + (idx + 1) + '</span>' +
+          '</div>' +
+          '<span class="step-label">' + stage + '</span>';
+
+        stepper.appendChild(step);
+      });
+    }
+
+    async function trackOrder() {
+      var input = document.getElementById('trackingCode');
+      var code = input.value.trim().toUpperCase();
+
+      if (!code) {
+        input.focus();
+        return;
+      }
+
+      resetState();
+      showEl('loadingSpinner');
+      document.getElementById('trackBtn').disabled = true;
+
+      try {
+        var url = 'https://sheetdb.io/api/v1/jvgqcahxgbgdp/search?Code=' + encodeURIComponent(code);
+        var res = await fetch(url);
+
+        if (!res.ok) {
+          throw new Error('API returned status ' + res.status);
+        }
+
+        var data = await res.json();
+        hideEl('loadingSpinner');
+
+        if (!Array.isArray(data) || data.length === 0) {
+          showEl('errorMsg');
+          return;
+        }
+
+        // Validate stage against known list — never render raw API data into HTML
+        var rawStage = String(data[0].Stage || '').trim();
+        var validStage = STAGES.find(function(s) {
+          return s.toLowerCase() === rawStage.toLowerCase();
+        });
+
+        if (!validStage) {
+          showEl('errorMsg');
+          return;
+        }
+
+        document.getElementById('displayCode').textContent = code;
+        document.getElementById('displayStage').textContent = validStage;
+        buildStepper(validStage);
+        showEl('resultPanel');
+
+      } catch (err) {
+        hideEl('loadingSpinner');
+        showEl('networkErrMsg');
+      } finally {
+        document.getElementById('trackBtn').disabled = false;
+      }
+    }
+
+    document.getElementById('trackingCode').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') trackOrder();
+    });
+  </script>
+
+</body>
+
+</html>

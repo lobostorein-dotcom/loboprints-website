@@ -304,35 +304,41 @@ a {
 
 /* navbar */
 .navbar {
-  min-height: 68px;
-  padding: 8px 0;
+  min-height: 72px;
+  padding: 10px 0;
   overflow-x: hidden;
 }
 
 .navbar.fixed-top {
-  transition: background-color 0.6s ease-out;
-  background-color: #fff !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(247, 250, 255, 0.92)) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
 }
 
 .navbar-nav .nav-link {
-  color: #111;
-  transition: all 0.3s ease;
+  color: #0f172a;
+  transition: all 0.25s ease;
   margin: 0 5px;
-  padding: 6px 14px;
-  border-radius: 4px;
+  padding: 8px 14px;
+  border-radius: 999px;
   display: inline-block;
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
-  background-color: #0066FF;
-  color: #fff;
+  color: #0f172a;
+  background: linear-gradient(135deg, rgba(219, 234, 254, 0.9), rgba(239, 246, 255, 0.9));
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.16);
 }
 
 .navbar-nav .nav-link.active {
-  color: #111;
+  color: #0f172a;
+  background: linear-gradient(135deg, rgba(226, 232, 240, 0.9), rgba(248, 250, 252, 0.9));
 }
 
 .navbar-toggler {
@@ -347,8 +353,9 @@ a {
 
 .navbar-brand img {
   max-width: 100%;
-  height: 60px !important;
+  height: 58px !important;
   width: auto;
+  filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.14));
 }
 
 @media (max-width: 991px) {
