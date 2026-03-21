@@ -4,6 +4,13 @@
   const MODEL_BG_SRC = 'assets/mockups/model-bg.svg';
   const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFAOyYxTchKlBAMBMuiZuB4nWOECaCGyx62C5OSocjJWG7BvCc26EVs-uDaREA5V04/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
+  const QUOTE_SECURITY = {
+    minFillMs: 4000,
+    minResubmitGapMs: 30000,
+    windowMs: 3600000,
+    maxSubmissionsPerWindow: 6,
+    storageKey: 'loboCustomizerQuoteSubmits'
+  };
   const DEFAULT_PRINT_AREA = { left: 235, top: 270, width: 230, height: 260 };
   const MIN_PRINT_AREA = { width: 120, height: 120 };
   const PRODUCT_BASE_SOURCES = {
@@ -103,6 +110,59 @@
   const mobileControlsBackdrop = document.getElementById('mobileControlsBackdrop');
   const toolbarLeft = document.querySelector('.toolbar-left');
   const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+  const quoteFormLoadedAt = Date.now();
+  let lastSubmitAt = 0;
+
+  function getSubmissionHistory() {
+    try {
+      var history = JSON.parse(localStorage.getItem(QUOTE_SECURITY.storageKey) || '[]');
+      if (!Array.isArray(history)) return [];
+      return history.filter(function (ts) { return Number.isFinite(ts); });
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function storeSubmissionHistory(history) {
+    try {
+      localStorage.setItem(QUOTE_SECURITY.storageKey, JSON.stringify(history));
+    } catch (e) {
+      // Ignore storage errors, in-memory throttling still applies.
+    }
+  }
+
+  function canSubmitQuote(now, honeypotValue) {
+    if (honeypotValue) {
+      return 'Spam check failed. Please refresh and try again.';
+    }
+
+    if (now - quoteFormLoadedAt < QUOTE_SECURITY.minFillMs) {
+      return 'Please wait a few seconds before submitting.';
+    }
+
+    if (now - lastSubmitAt < QUOTE_SECURITY.minResubmitGapMs) {
+      return 'Please wait before sending another request.';
+    }
+
+    var history = getSubmissionHistory().filter(function (ts) {
+      return now - ts <= QUOTE_SECURITY.windowMs;
+    });
+
+    if (history.length >= QUOTE_SECURITY.maxSubmissionsPerWindow) {
+      return 'Submission limit reached. Please try again later.';
+    }
+
+    return '';
+  }
+
+  function recordQuoteSubmit(now) {
+    lastSubmitAt = now;
+    var history = getSubmissionHistory().filter(function (ts) {
+      return now - ts <= QUOTE_SECURITY.windowMs;
+    });
+    history.push(now);
+    storeSubmissionHistory(history);
+  }
 
   const canvases = {
     front: new fabric.Canvas('designCanvasFront', {
@@ -1227,8 +1287,28 @@
       });
     });
 
+    var honeypot = document.createElement('input');
+    honeypot.type = 'text';
+    honeypot.name = 'website';
+    honeypot.autocomplete = 'off';
+    honeypot.tabIndex = -1;
+    honeypot.setAttribute('aria-hidden', 'true');
+    honeypot.style.position = 'absolute';
+    honeypot.style.left = '-9999px';
+    honeypot.style.width = '1px';
+    honeypot.style.height = '1px';
+    quoteForm.appendChild(honeypot);
+
     quoteForm.addEventListener('submit', function (event) {
       event.preventDefault();
+
+      var now = Date.now();
+      var securityBlock = canSubmitQuote(now, honeypot.value.trim());
+      if (securityBlock) {
+        formStatus.textContent = securityBlock;
+        return;
+      }
+
       formStatus.textContent = 'Composing previews\u2026';
 
       var formFields = {
@@ -1269,13 +1349,17 @@
 
           fetch(APPS_SCRIPT_ENDPOINT, {
             method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8',
+              'X-Requested-With': 'LoboCustomizerQuote'
+            },
             body: body
           })
             .then(function (res) {
               if (!res.ok) {
                 throw new Error('Server responded with status ' + res.status);
               }
+              recordQuoteSubmit(Date.now());
               formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
               quoteForm.reset();
             })
@@ -1284,6 +1368,7 @@
               if (navigator.sendBeacon) {
                 var sent = navigator.sendBeacon(APPS_SCRIPT_ENDPOINT, body);
                 if (sent) {
+                  recordQuoteSubmit(Date.now());
                   formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
                   quoteForm.reset();
                   return;

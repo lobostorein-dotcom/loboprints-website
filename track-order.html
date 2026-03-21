@@ -381,6 +381,55 @@
 
   <script>
     const STAGES = ['Designing', 'Cutting', 'Stitching', 'Printing', 'Packing', 'Delivery'];
+    const TRACK_SECURITY = {
+      minIntervalMs: 2500,
+      windowMs: 60000,
+      maxAttemptsPerWindow: 12,
+      codePattern: /^[A-Z0-9-]{4,24}$/
+    };
+    let lastAttemptAt = 0;
+
+    function getAttemptTimestamps() {
+      try {
+        var stored = JSON.parse(localStorage.getItem('loboTrackAttempts') || '[]');
+        if (!Array.isArray(stored)) return [];
+        return stored.filter(function (ts) { return Number.isFinite(ts); });
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveAttemptTimestamps(values) {
+      try {
+        localStorage.setItem('loboTrackAttempts', JSON.stringify(values));
+      } catch (e) {
+        // Ignore storage write errors and continue with in-memory protection.
+      }
+    }
+
+    function registerAttempt(now) {
+      var attempts = getAttemptTimestamps().filter(function (ts) {
+        return now - ts <= TRACK_SECURITY.windowMs;
+      });
+      attempts.push(now);
+      saveAttemptTimestamps(attempts);
+    }
+
+    function isRateLimited(now) {
+      if (now - lastAttemptAt < TRACK_SECURITY.minIntervalMs) {
+        return true;
+      }
+      var attempts = getAttemptTimestamps().filter(function (ts) {
+        return now - ts <= TRACK_SECURITY.windowMs;
+      });
+      return attempts.length >= TRACK_SECURITY.maxAttemptsPerWindow;
+    }
+
+    function showSecurityMessage(message) {
+      var msg = document.getElementById('networkErrMsg');
+      msg.textContent = message;
+      showEl('networkErrMsg');
+    }
 
     function showEl(id) { document.getElementById(id).classList.remove('d-none'); }
     function hideEl(id) { document.getElementById(id).classList.add('d-none'); }
@@ -422,34 +471,69 @@
     async function trackOrder() {
       var input = document.getElementById('trackingCode');
       var code = input.value.trim().toUpperCase();
+      var now = Date.now();
 
       if (!code) {
         input.focus();
         return;
       }
 
+      if (!TRACK_SECURITY.codePattern.test(code)) {
+        showSecurityMessage('Please enter a valid tracking code (letters, numbers, and hyphens only).');
+        input.focus();
+        return;
+      }
+
+      if (isRateLimited(now)) {
+        showSecurityMessage('Too many requests. Please wait a moment and try again.');
+        return;
+      }
+
+      lastAttemptAt = now;
+      registerAttempt(now);
+
       resetState();
       showEl('loadingSpinner');
       document.getElementById('trackBtn').disabled = true;
 
       try {
-        var url = 'https://sheetdb.io/api/v1/jvgqcahxgbgdp/search?Code=' + encodeURIComponent(code);
-        var res = await fetch(url);
+        var url = 'https://script.google.com/macros/s/AKfycbxZp9MPsH6OedPLQPA-ijljLhPBMlaONmZFrA8v0rJ1u3JSW_aNzmIgTagv0KNquyw8/exec?Code=' + encodeURIComponent(code);
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function () { controller.abort(); }, 12000);
+        var res = await fetch(url, {
+          method: 'GET',
+          cache: 'no-store',
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
 
         if (!res.ok) {
           throw new Error('API returned status ' + res.status);
         }
 
-        var data = await res.json();
+        var responseText = await res.text();
+        var data;
+        try {
+          data = JSON.parse(responseText);
+        } catch (parseErr) {
+          throw new Error('Invalid API response format');
+        }
         hideEl('loadingSpinner');
 
-        if (!Array.isArray(data) || data.length === 0) {
+        var record = null;
+        if (Array.isArray(data)) {
+          record = data.length ? data[0] : null;
+        } else if (data && typeof data === 'object' && !data.error) {
+          record = data;
+        }
+
+        if (!record) {
           showEl('errorMsg');
           return;
         }
 
         // Validate stage against known list — never render raw API data into HTML
-        var rawStage = String(data[0].Stage || '').trim();
+        var rawStage = String(record.Stage || record.stage || '').trim();
         var validStage = STAGES.find(function(s) {
           return s.toLowerCase() === rawStage.toLowerCase();
         });
@@ -459,14 +543,15 @@
           return;
         }
 
-        document.getElementById('displayCode').textContent = code;
+        var displayCode = String(record.Code || record.code || code).trim().toUpperCase();
+        document.getElementById('displayCode').textContent = displayCode;
         document.getElementById('displayStage').textContent = validStage;
         buildStepper(validStage);
         showEl('resultPanel');
 
       } catch (err) {
         hideEl('loadingSpinner');
-        showEl('networkErrMsg');
+        showSecurityMessage('Unable to verify right now. Please check your Apps Script deployment access and try again.');
       } finally {
         document.getElementById('trackBtn').disabled = false;
       }
@@ -476,6 +561,7 @@
       if (e.key === 'Enter') trackOrder();
     });
   </script>
+  <script src="header-search.js"></script>
 
 </body>
 
