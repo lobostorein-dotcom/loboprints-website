@@ -28,6 +28,105 @@ document.addEventListener('DOMContentLoaded', function () {
   const toggler = navbarContainer ? navbarContainer.querySelector('.navbar-toggler') : null;
   if (!collapse) return;
 
+  const findBreadcrumbList = function (node) {
+    if (!node || typeof node !== 'object') return null;
+
+    if (Array.isArray(node)) {
+      for (let i = 0; i < node.length; i += 1) {
+        const found = findBreadcrumbList(node[i]);
+        if (found) return found;
+      }
+      return null;
+    }
+
+    if (node['@type'] === 'BreadcrumbList' && Array.isArray(node.itemListElement)) {
+      return node;
+    }
+
+    const keys = Object.keys(node);
+    for (let i = 0; i < keys.length; i += 1) {
+      const found = findBreadcrumbList(node[keys[i]]);
+      if (found) return found;
+    }
+
+    return null;
+  };
+
+  const renderVisibleBreadcrumbs = function () {
+    if (document.querySelector('.site-breadcrumb')) return;
+
+    const jsonLdScripts = document.querySelectorAll('script[type="application/ld+json"]');
+    let breadcrumbData = null;
+
+    jsonLdScripts.forEach(function (script) {
+      if (breadcrumbData) return;
+      try {
+        const parsed = JSON.parse(script.textContent || '{}');
+        const found = findBreadcrumbList(parsed);
+        if (found) breadcrumbData = found;
+      } catch (e) {
+        // Ignore malformed JSON-LD blocks and keep scanning.
+      }
+    });
+
+    if (!breadcrumbData || !breadcrumbData.itemListElement || breadcrumbData.itemListElement.length < 2) {
+      return;
+    }
+
+    const nav = document.createElement('nav');
+    nav.className = 'site-breadcrumb';
+    nav.setAttribute('aria-label', 'breadcrumb');
+
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const list = document.createElement('ol');
+    list.className = 'site-breadcrumb-list';
+
+    breadcrumbData.itemListElement.forEach(function (entry, index) {
+      const item = document.createElement('li');
+      const isLast = index === breadcrumbData.itemListElement.length - 1;
+      const label = String(entry.name || '').trim();
+      const entryUrl = entry.item;
+
+      item.className = 'site-breadcrumb-item' + (isLast ? ' active' : '');
+
+      if (!isLast && entryUrl) {
+        const link = document.createElement('a');
+        try {
+          const resolved = new URL(entryUrl, window.location.origin);
+          link.href = resolved.pathname + resolved.search + resolved.hash;
+        } catch (e) {
+          link.href = entryUrl;
+        }
+        link.textContent = label;
+        item.appendChild(link);
+      } else {
+        item.textContent = label;
+        item.setAttribute('aria-current', 'page');
+      }
+
+      list.appendChild(item);
+    });
+
+    container.appendChild(list);
+    nav.appendChild(container);
+
+    const navbar = document.querySelector('.navbar');
+    if (navbar && navbar.parentNode) {
+      navbar.parentNode.insertBefore(nav, navbar.nextSibling);
+      var navbarHeight = navbar.offsetHeight;
+      var bodyPaddingTop = parseInt(getComputedStyle(document.body).paddingTop, 10) || 0;
+      nav.style.marginTop = Math.max(0, navbarHeight - bodyPaddingTop) + 'px';
+      // The next sibling after the breadcrumb had an inline margin-top to clear
+      // the fixed navbar. Now that the breadcrumb handles that offset, remove it.
+      var nextEl = nav.nextElementSibling;
+      if (nextEl && nextEl.style.marginTop) {
+        nextEl.style.marginTop = '';
+      }
+    }
+  };
+
   const originalToggleAttr = toggler ? toggler.getAttribute('data-bs-toggle') : null;
   const originalTargetAttr = toggler ? toggler.getAttribute('data-bs-target') : null;
   const originalControlsAttr = toggler ? toggler.getAttribute('aria-controls') : null;
@@ -371,4 +470,5 @@ document.addEventListener('DOMContentLoaded', function () {
   }, true);
 
   syncDrawerMode();
+  renderVisibleBreadcrumbs();
 });

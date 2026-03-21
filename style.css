@@ -2507,6 +2507,50 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   display: none;
 }
 
+.site-breadcrumb {
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  padding: 0.55rem 0;
+}
+
+.site-breadcrumb-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+}
+
+.site-breadcrumb-item {
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-breadcrumb-item + .site-breadcrumb-item::before {
+  content: '/';
+  margin-right: 0.35rem;
+  color: #94a3b8;
+}
+
+.site-breadcrumb-item a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.site-breadcrumb-item a:hover,
+.site-breadcrumb-item a:focus {
+  text-decoration: underline;
+}
+
+.site-breadcrumb-item.active {
+  color: #0f172a;
+  font-weight: 600;
+}
+
 body.mobile-drawer-open {
   overflow: hidden;
 }
