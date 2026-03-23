@@ -23,6 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
     { name: 'All Categories', url: 'categories.html', image: 'images/tshirts.jpeg', category: 'Category', tags: 'all products browse' }
   ];
 
+  const pathPrefix = window.location.pathname.indexOf('/customizer-tool/') !== -1 ? '../' : '';
+  const resolveLocalUrl = function (url) {
+    if (!url) return url;
+    if (/^(https?:|mailto:|tel:|#|\/)/i.test(url)) return url;
+    if (url.indexOf('../') === 0 || url.indexOf('./') === 0) return url;
+    return pathPrefix + url;
+  };
+
   const navbarContainer = document.querySelector('.navbar .container');
   const collapse = navbarContainer ? navbarContainer.querySelector('.navbar-collapse') : null;
   const toggler = navbarContainer ? navbarContainer.querySelector('.navbar-toggler') : null;
@@ -266,21 +274,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!items.length) {
       const fallbackItems = productIndex.slice(0, 6);
       dropdown.innerHTML = fallbackItems.map(function (item) {
-        return '<a class="header-search-item" href="' + item.url + '">' +
-          '<img src="' + item.image + '" alt="' + item.name + '">' +
+        return '<a class="header-search-item" href="' + resolveLocalUrl(item.url) + '">' +
+          '<img src="' + resolveLocalUrl(item.image) + '" alt="' + item.name + '">' +
           '<span class="header-search-meta">' +
           '<strong>' + item.name + '</strong>' +
           '<small>' + item.category + '</small>' +
           '</span>' +
           '</a>';
-      }).join('') + '<a class="header-search-item header-search-empty" href="categories.html"><span>Browse all categories</span></a>';
+      }).join('') + '<a class="header-search-item header-search-empty" href="' + resolveLocalUrl('categories.html') + '"><span>Browse all categories</span></a>';
       dropdown.classList.add('show');
       return;
     }
 
     dropdown.innerHTML = items.map(function (item) {
-      return '<a class="header-search-item" href="' + item.url + '">' +
-        '<img src="' + item.image + '" alt="' + item.name + '">' +
+      return '<a class="header-search-item" href="' + resolveLocalUrl(item.url) + '">' +
+        '<img src="' + resolveLocalUrl(item.image) + '" alt="' + item.name + '">' +
         '<span class="header-search-meta">' +
         '<strong>' + item.name + '</strong>' +
         '<small>' + item.category + '</small>' +
@@ -373,9 +381,9 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     const results = searchItems(input.value);
     if (results.length) {
-      window.location.href = results[0].url;
+      window.location.href = resolveLocalUrl(results[0].url);
     } else {
-      window.location.href = 'categories.html';
+      window.location.href = resolveLocalUrl('categories.html');
     }
   });
 
