@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <title>Custom T-Shirts, Hoodies & Corporate Printing in Bangalore | Lobo Prints</title>
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="images/new%20fevicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="images/new%20fevicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/new%20fevicon.png">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,8 @@
   <link rel="canonical" href="https://loboprints.in/">
   <script>
     (function () {
+      var disableIndexRedirectForPreview = true;
+      if (disableIndexRedirectForPreview) return;
       var isIndexPath = /\/index\.html$/i.test(window.location.pathname);
       if (!isIndexPath) return;
       var target = window.location.origin + window.location.pathname.replace(/\/index\.html$/i, '/') + window.location.search + window.location.hash;
@@ -35,11 +38,11 @@
   <meta property="og:url" content="https://loboprints.in/">
   <meta property="og:site_name" content="Lobo Prints">
   <meta property="og:locale" content="en_IN">
-  <meta property="og:image" content="https://loboprints.in/images/favicon.png">
+  <meta property="og:image" content="https://loboprints.in/images/new%20fevicon.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Custom T-Shirts, Hoodies & Corporate Printing in Bangalore | Lobo Prints">
   <meta name="twitter:description" content="Bulk custom apparel and printing services in JP Nagar, Bangalore, Karnataka.">
-  <meta name="twitter:image" content="https://loboprints.in/images/favicon.png">
+  <meta name="twitter:image" content="https://loboprints.in/images/new%20fevicon.png">
   <meta name="google-site-verification" content="-tWyc1C92P67r1Q6jjlW19NMJddnjRm6-ZzJKrgoxJM" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -49,7 +52,6 @@
   <style>
     .homepage #billboard {
       background-color: var(--bs-light);
-      padding-top: 6.5rem !important;
     }
 
     .homepage #billboard .btn-primary,
@@ -230,6 +232,75 @@
       margin-bottom: 1.25rem;
     }
 
+    .homepage .customer-review-showcase {
+      width: 100%;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      pointer-events: none;
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      padding-top: 5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .homepage .customer-review-showcase .section-title {
+      letter-spacing: 0.08em;
+    }
+
+    .homepage .shop-category-slider-row {
+      position: relative;
+    }
+
+    .homepage .review-marquee-row {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .homepage .review-marquee-track {
+      display: flex;
+      flex-wrap: nowrap;
+      will-change: transform;
+    }
+
+    .homepage .review-marquee-track.marquee-ready {
+      animation: reviewMarqueeLeft linear infinite;
+    }
+
+    .homepage .review-marquee-speed-fast.marquee-ready {
+      animation-duration: 26s;
+    }
+
+    .homepage .review-marquee-speed-slow.marquee-ready {
+      animation-duration: 36s;
+    }
+
+    .homepage .review-marquee-set {
+      display: flex;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+      gap: 14px;
+      padding-right: 14px;
+    }
+
+    .homepage .review-marquee-set img {
+      height: 200px;
+      width: auto;
+      max-width: none;
+      display: block;
+      flex: 0 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    @keyframes reviewMarqueeLeft {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(-1 * var(--set-width))); }
+    }
+
     @media (max-width: 767.98px) {
       .homepage #billboard .banner-item .image-holder,
       .homepage #billboard .banner-item .image-holder img {
@@ -237,8 +308,13 @@
         height: 210px;
       }
 
-      .homepage .customizer-promo-content {
-        padding: 2rem 1.35rem;
+      .homepage .review-marquee-set img {
+        height: 160px;
+      }
+
+      .homepage .review-marquee-set {
+        gap: 12px;
+        padding-right: 12px;
       }
     }
   </style>
@@ -256,7 +332,7 @@
       "url": "https://loboprints.in/",
       "email": "business@loboprints.in",
       "telephone": "+91-9742998799",
-      "image": "https://loboprints.in/images/favicon.png",
+      "image": "https://loboprints.in/images/new%20fevicon.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "JP Nagar, Bangalore",
@@ -518,15 +594,101 @@
       </div>
     </div>
   </nav>
-  
 
+  <section class="customer-review-showcase" aria-label="Sold over 1,00,000 products showcase">
+    <div class="container-fluid px-0">
+      <div class="text-center mb-4 px-3">
+        <h3 class="section-title" style="letter-spacing:0.06em;">Sold over 1,00,000+ products</h3>
+      </div>
+
+      <div class="review-marquee-row">
+        <div class="review-marquee-track review-marquee-speed-fast">
+          <div class="review-marquee-set">
+            <img src="images/customer%20review%2007.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2003.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2016.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2001.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2012.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2009.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2005.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2014.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2002.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2010.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2015.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2004.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2011.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2013.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2008.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2006.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+          </div>
+          <div class="review-marquee-set" aria-hidden="true">
+            <img src="images/customer%20review%2007.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2003.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2016.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2001.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2012.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2009.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2005.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2014.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2002.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2010.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2015.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2004.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2011.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2013.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2008.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2006.png" alt="" loading="eager" decoding="async" draggable="false">
+          </div>
+        </div>
+      </div>
+
+      <div class="review-marquee-row mt-3">
+        <div class="review-marquee-track review-marquee-speed-slow">
+          <div class="review-marquee-set">
+            <img src="images/customer%20review%2022.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2028.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2019.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2025.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2031.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2017.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2024.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2020.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2029.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2023.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2027.jpg" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2030.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2018.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2021.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2026.png" alt="Customer review" loading="eager" decoding="async" draggable="false">
+          </div>
+          <div class="review-marquee-set" aria-hidden="true">
+            <img src="images/customer%20review%2022.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2028.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2019.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2025.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2031.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2017.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2024.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2020.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2029.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2023.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2027.jpg" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2030.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2018.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2021.png" alt="" loading="eager" decoding="async" draggable="false">
+            <img src="images/customer%20review%2026.png" alt="" loading="eager" decoding="async" draggable="false">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="billboard" class="bg-light py-5">
     <div class="container">
       <div class="row justify-content-center">
         <h1 class="section-title text-center mt-4" data-aos="fade-up">Shop by Category</h1>
       </div>
-      <div class="row">
+      <div class="row shop-category-slider-row">
         <div class="swiper main-swiper py-4" data-aos="fade-up" data-aos-delay="600">
           <div class="swiper-wrapper d-flex border-animation-left">
             <div class="swiper-slide">
@@ -660,7 +822,7 @@
                   <h5 class="element-title text-uppercase">
                     <a href="jackets.html" class="item-anchor">Jackets</a>
                   </h5>
-                  <p>Custom zipper jackets with and without mesh.</p>
+                  <p>Custom zipper jackets without mesh.</p>
                 </div>
               </div>
             </div>
@@ -682,10 +844,10 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-        <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+        <div id="shop-category-prev" class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
             <use xlink:href="#arrow-left"></use>
           </svg></div>
-        <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+        <div id="shop-category-next" class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
             <use xlink:href="#arrow-right"></use>
           </svg></div>
       </div>
@@ -820,11 +982,11 @@
             <div class="product-item image-zoom-effect link-effect">
               <div class="image-holder position-relative">
                 <a href="jacket1.html">
-                  <img src="images/Zipper Jacket without Mesh green 01.jpg" alt="Zipper Jacket with Mesh" class="product-image img-fluid">
+                  <img src="images/Zipper Jacket without Mesh green 01.jpg" alt="Zipper Jacket without Mesh" class="product-image img-fluid">
                 </a>
                 <div class="product-content">
                   <h5 class="text-uppercase fs-5 mt-3">
-                    <a href="jacket1.html">Zipper Jacket with Mesh</a>
+                    <a href="jacket1.html">Zipper Jacket without Mesh</a>
                   </h5>
                 </div>
               </div>
@@ -1730,74 +1892,102 @@
     (function () {
       const mainSwiperElement = document.querySelector('.main-swiper');
 
-      if (!mainSwiperElement || typeof Swiper === 'undefined') {
-        return;
-      }
+      if (mainSwiperElement && typeof Swiper !== 'undefined') {
+        if (mainSwiperElement.swiper) {
+          mainSwiperElement.swiper.destroy(true, true);
+        }
 
-      if (mainSwiperElement.swiper) {
-        mainSwiperElement.swiper.destroy(true, true);
-      }
-
-      const homepageMainSwiper = new Swiper('.main-swiper', {
-        slidesPerView: 3,
-        spaceBetween: 80,
-        speed: 5000,
-        loop: true,
-        grabCursor: true,
-        allowTouchMove: true,
-        autoplay: {
-          delay: 0,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-          reverseDirection: false
-        },
-        navigation: {
-          nextEl: '.icon-arrow-right',
-          prevEl: '.icon-arrow-left'
-        },
-        breakpoints: {
-          300: {
-            slidesPerView: 1,
-            spaceBetween: 20
+        const homepageMainSwiper = new Swiper('.main-swiper', {
+          slidesPerView: 3,
+          spaceBetween: 80,
+          speed: 5000,
+          loop: true,
+          grabCursor: true,
+          allowTouchMove: true,
+          autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+            reverseDirection: false
           },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 20
+          navigation: {
+            nextEl: '#shop-category-next',
+            prevEl: '#shop-category-prev'
           },
-          1200: {
-            slidesPerView: 3,
-            spaceBetween: 80
-          }
-        },
-        on: {
-          touchStart(swiper) {
-            if (swiper.autoplay) {
-              swiper.autoplay.stop();
+          breakpoints: {
+            300: {
+              slidesPerView: 1,
+              spaceBetween: 20
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 80
             }
           },
-          sliderFirstMove(swiper) {
-            if (swiper.autoplay) {
-              swiper.autoplay.stop();
-            }
-          },
-          touchEnd(swiper) {
-            if (swiper.autoplay) {
-              swiper.autoplay.start();
+          on: {
+            touchStart(swiper) {
+              if (swiper.autoplay) {
+                swiper.autoplay.stop();
+              }
+            },
+            sliderFirstMove(swiper) {
+              if (swiper.autoplay) {
+                swiper.autoplay.stop();
+              }
+            },
+            touchEnd(swiper) {
+              if (swiper.autoplay) {
+                swiper.autoplay.start();
+              }
             }
           }
-        }
-      });
+        });
 
-      mainSwiperElement.addEventListener('mouseenter', function () {
-        if (homepageMainSwiper.autoplay) {
-          homepageMainSwiper.autoplay.stop();
-        }
-      });
+        mainSwiperElement.addEventListener('mouseenter', function () {
+          if (homepageMainSwiper.autoplay) {
+            homepageMainSwiper.autoplay.stop();
+          }
+        });
 
-      mainSwiperElement.addEventListener('mouseleave', function () {
-        if (homepageMainSwiper.autoplay) {
-          homepageMainSwiper.autoplay.start();
-        }
+        mainSwiperElement.addEventListener('mouseleave', function () {
+          if (homepageMainSwiper.autoplay) {
+            homepageMainSwiper.autoplay.start();
+          }
+        });
+      }
+
+    })();
+
+    (function () {
+      document.querySelectorAll('.review-marquee-track').forEach(function (track) {
+        var firstSet = track.querySelector('.review-marquee-set');
+        if (!firstSet) return;
+
+        var imgs = Array.from(firstSet.querySelectorAll('img'));
+
+        var decodePromises = imgs.map(function (img) {
+          if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+          if (typeof img.decode === 'function') return img.decode().catch(function () {});
+          return new Promise(function (resolve) {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+          });
+        });
+
+        Promise.all(decodePromises).then(function () {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              var setWidth = firstSet.getBoundingClientRect().width;
+              if (!setWidth) return;
+              track.style.setProperty('--set-width', setWidth + 'px');
+              track.classList.add('marquee-ready');
+            });
+          });
+        });
       });
     })();
   </script>
@@ -1805,3 +1995,6 @@
 </body>
 
 </html>
+
+
+
