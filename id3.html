@@ -34,6 +34,47 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    .product-main-image-wrap {
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .product-main-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #f8f9fa;
+      padding: 0.5rem;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .product-main-image:hover {
+      transform: scale(1.04);
+    }
+
+    .product-thumb {
+      width: 84px;
+      height: 84px;
+      padding: 0;
+      border: 2px solid transparent;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .product-thumb.active,
+    .product-thumb:hover {
+      border-color: var(--bs-primary);
+    }
+
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,7 +115,20 @@
       <div class="row align-items-start g-5">
         <div class="col-lg-7">
           <div class="bg-white rounded-4 shadow-sm p-3 p-md-4">
-            <img src="images/card hoolder.jpeg" alt="ID Holders" class="img-fluid rounded-4 w-100">
+            <div class="product-main-image-wrap mb-3">
+              <img id="idHolderMainImage" src="images/card hoolder.jpeg" alt="ID Holders" class="img-fluid product-main-image">
+            </div>
+            <div id="idHolderThumbnailRow" class="d-flex flex-wrap gap-3">
+              <button type="button" class="product-thumb active" data-image="images/card hoolder.jpeg" data-alt="ID Holders view 1" aria-label="ID Holders view 1">
+                <img src="images/card hoolder.jpeg" alt="ID Holders view 1">
+              </button>
+              <button type="button" class="product-thumb" data-image="images/id holder 02.jpeg" data-alt="ID Holders view 2" aria-label="ID Holders view 2">
+                <img src="images/id holder 02.jpeg" alt="ID Holders view 2">
+              </button>
+              <button type="button" class="product-thumb" data-image="images/id holder 03.jpeg" data-alt="ID Holders view 3" aria-label="ID Holders view 3">
+                <img src="images/id holder 03.jpeg" alt="ID Holders view 3">
+              </button>
+            </div>
           </div>
         </div>
         <div class="col-lg-5">
@@ -150,6 +204,20 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function initializeIdHolderGallery() {
+      const mainImage = document.getElementById('idHolderMainImage');
+      const thumbs = document.querySelectorAll('#idHolderThumbnailRow .product-thumb');
+      thumbs.forEach((thumb) => {
+        thumb.addEventListener('click', () => {
+          mainImage.src = thumb.dataset.image;
+          mainImage.alt = thumb.dataset.alt;
+          thumbs.forEach((node) => node.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+      });
+    }());
+  </script>
   <script src="card-clickable.js"></script>
   <script src="header-search.js"></script>
 </body>

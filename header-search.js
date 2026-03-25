@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
     { name: 'Badges', url: 'badges.html', image: 'images/badges.jpeg', category: 'Category', tags: 'badges pins' },
     { name: 'Jerseys', url: 'jerseys.html', image: 'images/tshirts.jpeg', category: 'Category', tags: 'sports jersey sublimation' },
     { name: 'Jackets', url: 'jackets.html', image: 'images/Hoodies.jpeg', category: 'Category', tags: 'jacket zipper' },
+      { name: 'Zipper Jacket with Mesh', url: 'jacket2.html', image: 'images/zipper jacket with mesh orange 01.jpg', category: 'Jackets', tags: 'zipper jacket mesh orange black sky blue' },
+      { name: 'Caps', url: 'caps.html', image: 'images/Caps.jpeg', category: 'Category', tags: 'caps baseball dad mesh trucker' },
+      { name: 'Baseball Cap', url: 'cap1.html', image: 'images/baseball cap.jpg', category: 'Caps', tags: 'baseball cap adjustable' },
+      { name: 'Dad Cap', url: 'cap2.html', image: 'images/dad cap.jpg', category: 'Caps', tags: 'dad cap unstructured' },
+      { name: 'Mesh Cap', url: 'cap3.html', image: 'images/mesh cap.jpg', category: 'Caps', tags: 'mesh cap breathable' },
+      { name: 'Trucker Cap', url: 'cap4.html', image: 'images/Trucker cap.jpg', category: 'Caps', tags: 'trucker cap snapback foam' },
     { name: 'ID Cards', url: 'ids.html', image: 'images/idcards.jpeg', category: 'Category', tags: 'id lanyards holders' },
     { name: 'Mugs', url: 'mugs.html', image: 'images/product-item-9.jpg', category: 'Category', tags: 'mug print gift' },
     { name: 'All Categories', url: 'categories.html', image: 'images/tshirts.jpeg', category: 'Category', tags: 'all products browse' }
@@ -102,8 +108,22 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!isLast && entryUrl) {
         const link = document.createElement('a');
         try {
-          const resolved = new URL(entryUrl, window.location.origin);
-          link.href = resolved.pathname + resolved.search + resolved.hash;
+          // Strip site domain to get the relative path (e.g. 'categories.html')
+          var siteBase = 'https://loboprints.in/';
+          var relPath = entryUrl;
+          if (entryUrl.indexOf(siteBase) === 0) {
+            relPath = entryUrl.substring(siteBase.length);
+          }
+          if (!relPath) relPath = 'index.html';
+          // Detect subdirectory depth from the navbar brand link
+          var brandEl = document.querySelector('.navbar-brand');
+          var prefix = '';
+          if (brandEl) {
+            var brandHref = brandEl.getAttribute('href') || '';
+            var ups = (brandHref.match(/\.\.\//g) || []).length;
+            for (var i = 0; i < ups; i++) prefix += '../';
+          }
+          link.href = prefix + relPath;
         } catch (e) {
           link.href = entryUrl;
         }

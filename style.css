@@ -2411,6 +2411,61 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Logo Marquee Section */
+.logo-bar {
+  overflow: hidden;
+  background: #fff;
+}
+
+.logo-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: client-logos-ltr 45s linear infinite;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  width: 110px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.logo-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@keyframes client-logos-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .logo-track {
+    animation-duration: 34s;
+  }
+
+  .logo-item {
+    width: 82px;
+    height: 44px;
+    padding: 0 10px;
+  }
+}
+
 .header-search-input:focus {
   border-color: #93c5fd;
   box-shadow: 0 0.55rem 1.15rem rgba(59, 130, 246, 0.2);

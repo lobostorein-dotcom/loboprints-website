@@ -1,7 +1,7 @@
 (function () {
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
-  const MODEL_BG_SRC = 'assets/mockups/model-bg.svg';
+  // Background SVG removed — real product PNGs are used instead
   const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFAOyYxTchKlBAMBMuiZuB4nWOECaCGyx62C5OSocjJWG7BvCc26EVs-uDaREA5V04/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
   const QUOTE_SECURITY = {
@@ -33,6 +33,16 @@
     jersey: {
       front: 'assets/mockups/jersey front base.png',
       back: 'assets/mockups/jersey back base.png'
+    },
+    sweatshirt: {
+      front: 'assets/mockups/sweatshirt front base.png',
+      back: 'assets/mockups/sweatshirt back base.png'
+    },
+    mug: {
+      front: 'assets/mockups/white mug base .png'
+    },
+    badge: {
+      front: 'assets/mockups/white badge base .png'
     }
   };
 
@@ -41,7 +51,10 @@
     polo: { name: 'Polo T-Shirt' },
     oversized: { name: 'Oversized T-Shirt' },
     hoodie: { name: 'Hoodie' },
-    jersey: { name: 'Sports Jersey' }
+    jersey: { name: 'Sports Jersey' },
+    sweatshirt: { name: 'Sweatshirt' },
+    mug: { name: 'Mug', frontOnly: true },
+    badge: { name: 'Badge', frontOnly: true }
   };
 
   const SHIRT_COLORS = [
@@ -77,7 +90,6 @@
 
   const productTitle = document.getElementById('productTitle');
   const shirtBaseLayer = document.getElementById('shirtBaseLayer');
-  const shirtOverlayLayer = document.getElementById('shirtOverlayLayer');
   const activeSideIndicator = document.getElementById('activeSideIndicator');
   const colorSelect = document.getElementById('colorSelect');
   const customColorName = document.getElementById('customColorName');
@@ -204,7 +216,6 @@
   };
 
   const imageCache = new Map();
-  let modelBgImage = null;
   let previewTimer = null;
   let isPrintAreaEditMode = false;
 
@@ -340,13 +351,7 @@
   }
 
   function ensureStaticPreviewLayersLoaded() {
-    if (modelBgImage) {
-      return Promise.resolve();
-    }
-
-    return loadImage(MODEL_BG_SRC).then(function (image) {
-      modelBgImage = image;
-    });
+    return Promise.resolve();
   }
 
   function getBaseMarkup(kind, side, color) {
@@ -373,10 +378,21 @@
       jersey: {
         front: '<path d="M190 306l66-74c18-18 42-28 68-28h52c26 0 50 10 68 28l66 74v286H190V306z" fill="' + fill + '" stroke="' + stroke + '" stroke-width="4"/><circle cx="350" cy="232" r="34" fill="none" stroke="' + stroke + '" stroke-width="10"/><path d="M250 300h200" stroke="' + stroke + '" stroke-width="8" opacity="0.65"/>',
         back: '<path d="M190 306l66-74c18-18 42-28 68-28h52c26 0 50 10 68 28l66 74v286H190V306z" fill="' + fill + '" stroke="' + stroke + '" stroke-width="4"/><path d="M308 218c14 12 70 12 84 0" fill="none" stroke="' + stroke + '" stroke-width="8" stroke-linecap="round"/><path d="M250 300h200" stroke="' + stroke + '" stroke-width="8" opacity="0.65"/>'
+      },
+      sweatshirt: {
+        front: '<path d="M188 318l70-90c18-20 44-32 72-32h40c28 0 54 12 72 32l70 90v288H188V318z" fill="' + fill + '" stroke="' + stroke + '" stroke-width="4"/>',
+        back: '<path d="M188 318l70-90c18-20 44-32 72-32h40c28 0 54 12 72 32l70 90v288H188V318z" fill="' + fill + '" stroke="' + stroke + '" stroke-width="4"/>'
+      },
+      mug: {
+        front: '<rect x="200" y="200" width="300" height="360" rx="20" fill="' + fill + '" stroke="' + stroke + '" stroke-width="4"/><rect x="500" y="280" width="60" height="120" rx="20" fill="none" stroke="' + stroke + '" stroke-width="4"/>'
+      },
+      badge: {
+        front: '<circle cx="350" cy="380" r="180" fill="' + fill + '" stroke="' + stroke + '" stroke-width="4"/>'
       }
     };
 
-    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 760">' + templates[kind][side] + '</svg>';
+    var content = (templates[kind] && templates[kind][side]) || '';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 760">' + content + '</svg>';
   }
 
   function getOverlayMarkup(kind, side) {
@@ -401,10 +417,21 @@
       jersey: {
         front: '<path d="M190 306l66-74c18-18 42-28 68-28h52c26 0 50 10 68 28l66 74v286H190V306z" fill="url(#shade)" opacity="0.3"/><path d="M220 336c52 22 208 22 260 0" stroke="#0f172a" stroke-opacity="0.16" stroke-width="6" fill="none"/>',
         back: '<path d="M190 306l66-74c18-18 42-28 68-28h52c26 0 50 10 68 28l66 74v286H190V306z" fill="url(#shade)" opacity="0.27"/><path d="M220 350c52 18 208 18 260 0" stroke="#0f172a" stroke-opacity="0.13" stroke-width="6" fill="none"/>'
+      },
+      sweatshirt: {
+        front: '<path d="M188 318l70-90c18-20 44-32 72-32h40c28 0 54 12 72 32l70 90v288H188V318z" fill="url(#shade)" opacity="0.3"/>',
+        back: '<path d="M188 318l70-90c18-20 44-32 72-32h40c28 0 54 12 72 32l70 90v288H188V318z" fill="url(#shade)" opacity="0.26"/>'
+      },
+      mug: {
+        front: ''
+      },
+      badge: {
+        front: ''
       }
     };
 
-    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 760">' + radial + overlays[kind][side] + '</svg>';
+    var content = (overlays[kind] && overlays[kind][side]) || '';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 760">' + radial + content + '</svg>';
   }
 
   function getBaseSource(kind, side, color) {
@@ -724,22 +751,23 @@
 
   function updateLayerSources() {
     const color = state.activeColor;
+    const sides = product.frontOnly ? ['front'] : ['front', 'back'];
 
-    return Promise.all(['front', 'back'].map(function (side) {
+    return Promise.all(sides.map(function (side) {
       return getBaseSource(productKey, side, color).then(function (baseSource) {
         state.sources[side].base = baseSource;
-        state.sources[side].overlay = svgDataUri(getOverlayMarkup(productKey, side));
+        state.sources[side].overlay = null;
       });
     })).then(function () {
-      return Promise.all([
-        loadImage(state.sources.front.base),
-        loadImage(state.sources.front.overlay),
-        loadImage(state.sources.back.base),
-        loadImage(state.sources.back.overlay)
-      ]);
+      var imagesToLoad = [
+        loadImage(state.sources.front.base)
+      ];
+      if (!product.frontOnly) {
+        imagesToLoad.push(loadImage(state.sources.back.base));
+      }
+      return Promise.all(imagesToLoad);
     }).then(function () {
       shirtBaseLayer.src = state.sources[state.activeSide].base;
-      shirtOverlayLayer.src = state.sources[state.activeSide].overlay;
     });
   }
 
@@ -753,7 +781,6 @@
 
     setSideButtonState();
     shirtBaseLayer.src = state.sources[side].base;
-    shirtOverlayLayer.src = state.sources[side].overlay;
     syncPrintAreaGuide(side);
     if (printAreaGuides[side]) {
       canvases[side].bringToFront(printAreaGuides[side]);
@@ -1118,9 +1145,7 @@
       }
 
       return Promise.all([
-        Promise.resolve(modelBgImage),
         loadImage(state.sources[side].base),
-        loadImage(state.sources[side].overlay),
         loadImage(designLayerData)
       ]);
     }).then(function (images) {
@@ -1399,6 +1424,19 @@
   }
 
   productTitle.textContent = 'Customize ' + product.name;
+
+  if (product.frontOnly) {
+    var sideSwitch = document.querySelector('.side-switch');
+    if (sideSwitch) sideSwitch.style.display = 'none';
+    var chooseSideLabel = sideSwitch && sideSwitch.previousElementSibling;
+    if (chooseSideLabel && chooseSideLabel.classList.contains('control-label')) chooseSideLabel.style.display = 'none';
+    var sideGroup = sideSwitch && sideSwitch.closest('.tool-group');
+    if (sideGroup) sideGroup.style.display = 'none';
+    if (backPlacementPreview) {
+      var backCard = backPlacementPreview.closest('.placement-card');
+      if (backCard) backCard.style.display = 'none';
+    }
+  }
   populateColorOptions();
   applySelectedColor(state.activeColor.value, 'preset');
   if (customColorValue) {

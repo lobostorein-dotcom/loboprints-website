@@ -46,8 +46,20 @@ body {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+}
+
+@media (max-width: 991px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .product-card {
@@ -68,7 +80,9 @@ body {
   display: block;
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
+  padding: 10px;
   background: #f8fafc;
 }
 
@@ -80,16 +94,16 @@ body {
 }
 
 .card-content h2 {
-  font-size: 1rem;
+  font-size: 0.88rem;
   margin: 0;
 }
 
 .btn {
   border: 0;
-  border-radius: 10px;
-  font-size: 0.92rem;
+  border-radius: 8px;
+  font-size: 0.78rem;
   font-weight: 600;
-  padding: 0.56rem 0.82rem;
+  padding: 0.38rem 0.62rem;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -155,17 +169,17 @@ body {
 }
 
 .toolbar-top h1 {
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   margin: 0;
-  min-width: 165px;
-  flex: 1 1 220px;
+  min-width: 150px;
+  flex: 1 1 200px;
 }
 
 .toolbar-note {
   margin: 0;
   flex: 1 1 100%;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.76rem;
 }
 
 .side-switch {
@@ -185,8 +199,9 @@ body {
   background: transparent;
   color: var(--muted);
   flex: 1 1 0;
-  border-radius: 8px;
-  padding: 0.42rem 0.78rem;
+  border-radius: 6px;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
@@ -199,7 +214,7 @@ body {
 }
 
 .control-label {
-  font-size: 0.76rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -208,20 +223,22 @@ body {
 
 .control-select,
 #textColor {
-  height: 38px;
+  height: 32px;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.78rem;
   background: #fff;
 }
 
 .control-input {
-  height: 38px;
+  height: 32px;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.78rem;
   background: #fff;
-  font: inherit;
+  font-family: inherit;
 }
 
 .customizer-layout {
@@ -236,34 +253,34 @@ body {
 .toolbar-left {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.5rem;
   align-items: stretch;
-  padding: 0.8rem;
+  padding: 0.6rem;
   height: fit-content;
 }
 
 .tools-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.88rem;
 }
 
 .tools-subtitle {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   color: var(--muted);
 }
 
 .tool-group {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 0.6rem;
+  gap: 0.3rem;
+  padding: 0.45rem;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 8px;
   background: linear-gradient(180deg, #ffffff, #f9fbff);
 }
 
@@ -297,16 +314,16 @@ body {
 .tools-hint {
   margin: 0;
   color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.4;
+  font-size: 0.7rem;
+  line-height: 1.35;
 }
 
 .icon-btn {
   border: 1px solid #c9d6ee;
-  border-radius: 12px;
+  border-radius: 10px;
   width: 100%;
-  min-width: 44px;
-  height: 44px;
+  min-width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,15 +368,15 @@ body {
 
 .active-side-indicator {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 12px;
+  right: 12px;
   z-index: 5;
-  padding: 0.45rem 0.8rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid #d7e1f2;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
@@ -415,9 +432,9 @@ body {
 
 .workspace-meta p,
 .workspace-note-p {
-  margin: 0.8rem 0 0;
+  margin: 0.5rem 0 0;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.76rem;
 }
 
 /* Mobile-only toggle button — hidden on desktop */
@@ -533,9 +550,9 @@ body {
 }
 
 .placement-card__header {
-  padding: 0.55rem 0.7rem;
+  padding: 0.35rem 0.55rem;
   border-bottom: 1px solid #e2e8f0;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   color: #334155;
@@ -550,12 +567,13 @@ body {
 }
 
 .quote-panel h2 {
-  margin: 0.7rem 0 0;
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
 }
 
 .quote-panel p {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.78rem;
 }
 
 .design-preview {
@@ -568,7 +586,7 @@ body {
 .preview-generate-btn {
   display: block;
   margin: 0.15rem auto 0;
-  min-width: 220px;
+  min-width: 180px;
 }
 
 .quote-form {
@@ -581,9 +599,10 @@ body {
 .quote-form input,
 .quote-form textarea {
   border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  padding: 0.62rem 0.7rem;
-  font: inherit;
+  border-radius: 8px;
+  padding: 0.42rem 0.6rem;
+  font-size: 0.78rem;
+  font-family: inherit;
 }
 
 .quote-form textarea {
@@ -593,7 +612,7 @@ body {
 
 .form-status {
   min-height: 1.2em;
-  font-size: 0.86rem;
+  font-size: 0.76rem;
   color: #334155;
 }
 
