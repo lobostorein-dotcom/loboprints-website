@@ -38,6 +38,10 @@
       front: 'assets/mockups/sweatshirt front base.png',
       back: 'assets/mockups/sweatshirt back base.png'
     },
+    jacket: {
+      front: 'assets/mockups/jacket front base.png',
+      back: 'assets/mockups/jacket back base.png'
+    },
     mug: {
       front: 'assets/mockups/white mug base .png'
     },
@@ -53,6 +57,7 @@
     hoodie: { name: 'Hoodie' },
     jersey: { name: 'Sports Jersey' },
     sweatshirt: { name: 'Sweatshirt' },
+    jacket: { name: 'Jacket' },
     mug: { name: 'Mug', frontOnly: true },
     badge: { name: 'Badge', frontOnly: true }
   };

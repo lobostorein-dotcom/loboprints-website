@@ -689,7 +689,7 @@ document.addEventListener('DOMContentLoaded', function () {
     lastFocused = trigger || document.activeElement;
     clearStatus();
     form.reset();
-    productInput.value = inferProductName(trigger);
+    productInput.value = '';
     overlay.classList.add('is-open');
     modal.classList.add('is-open');
     document.body.classList.add('upload-quote-open');

@@ -1169,44 +1169,229 @@
   <section class="testimonials py-5 bg-light">
     <div class="section-header text-center mt-5">
       <h3 class="section-title">WE LOVE GOOD COMPLIMENT</h3>
-    </div>
-    <div class="swiper testimonial-swiper overflow-hidden my-5">
-      <div class="swiper-wrapper d-flex">
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>More than expected crazy soft, flexible and best fitted white simple denim shirt.</p>
-              <div class="review-title text-uppercase">casual way</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>Best fitted white denim shirt more than expected crazy soft, flexible</p>
-              <div class="review-title text-uppercase">uptop</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>Best fitted white denim shirt more white denim than expected flexible crazy soft.</p>
-              <div class="review-title text-uppercase">Denim craze</div>
-            </blockquote>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="testimonial-item text-center">
-            <blockquote>
-              <p>Best fitted white denim shirt more than expected crazy soft, flexible</p>
-              <div class="review-title text-uppercase">uptop</div>
-            </blockquote>
-          </div>
-        </div>
+
+    <h2 class="premium-review-heading">Loved by Teams, Trusted by Leaders</h2>
+    <div class="premium-review-subheading">Rated 5⭐ by our happy customers</div>
+    <div class="premium-reviews-slider-outer">
+      <div class="premium-reviews-slider" id="premiumReviewsSlider">
+        <!-- Review cards will be injected by JS -->
       </div>
     </div>
   </section>
+
+  <style>
+    .premium-review-heading {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+      color: #23272f;
+    }
+    .premium-review-subheading {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #bfa14a;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+    }
+    .premium-reviews-slider-outer {
+      width: 100%;
+      position: relative;
+      margin: 0 auto 2.5rem auto;
+      padding: 0 0.5rem;
+      overflow: hidden;
+    }
+    .premium-reviews-slider {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0 0 2vw 0;
+      transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+      will-change: transform;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow: hidden;
+    }
+    .premium-reviews-slider::-webkit-scrollbar {
+      display: none;
+    }
+    .premium-review-card {
+      min-width: 320px;
+      max-width: 340px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.10), 0 1.5px 6px 0 rgba(191, 161, 74, 0.08);
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .premium-review-card:hover {
+      box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.16), 0 2.5px 10px 0 rgba(191, 161, 74, 0.13);
+    }
+    .premium-review-stars {
+      color: #FFD700;
+      font-size: 1.25rem;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.1em;
+    }
+    .premium-review-text {
+      font-size: 1.08rem;
+      color: #23272f;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+      min-height: 60px;
+    }
+    .premium-reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-top: auto;
+    }
+    .premium-review-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #bfa14a 0%, #fffbe6 100%);
+      color: #23272f;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px 0 rgba(191, 161, 74, 0.10);
+      border: 2px solid #fffbe6;
+    }
+    .premium-reviewer-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #bfa14a;
+      letter-spacing: 0.01em;
+    }
+    @media (max-width: 600px) {
+      .premium-reviews-slider-outer {
+        padding: 0 0.5rem;
+      }
+      .premium-reviews-slider {
+        gap: 1rem;
+        padding: 0 0 2vw 0;
+      }
+      .premium-review-card {
+        min-width: 85vw;
+        max-width: 90vw;
+        padding: 1.3rem 0.7rem 1.1rem 0.7rem;
+      }
+      .premium-review-heading {
+        font-size: 1.3rem;
+      }
+      .premium-review-subheading {
+        font-size: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    // Review data
+    const premiumReviews = [
+      { name: "kashi", text: "Amazing jersey quality and super fast delivery. Highly recommended!" },
+      { name: "Kiran Shetty", text: "Our entire team loved the design and fit. Will definitely order again." },
+      { name: "Akash Verma", text: "Very professional service and great attention to detail." },
+      { name: "Sandeep Kumar", text: "Top-notch print quality. The colors and finish are perfect!" },
+      { name: "Aditya Rao", text: "Smooth ordering process and excellent customer support." },
+      { name: "Manoj", text: "Got exactly what we wanted. Delivery was quicker than expected." },
+      { name: "Vikram", text: "Best place for custom jerseys. Quality is unmatched." },
+      { name: "Rahul Das", text: "Loved the fabric and print. Very comfortable and premium feel." },
+      { name: "Nikhil", text: "Communication was clear and the final product exceeded expectations." },
+      { name: "praveen kumar", text: "Great experience overall. Will recommend to all my friends." }
+    ];
+
+    // Helper: get initials from name
+    function getInitials(name) {
+      return name.split(' ').map(w => w[0].toUpperCase()).join('').slice(0, 2);
+    }
+
+    // Render reviews
+    function renderPremiumReviews() {
+      const slider = document.getElementById('premiumReviewsSlider');
+      slider.innerHTML = '';
+      premiumReviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'premium-review-card';
+        card.innerHTML = `
+          <div class="premium-review-stars">${'★'.repeat(5)}</div>
+          <div class="premium-review-text">${r.text}</div>
+          <div class="premium-reviewer">
+            <div class="premium-review-avatar">${getInitials(r.name)}</div>
+            <div class="premium-reviewer-name">${r.name}</div>
+          </div>
+        `;
+        slider.appendChild(card);
+      });
+    }
+    renderPremiumReviews();
+
+    // Infinite auto-loop slider logic
+    const slider = document.getElementById('premiumReviewsSlider');
+    let loopOffset = 0;
+    let cardWidth = 0;
+    function getCardWidth() {
+      const card = slider.querySelector('.premium-review-card');
+      if (!card) return 320;
+      const style = window.getComputedStyle(card);
+      return card.offsetWidth + parseFloat(style.marginRight || 0) + parseFloat(style.marginLeft || 0);
+    }
+    function cloneCardsForLoop() {
+      // Remove any previous clones
+      Array.from(slider.querySelectorAll('.premium-review-card.clone')).forEach(e => e.remove());
+      // Clone enough cards to fill the visible area
+      const visibleCards = Math.ceil(slider.parentElement.offsetWidth / getCardWidth());
+      for (let i = 0; i < visibleCards; i++) {
+        const orig = slider.children[i];
+        if (orig) {
+          const clone = orig.cloneNode(true);
+          clone.classList.add('clone');
+          slider.appendChild(clone);
+        }
+      }
+    }
+    function startLoop() {
+      cardWidth = getCardWidth();
+      cloneCardsForLoop();
+      let totalCards = premiumReviews.length;
+      let visibleCards = Math.ceil(slider.parentElement.offsetWidth / cardWidth);
+      let totalWidth = cardWidth * totalCards;
+      let resetAt = totalWidth;
+      function animate() {
+        loopOffset += 0.7;
+        if (loopOffset >= resetAt) {
+          // Instantly reset transform to 0 for seamless loop
+          slider.style.transition = 'none';
+          slider.style.transform = `translateX(0px)`;
+          loopOffset = 0;
+          // Force reflow to apply the transition removal
+          void slider.offsetWidth;
+          slider.style.transition = 'transform 0.5s cubic-bezier(.4,0,.2,1)';
+        } else {
+          slider.style.transform = `translateX(-${loopOffset}px)`;
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+    window.addEventListener('resize', () => {
+      cardWidth = getCardWidth();
+      cloneCardsForLoop();
+    });
+    setTimeout(() => {
+      cardWidth = getCardWidth();
+      cloneCardsForLoop();
+      startLoop();
+    }, 200);
+  </script>
 
   <section class="logo-bar py-4 my-4">
     <div class="container-fluid px-0">
