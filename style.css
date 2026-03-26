@@ -2430,12 +2430,12 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
 
 .logo-item {
   flex-shrink: 0;
-  width: 110px;
-  height: 58px;
+  width: 122px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
+  padding: 0 16px;
 }
 
 .logo-image {
@@ -2460,10 +2460,23 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   }
 
   .logo-item {
-    width: 82px;
-    height: 44px;
-    padding: 0 10px;
+    width: 90px;
+    height: 48px;
+    padding: 0 11px;
   }
+}
+
+.homepage .customizer-promo-card,
+.homepage #new-arrival,
+.homepage #hoodie-collection,
+.homepage #best-sellers,
+.homepage .testimonials,
+.homepage .logo-bar,
+.homepage .newsletter,
+.homepage .instagram,
+.homepage footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .header-search-input:focus {
