@@ -752,16 +752,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     link.dataset.createDesignBound = '1';
     var actionWrap = link.parentElement;
-    if (!actionWrap || !actionWrap.querySelector('[data-open-upload-form="true"]')) {
+    if (!actionWrap) {
       return;
     }
+    // Find if there is an upload button in the same container
+    var hasUpload = !!actionWrap.querySelector('[data-open-upload-form="true"]') ||
+      (actionWrap.parentElement && actionWrap.parentElement.querySelector('[data-open-upload-form="true"]'));
+    // Only add note if not already present
     if (actionWrap.nextElementSibling && actionWrap.nextElementSibling.classList.contains('upload-flow-note')) {
       return;
     }
-    var note = document.createElement('div');
-    note.className = 'upload-flow-note';
-    note.innerHTML = '<strong>How to use:</strong> Use <strong>Upload Your Files</strong> when you already have artwork. Use <strong>Create Your Design</strong> to design first, then share that final output for quote and production.';
-    actionWrap.insertAdjacentElement('afterend', note);
+    if (hasUpload || link.classList.contains('btn-outline-dark')) {
+      var note = document.createElement('div');
+      note.className = 'upload-flow-note';
+      note.innerHTML = '<strong>How to use:</strong> Use <strong>Upload Your Files</strong> when you already have artwork. Use <strong>Create Your Design</strong> to design first, then share that final output for quote and production.';
+      actionWrap.insertAdjacentElement('afterend', note);
+    }
   });
 
   fileInput.addEventListener('change', function () {
