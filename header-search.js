@@ -1,13 +1,60 @@
 document.addEventListener('DOMContentLoaded', function () {
   if (document.querySelector('.header-search-wrapper')) return;
 
+  if (!document.getElementById('mobileUniformGridStyles')) {
+    const gridStyle = document.createElement('style');
+    gridStyle.id = 'mobileUniformGridStyles';
+    gridStyle.textContent = `
+      @media (max-width: 767.98px) {
+        .uniform-card-grid {
+          --bs-gutter-x: 0.75rem;
+          --bs-gutter-y: 0.75rem;
+        }
+
+        .uniform-card-grid.row > * {
+          width: 50%;
+          max-width: 50%;
+          flex: 0 0 50%;
+        }
+
+        .uniform-card-grid .card {
+          border-radius: 0.85rem;
+        }
+
+        .uniform-card-grid .card-img-top {
+          aspect-ratio: 1 / 1;
+        }
+
+        .uniform-card-grid .card-body {
+          padding: 0.65rem 0.55rem 0.75rem;
+        }
+
+        .uniform-card-grid .card-title,
+        .uniform-card-grid .card-title-button {
+          font-size: 0.8rem;
+          line-height: 1.25;
+          min-height: calc(1.25em * 2);
+        }
+
+        .uniform-card-grid .btn,
+        .uniform-card-grid .btn-outline-primary,
+        .uniform-card-grid .card-title-button {
+          font-size: 0.72rem;
+          padding: 0.3rem 0.55rem;
+          min-height: 30px;
+        }
+      }
+    `;
+    document.head.appendChild(gridStyle);
+  }
+
   const productIndex = [
     { name: 'Cotton Basic Round Neck T-Shirt', url: 'tshirt1.html', image: 'images/basic plain white 05.jpg.jpeg', category: 'T-Shirts', tags: 'cotton basic round neck' },
     { name: 'Cotton Premium Round Neck T-Shirt (200 GSM)', url: 'tshirt2.html', image: 'images/primeum tshirt black colours 01.jpeg', category: 'T-Shirts', tags: 'cotton premium 200 gsm' },
     { name: 'Cotton Affordable Oversized T-Shirt (200 GSM)', url: 'tshirt3.html', image: 'images/oversized 200gsm tshirt ivory  images colours-01.jpeg', category: 'T-Shirts', tags: 'oversized cotton affordable' },
     { name: 'Cotton Premium Oversized T-Shirt (240 GSM)', url: 'tshirt4.html', image: 'images/240gsm oversize tshirt aqua blue  colours-01.jpeg', category: 'T-Shirts', tags: 'oversized premium 240 gsm' },
-    { name: 'Cotton Affordable Polo T-Shirt', url: 'tshirt5.html', image: 'images/Affordable Blue polo tshirts colours-01.jpeg', category: 'T-Shirts', tags: 'polo affordable' },
-    { name: 'Cotton Premium Polo T-Shirt', url: 'tshirt6.html', image: 'images/Premium polo tshirts  pink colours-01.jpeg', category: 'T-Shirts', tags: 'polo premium' },
+    { name: 'Cotton Affordable Polo T-Shirt', url: 'tshirt5.html', image: 'images/product-item-9.jpg', category: 'T-Shirts', tags: 'polo affordable' },
+    { name: 'Cotton Premium Polo T-Shirt', url: 'tshirt6.html', image: 'images/product-item-10.jpg', category: 'T-Shirts', tags: 'polo premium' },
     { name: 'Polyester Basic Round Neck T-Shirt', url: 'tshirt7.html', image: 'images/product-item-7.jpg', category: 'T-Shirts', tags: 'polyester basic round neck' },
     { name: 'Polyester Premium Round Neck T-Shirt', url: 'tshirt8.html', image: 'images/product-item-8.jpg', category: 'T-Shirts', tags: 'polyester premium round neck' },
     { name: 'Polyester Basic Polo T-Shirt', url: 'tshirt9.html', image: 'images/product-item-9.jpg', category: 'T-Shirts', tags: 'polyester basic polo' },
@@ -499,4 +546,319 @@ document.addEventListener('DOMContentLoaded', function () {
 
   syncDrawerMode();
   renderVisibleBreadcrumbs();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  var WEBAPP_URL = 'https://script.google.com/macros/s/REMOVED_KEY_UPLOAD/exec';
+  var MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+  if (document.querySelector('.upload-quote-modal')) {
+    return;
+  }
+
+  var style = document.createElement('style');
+  style.textContent = `
+.upload-quote-overlay{position:fixed;inset:0;background:rgba(2,6,23,.62);backdrop-filter:blur(7px);z-index:12000;display:none;opacity:0;transition:opacity .25s ease}
+.upload-quote-overlay.is-open{display:block;opacity:1}
+.upload-quote-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-48%);width:min(820px,calc(100vw - 28px));max-height:calc(100vh - 28px);overflow:auto;background:linear-gradient(165deg,#ffffff 0%,#f8fbff 60%,#eef6ff 100%);border:1px solid rgba(148,163,184,.28);border-radius:22px;box-shadow:0 28px 72px rgba(2,6,23,.36);z-index:12001;display:none;opacity:0;transition:transform .24s ease,opacity .24s ease}
+.upload-quote-modal.is-open{display:block;opacity:1;transform:translate(-50%,-50%)}
+.upload-quote-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 24px 10px}
+.upload-quote-title-wrap h3{margin:0;font-size:1.56rem;letter-spacing:.01em;color:#0f172a}
+.upload-quote-title-wrap p{margin:6px 0 0;color:#475569;font-size:.95rem}
+.upload-quote-close{border:1px solid rgba(148,163,184,.45);background:#fff;color:#0f172a;border-radius:12px;padding:8px 12px;line-height:1;cursor:pointer}
+.upload-quote-body{padding:0 24px 22px}
+.upload-quote-guide{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 14px}
+.upload-quote-guide-card{border:1px solid rgba(148,163,184,.35);border-radius:14px;padding:11px 12px;background:rgba(255,255,255,.92)}
+.upload-quote-guide-card strong{display:block;color:#0f172a;font-size:.9rem;margin-bottom:3px}
+.upload-quote-guide-card span{font-size:.82rem;color:#475569;line-height:1.35}
+.upload-quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.upload-quote-field{display:flex;flex-direction:column;gap:6px}
+.upload-quote-field.full{grid-column:1 / -1}
+.upload-quote-label{font-size:.86rem;font-weight:700;color:#334155}
+.upload-quote-input,.upload-quote-textarea{border:1px solid rgba(148,163,184,.45);background:#fff;border-radius:12px;padding:11px 12px;color:#0f172a;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.upload-quote-input:focus,.upload-quote-textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 4px rgba(59,130,246,.14)}
+.upload-quote-textarea{min-height:112px;resize:vertical}
+.upload-quote-help{font-size:.78rem;color:#64748b}
+.upload-quote-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:16px}
+.upload-quote-submit{border:1px solid #1e3a8a;background:linear-gradient(135deg,#0f172a 0%,#1d4ed8 52%,#2563eb 100%);color:#fff;padding:11px 18px;border-radius:12px;font-weight:700;letter-spacing:.01em;cursor:pointer}
+.upload-quote-submit[disabled]{opacity:.65;cursor:not-allowed}
+.upload-quote-status{margin-top:12px;font-size:.9rem;font-weight:600;display:none}
+.upload-quote-status.is-visible{display:block}
+.upload-quote-status.is-error{color:#b91c1c}
+.upload-quote-status.is-success{color:#166534}
+.upload-flow-note{margin-top:8px;font-size:.83rem;line-height:1.5;color:#475569;background:#f8fafc;border:1px solid rgba(148,163,184,.35);border-radius:10px;padding:10px 12px}
+.upload-flow-note strong{color:#0f172a}
+@media (max-width:768px){.upload-quote-grid,.upload-quote-guide{grid-template-columns:1fr}.upload-quote-modal{width:calc(100vw - 14px);max-height:calc(100vh - 14px)}.upload-quote-header,.upload-quote-body{padding-left:14px;padding-right:14px}}
+`;
+  document.head.appendChild(style);
+
+  var overlay = document.createElement('div');
+  overlay.className = 'upload-quote-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+
+  var modal = document.createElement('div');
+  modal.className = 'upload-quote-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'uploadQuoteTitle');
+  modal.innerHTML = `
+    <div class="upload-quote-header">
+      <div class="upload-quote-title-wrap">
+        <h3 id="uploadQuoteTitle">Upload Design and Request Quote</h3>
+        <p>Fast quote flow for teams and bulk orders.</p>
+      </div>
+      <button type="button" class="upload-quote-close" aria-label="Close">Close</button>
+    </div>
+    <div class="upload-quote-body">
+      <div class="upload-quote-guide">
+        <div class="upload-quote-guide-card">
+          <strong>Use Upload Files when you already have artwork</strong>
+          <span>Submit logo, print-ready design, or reference files. We quote from your uploaded files.</span>
+        </div>
+        <div class="upload-quote-guide-card">
+          <strong>Use Create Your Design for fresh designs</strong>
+          <span>Open the design tool, build your artwork, then share the final design and we quote from it.</span>
+        </div>
+      </div>
+      <form class="upload-quote-form" novalidate>
+        <div class="upload-quote-grid">
+          <div class="upload-quote-field"><label class="upload-quote-label" for="uqName">Name</label><input class="upload-quote-input" id="uqName" name="name" type="text" required></div>
+          <div class="upload-quote-field"><label class="upload-quote-label" for="uqPhone">Phone Number</label><input class="upload-quote-input" id="uqPhone" name="phone" type="tel" required></div>
+          <div class="upload-quote-field"><label class="upload-quote-label" for="uqProduct">Product</label><input class="upload-quote-input" id="uqProduct" name="product" type="text" required></div>
+          <div class="upload-quote-field"><label class="upload-quote-label" for="uqQuantity">Quantity</label><input class="upload-quote-input" id="uqQuantity" name="quantity" type="number" min="1" step="1" required></div>
+          <div class="upload-quote-field full"><label class="upload-quote-label" for="uqDetails">Details</label><textarea class="upload-quote-textarea" id="uqDetails" name="details" placeholder="Add print type, color count, sizes, and timeline." required></textarea></div>
+          <div class="upload-quote-field full"><label class="upload-quote-label" for="uqFile">File Upload</label><input class="upload-quote-input" id="uqFile" name="file" type="file" accept="image/*,.pdf,.doc,.docx" required><span class="upload-quote-help">Accepted: image files, PDF, DOC, DOCX. Max 10MB.</span></div>
+        </div>
+        <div class="upload-quote-actions"><button class="upload-quote-submit" type="submit">Submit Request</button></div>
+        <div class="upload-quote-status" aria-live="polite"></div>
+      </form>
+    </div>`;
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(modal);
+
+  var form = modal.querySelector('.upload-quote-form');
+  var closeBtn = modal.querySelector('.upload-quote-close');
+  var submitBtn = modal.querySelector('.upload-quote-submit');
+  var statusEl = modal.querySelector('.upload-quote-status');
+  var fileInput = modal.querySelector('#uqFile');
+  var productInput = modal.querySelector('#uqProduct');
+  var lastFocused = null;
+
+  var normalize = function (value) {
+    return String(value || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  };
+
+  var inferProductName = function (trigger) {
+    if (trigger && trigger.getAttribute('data-product')) {
+      return trigger.getAttribute('data-product');
+    }
+
+    var heading = trigger ? trigger.closest('section,article,div') : null;
+    if (heading) {
+      var titleEl = heading.querySelector('h1,h2,h3,h4,.product-title,.card-title');
+      if (titleEl && titleEl.textContent.trim()) {
+        return titleEl.textContent.trim();
+      }
+    }
+
+    var docTitle = document.title || '';
+    return docTitle.split('|')[0].trim() || 'General Enquiry';
+  };
+
+  var setStatus = function (message, isError, isSuccess) {
+    statusEl.textContent = message || '';
+    statusEl.className = 'upload-quote-status is-visible' + (isError ? ' is-error' : '') + (isSuccess ? ' is-success' : '');
+  };
+
+  var clearStatus = function () {
+    statusEl.textContent = '';
+    statusEl.className = 'upload-quote-status';
+  };
+
+  var closeModal = function () {
+    overlay.classList.remove('is-open');
+    modal.classList.remove('is-open');
+    document.body.classList.remove('upload-quote-open');
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+  };
+
+  var openModal = function (trigger) {
+    lastFocused = trigger || document.activeElement;
+    clearStatus();
+    form.reset();
+    productInput.value = inferProductName(trigger);
+    overlay.classList.add('is-open');
+    modal.classList.add('is-open');
+    document.body.classList.add('upload-quote-open');
+    modal.querySelector('#uqName').focus();
+  };
+
+  var fileToBase64 = function (file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var result = String(reader.result || '');
+        var parts = result.split(',');
+        resolve(parts.length > 1 ? parts[1] : '');
+      };
+      reader.onerror = function () {
+        reject(new Error('Unable to read file.'));
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  var uploadKeywords = [
+    'upload your files',
+    'upload files',
+    'upload design & request quote',
+    'upload design and request quote'
+  ];
+
+  var isUploadTrigger = function (el) {
+    if (!el) return false;
+    if (el.hasAttribute('data-open-upload-form')) {
+      return true;
+    }
+    var text = normalize(el.textContent);
+    return uploadKeywords.some(function (keyword) { return text.indexOf(keyword) !== -1; });
+  };
+
+  var bindTrigger = function (el) {
+    if (!isUploadTrigger(el)) return;
+    if (el.dataset.uploadQuoteBound === '1') return;
+    el.dataset.uploadQuoteBound = '1';
+    if (el.tagName.toLowerCase() === 'a') {
+      el.setAttribute('href', '#');
+      el.removeAttribute('target');
+      el.removeAttribute('rel');
+    }
+    el.setAttribute('data-open-upload-form', 'true');
+    el.addEventListener('click', function (event) {
+      event.preventDefault();
+      openModal(el);
+    });
+  };
+
+  Array.prototype.forEach.call(document.querySelectorAll('a,button'), bindTrigger);
+
+  Array.prototype.forEach.call(document.querySelectorAll('a[href*="customizer-tool/customizer.html"]'), function (link) {
+    link.setAttribute('title', 'Open the design tool to create your artwork first.');
+    if (link.dataset.createDesignBound === '1') {
+      return;
+    }
+    link.dataset.createDesignBound = '1';
+    var actionWrap = link.parentElement;
+    if (!actionWrap || !actionWrap.querySelector('[data-open-upload-form="true"]')) {
+      return;
+    }
+    if (actionWrap.nextElementSibling && actionWrap.nextElementSibling.classList.contains('upload-flow-note')) {
+      return;
+    }
+    var note = document.createElement('div');
+    note.className = 'upload-flow-note';
+    note.innerHTML = '<strong>How to use:</strong> Use <strong>Upload Your Files</strong> when you already have artwork. Use <strong>Create Your Design</strong> to design first, then share that final output for quote and production.';
+    actionWrap.insertAdjacentElement('afterend', note);
+  });
+
+  fileInput.addEventListener('change', function () {
+    clearStatus();
+    var file = fileInput.files && fileInput.files[0];
+    if (!file) return;
+    if (file.size > MAX_FILE_SIZE) {
+      setStatus('File is too large. Maximum size is 10MB.', true, false);
+      fileInput.value = '';
+    }
+  });
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    clearStatus();
+
+    var file = fileInput.files && fileInput.files[0];
+    if (!file) {
+      setStatus('Please upload a file before submitting.', true, false);
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      setStatus('File is too large. Maximum size is 10MB.', true, false);
+      return;
+    }
+
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Uploading...';
+
+    try {
+      var base64 = await fileToBase64(file);
+      var payload = {
+        timestamp: new Date().toISOString(),
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        product: form.product.value.trim(),
+        quantity: form.quantity.value.trim(),
+        details: form.details.value.trim(),
+        file: 'data:' + (file.type || 'application/octet-stream') + ';base64,' + base64,
+        mimeType: file.type || 'application/octet-stream',
+        fileName: file.name,
+        fileType: file.type || 'application/octet-stream',
+        fileSize: file.size,
+        fileBase64: base64
+      };
+
+      var response;
+      try {
+        response = await fetch(WEBAPP_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (networkError) {
+        // Fallback for restrictive CORS responses on some Apps Script deployments.
+        response = await fetch(WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      if (response.type !== 'opaque' && !response.ok) {
+        throw new Error('Submission failed. Please try again.');
+      }
+
+      setStatus('Thanks! Your request was submitted successfully.', false, true);
+      form.reset();
+    } catch (error) {
+      setStatus(error && error.message ? error.message : 'Something went wrong while submitting.', true, false);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Request';
+    }
+  });
+
+  closeBtn.addEventListener('click', function () {
+    closeModal();
+  });
+
+  overlay.addEventListener('click', function () {
+    closeModal();
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
 });
