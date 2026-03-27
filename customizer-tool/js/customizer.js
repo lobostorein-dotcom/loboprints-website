@@ -1203,18 +1203,38 @@
 
   function updatePlacementPreviews() {
     const token = ++state.previewRenderToken;
-    Promise.all([
-      composeSidePreview('front', { hideGuide: false }),
-      composeSidePreview('back', { hideGuide: false })
-    ]).then(function (sources) {
-      if (token !== state.previewRenderToken) return;
-      frontPlacementPreview.src = sources[0];
-      backPlacementPreview.src = sources[1];
-      designFrontData.value = sources[0];
-      designBackData.value = sources[1];
-    }).catch(function () {
-      formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
-    });
+    if (product.frontOnly) {
+      composeSidePreview('front', { hideGuide: false }).then(function (src) {
+        if (token !== state.previewRenderToken) return;
+        frontPlacementPreview.src = src;
+        designFrontData.value = src;
+        backPlacementPreview.src = '';
+        designBackData.value = '';
+        // Optionally hide the back preview visually
+        if (backPlacementPreview && backPlacementPreview.parentElement) {
+          backPlacementPreview.parentElement.style.display = 'none';
+        }
+      }).catch(function () {
+        formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
+      });
+    } else {
+      // Show both previews for normal products
+      if (backPlacementPreview && backPlacementPreview.parentElement) {
+        backPlacementPreview.parentElement.style.display = '';
+      }
+      Promise.all([
+        composeSidePreview('front', { hideGuide: false }),
+        composeSidePreview('back', { hideGuide: false })
+      ]).then(function (sources) {
+        if (token !== state.previewRenderToken) return;
+        frontPlacementPreview.src = sources[0];
+        backPlacementPreview.src = sources[1];
+        designFrontData.value = sources[0];
+        designBackData.value = sources[1];
+      }).catch(function () {
+        formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
+      });
+    }
   }
 
   function wireControls() {

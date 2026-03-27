@@ -49,6 +49,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" type="text/css" href="style.css">
   <style>
+        /* Add right margin to last card in each set for visible gap at the seam */
+        .premium-reviews-set .premium-review-card:last-child {
+          margin-right: 1.5rem !important;
+        }
     .homepage #billboard {
       background-color: var(--bs-light);
     }
@@ -681,7 +685,7 @@
   
 
   <!-- Customer Review Photo Marquee -->
-  <section class="review-marquee-section">
+  <section class="review-marquee-section" style="margin-bottom: 0; padding-bottom: 0; background: transparent;">
     <div class="section-header text-center mt-5 mb-4">
       <h3 class="section-title">Delivered Over 1,00,000+ Products</h3>
     </div>
@@ -773,7 +777,12 @@
 
 
 
-  <section id="billboard" class="product-carousel py-5 position-relative overflow-hidden bg-light">
+  <section id="billboard" class="product-carousel position-relative overflow-hidden" style="margin-top: 0; padding-top: 0; background: transparent;">
+      <style>
+        .review-marquee-section {
+          margin-bottom: 1.5rem !important;
+        }
+      </style>
     <div class="container">
       <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
         <h4 class="text-uppercase">Shop by Category</h4>
@@ -891,7 +900,7 @@
     </div>
   </section>
 
-  <section class="py-5">
+  <section style="padding-top: 40px; padding-bottom: 0; margin-bottom: 0; background: transparent;">
     <div class="container">
       <a href="customizer-tool/index.html" class="text-decoration-none customizer-promo-card">
         <img src="images/customizer banner 01.jpeg" alt="Open apparel customizer" loading="lazy" decoding="async">
@@ -905,7 +914,7 @@
     </div>
   </section>
 
-  <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
+  <section id="new-arrival" class="new-arrival product-carousel position-relative overflow-hidden" style="padding-top: 0; margin-top: 0; background: transparent;">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
         <h4 class="text-uppercase">All Products</h4>
@@ -1008,7 +1017,7 @@
     </div>
   </section>
 
-  <section id="hoodie-collection" class="product-carousel py-5 position-relative overflow-hidden bg-light">
+  <section id="hoodie-collection" class="product-carousel position-relative overflow-hidden bg-light" style="padding-top: 0; margin-bottom: 0;">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
         <h4 class="text-uppercase">Hoodies</h4>
@@ -1067,7 +1076,7 @@
     </div>
   </section>
 
-  <section id="best-sellers" class="best-sellers product-carousel py-5 position-relative overflow-hidden">
+  <section id="best-sellers" class="best-sellers product-carousel position-relative overflow-hidden" style="margin-top: 0; padding-top: 0;">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
         <h4 class="text-uppercase">T-Shirts</h4>
@@ -1170,11 +1179,11 @@
     <div class="section-header text-center mt-5">
       <h3 class="section-title">WE LOVE GOOD COMPLIMENT</h3>
 
-    <h2 class="premium-review-heading">Loved by Teams, Trusted by Leaders</h2>
     <div class="premium-review-subheading">Rated 5⭐ by our happy customers</div>
     <div class="premium-reviews-slider-outer">
-      <div class="premium-reviews-slider" id="premiumReviewsSlider">
-        <!-- Review cards will be injected by JS -->
+      <div class="premium-reviews-track">
+        <div class="premium-reviews-set" id="reviewsSet1"></div>
+        <div class="premium-reviews-set" id="reviewsSet2"></div>
       </div>
     </div>
   </section>
@@ -1197,28 +1206,28 @@
       margin-bottom: 2.5rem;
     }
     .premium-reviews-slider-outer {
+      overflow: hidden;
       width: 100%;
-      position: relative;
       margin: 0 auto 2.5rem auto;
       padding: 0 0.5rem;
-      overflow: hidden;
+      position: relative;
     }
-    .premium-reviews-slider {
+    .premium-reviews-track {
+      display: flex;
+      width: max-content;
+      max-width: none !important;
+      animation: reviewScroll 35s linear infinite;
+    }
+    .premium-reviews-set {
       display: flex;
       gap: 1.5rem;
-      padding: 0 0 2vw 0;
-      transition: transform 0.5s cubic-bezier(.4,0,.2,1);
-      will-change: transform;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      overflow: hidden;
-    }
-    .premium-reviews-slider::-webkit-scrollbar {
-      display: none;
+      max-width: none !important;
     }
     .premium-review-card {
-      min-width: 320px;
-      max-width: 340px;
+      flex: 0 0 auto;
+      width: 320px;
+      max-width: none !important;
+      box-sizing: border-box;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 4px 24px 0 rgba(44, 62, 80, 0.10), 0 1.5px 6px 0 rgba(191, 161, 74, 0.08);
@@ -1228,6 +1237,15 @@
       align-items: center;
       position: relative;
       transition: box-shadow 0.2s;
+    }
+
+    @keyframes reviewScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
     .premium-review-card:hover {
       box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.16), 0 2.5px 10px 0 rgba(191, 161, 74, 0.13);
@@ -1309,92 +1327,39 @@
       { name: "praveen kumar", text: "Great experience overall. Will recommend to all my friends." }
     ];
 
-    // Helper: get initials from name
+    // Render reviews for seamless CSS marquee
+    const reviewsSet1 = document.getElementById('reviewsSet1');
+    const reviewsSet2 = document.getElementById('reviewsSet2');
+
     function getInitials(name) {
       return name.split(' ').map(w => w[0].toUpperCase()).join('').slice(0, 2);
     }
 
-    // Render reviews
-    function renderPremiumReviews() {
-      const slider = document.getElementById('premiumReviewsSlider');
-      slider.innerHTML = '';
-      premiumReviews.forEach(r => {
-        const card = document.createElement('div');
-        card.className = 'premium-review-card';
-        card.innerHTML = `
-          <div class="premium-review-stars">${'★'.repeat(5)}</div>
+    function createCard(r) {
+      return `
+        <div class="premium-review-card">
+          <div class="premium-review-stars">★★★★★</div>
           <div class="premium-review-text">${r.text}</div>
           <div class="premium-reviewer">
             <div class="premium-review-avatar">${getInitials(r.name)}</div>
             <div class="premium-reviewer-name">${r.name}</div>
           </div>
-        `;
-        slider.appendChild(card);
-      });
+        </div>
+      `;
     }
-    renderPremiumReviews();
 
-    // Infinite auto-loop slider logic
-    const slider = document.getElementById('premiumReviewsSlider');
-    let loopOffset = 0;
-    let cardWidth = 0;
-    function getCardWidth() {
-      const card = slider.querySelector('.premium-review-card');
-      if (!card) return 320;
-      const style = window.getComputedStyle(card);
-      return card.offsetWidth + parseFloat(style.marginRight || 0) + parseFloat(style.marginLeft || 0);
-    }
-    function cloneCardsForLoop() {
-      // Remove any previous clones
-      Array.from(slider.querySelectorAll('.premium-review-card.clone')).forEach(e => e.remove());
-      // Clone enough cards to fill the visible area
-      const visibleCards = Math.ceil(slider.parentElement.offsetWidth / getCardWidth());
-      for (let i = 0; i < visibleCards; i++) {
-        const orig = slider.children[i];
-        if (orig) {
-          const clone = orig.cloneNode(true);
-          clone.classList.add('clone');
-          slider.appendChild(clone);
-        }
-      }
-    }
-    function startLoop() {
-      cardWidth = getCardWidth();
-      cloneCardsForLoop();
-      let totalCards = premiumReviews.length;
-      let visibleCards = Math.ceil(slider.parentElement.offsetWidth / cardWidth);
-      let totalWidth = cardWidth * totalCards;
-      let resetAt = totalWidth;
-      function animate() {
-        loopOffset += 0.7;
-        if (loopOffset >= resetAt) {
-          // Instantly reset transform to 0 for seamless loop
-          slider.style.transition = 'none';
-          slider.style.transform = `translateX(0px)`;
-          loopOffset = 0;
-          // Force reflow to apply the transition removal
-          void slider.offsetWidth;
-          slider.style.transition = 'transform 0.5s cubic-bezier(.4,0,.2,1)';
-        } else {
-          slider.style.transform = `translateX(-${loopOffset}px)`;
-        }
-        requestAnimationFrame(animate);
-      }
-      animate();
-    }
-    window.addEventListener('resize', () => {
-      cardWidth = getCardWidth();
-      cloneCardsForLoop();
-    });
-    setTimeout(() => {
-      cardWidth = getCardWidth();
-      cloneCardsForLoop();
-      startLoop();
-    }, 200);
+    // Repeat cards to fill at least 2x the visible width for seamless marquee
+    // Render same review cards twice for seamless marquee
+    reviewsSet1.innerHTML = premiumReviews.map(createCard).join('');
+    reviewsSet2.innerHTML = premiumReviews.map(createCard).join('');
   </script>
 
-  <section class="logo-bar py-4 my-4">
+  <section class="logo-bar py-2 my-4">
     <div class="container-fluid px-0">
+      <div class="text-center mb-4" style="margin-top:-1.5rem;">
+        <h3 class="fw-bold mb-1" style="font-size:2rem; letter-spacing:-0.5px; color:#bfa14a;">Trusted by Top Clients</h3>
+        <div style="font-size:1.1rem; color:#23272f; opacity:0.85;">Our partners and clients who believe in us</div>
+      </div>
       <div class="logo-marquee" aria-label="Client logos">
         <div class="logo-track">
           <div class="logo-item"><img src="images/clients logos-01.webp" alt="Client logo 01" class="logo-image img-fluid" loading="lazy" decoding="async"></div>

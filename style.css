@@ -2384,7 +2384,8 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
 .logo-track {
   display: flex;
   width: max-content;
-  animation: client-logos-ltr 45s linear infinite;
+  max-width: none !important;
+  animation: client-logos-rtl 45s linear infinite;
 }
 
 .logo-item {
@@ -2395,6 +2396,7 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   align-items: center;
   justify-content: center;
   padding: 0 16px;
+  max-width: none !important;
 }
 
 .logo-image {
@@ -2404,6 +2406,15 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
 }
 
 @keyframes client-logos-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes client-logos-rtl {
   from {
     transform: translateX(-50%);
   }
