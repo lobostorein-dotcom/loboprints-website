@@ -2,7 +2,7 @@
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
   // Background SVG removed — real product PNGs are used instead
-  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/REMOVED_KEY_CUSTOMIZER/exec';
+  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFAOyYxTchKlBAMBMuiZuB4nWOECaCGyx62C5OSocjJWG7BvCc26EVs-uDaREA5V04/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
   const QUOTE_SECURITY = {
     minFillMs: 4000,
@@ -30,8 +30,69 @@
       front: 'assets/mockups/white hoodie front base.png',
       back: 'assets/mockups/white hoodie back base.png'
     },
-    // ...existing code for product sources, config, and color arrays...
-    // ...restore the original quote submission logic as it was after mug/badge support, before mug-specific changes...
+    jersey: {
+      front: 'assets/mockups/jersey front base.png',
+      back: 'assets/mockups/jersey back base.png'
+    },
+    sweatshirt: {
+      front: 'assets/mockups/sweatshirt front base.png',
+      back: 'assets/mockups/sweatshirt back base.png'
+    },
+    jacket: {
+      front: 'assets/mockups/jacket front base.png',
+      back: 'assets/mockups/jacket back base.png'
+    },
+    mug: {
+      front: 'assets/mockups/white mug base .png'
+    },
+    badge: {
+      front: 'assets/mockups/white badge base .png'
+    }
+  };
+
+  const PRODUCT_CONFIG = {
+    roundneck: { name: 'Round Neck T-Shirt' },
+    polo: { name: 'Polo T-Shirt' },
+    oversized: { name: 'Oversized T-Shirt' },
+    hoodie: { name: 'Hoodie' },
+    jersey: { name: 'Sports Jersey' },
+    sweatshirt: { name: 'Sweatshirt' },
+    jacket: { name: 'Jacket' },
+    mug: { name: 'Mug', frontOnly: true },
+    badge: { name: 'Badge', frontOnly: true }
+  };
+
+  const SHIRT_COLORS = [
+    { name: 'White', value: '#ffffff', stroke: '#cbd5e1' },
+    { name: 'Black', value: '#111827', stroke: '#374151' },
+    { name: 'Navy', value: '#1e3a8a', stroke: '#172554' },
+    { name: 'Royal Blue', value: '#2563eb', stroke: '#1e3a8a' },
+    { name: 'Sky Blue', value: '#38bdf8', stroke: '#0284c7' },
+    { name: 'Red', value: '#b91c1c', stroke: '#7f1d1d' },
+    { name: 'Maroon', value: '#7f1d1d', stroke: '#5f1414' },
+    { name: 'Orange', value: '#ea580c', stroke: '#9a3412' },
+    { name: 'Yellow', value: '#facc15', stroke: '#a16207' },
+    { name: 'Green', value: '#15803d', stroke: '#14532d' },
+    { name: 'Mint', value: '#10b981', stroke: '#047857' },
+    { name: 'Purple', value: '#7c3aed', stroke: '#5b21b6' },
+    { name: 'Pink', value: '#ec4899', stroke: '#be185d' },
+    { name: 'Grey', value: '#6b7280', stroke: '#4b5563' }
+  ];
+
+  const state = {
+    activeSide: 'front',
+    activeColor: SHIRT_COLORS[0],
+    previewRenderToken: 0,
+    sources: {
+      front: { base: '', overlay: '' },
+      back: { base: '', overlay: '' }
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const productKey = params.get('product') || 'roundneck';
+  const product = PRODUCT_CONFIG[productKey] || PRODUCT_CONFIG.roundneck;
+
   const productTitle = document.getElementById('productTitle');
   const shirtBaseLayer = document.getElementById('shirtBaseLayer');
   const activeSideIndicator = document.getElementById('activeSideIndicator');
@@ -70,7 +131,69 @@
   let lastSubmitAt = 0;
 
   function getSubmissionHistory() {
-    // ...restore the original quote submission logic and product config as it was before mug/badge support or related changes...
+    try {
+      var history = JSON.parse(localStorage.getItem(QUOTE_SECURITY.storageKey) || '[]');
+      if (!Array.isArray(history)) return [];
+      return history.filter(function (ts) { return Number.isFinite(ts); });
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function storeSubmissionHistory(history) {
+    try {
+      localStorage.setItem(QUOTE_SECURITY.storageKey, JSON.stringify(history));
+    } catch (e) {
+      // Ignore storage errors, in-memory throttling still applies.
+    }
+  }
+
+  function canSubmitQuote(now, honeypotValue) {
+    if (honeypotValue) {
+      return 'Spam check failed. Please refresh and try again.';
+    }
+
+    if (now - quoteFormLoadedAt < QUOTE_SECURITY.minFillMs) {
+      return 'Please wait a few seconds before submitting.';
+    }
+
+    if (now - lastSubmitAt < QUOTE_SECURITY.minResubmitGapMs) {
+      return 'Please wait before sending another request.';
+    }
+
+    var history = getSubmissionHistory().filter(function (ts) {
+      return now - ts <= QUOTE_SECURITY.windowMs;
+    });
+
+    if (history.length >= QUOTE_SECURITY.maxSubmissionsPerWindow) {
+      return 'Submission limit reached. Please try again later.';
+    }
+
+    return '';
+  }
+
+  function recordQuoteSubmit(now) {
+    lastSubmitAt = now;
+    var history = getSubmissionHistory().filter(function (ts) {
+      return now - ts <= QUOTE_SECURITY.windowMs;
+    });
+    history.push(now);
+    storeSubmissionHistory(history);
+  }
+
+  const canvases = {
+    front: new fabric.Canvas('designCanvasFront', {
+      preserveObjectStacking: true,
+      selection: true,
+      centeredScaling: false,
+      allowTouchScrolling: false,
+      fireRightClick: false,
+      stopContextMenu: true
+    }),
+    back: new fabric.Canvas('designCanvasBack', {
+      preserveObjectStacking: true,
+      selection: true,
+      centeredScaling: false,
       allowTouchScrolling: false,
       fireRightClick: false,
       stopContextMenu: true
@@ -320,6 +443,7 @@
     if (PRODUCT_BASE_SOURCES[kind] && PRODUCT_BASE_SOURCES[kind][side]) {
       return Promise.resolve(PRODUCT_BASE_SOURCES[kind][side]);
     }
+
     return Promise.resolve(svgDataUri(getBaseMarkup(kind, side, color)));
   }
 
@@ -1044,54 +1168,32 @@
   }
 
   function exportCombinedPreview() {
-    if (product.frontOnly) {
-      // Only generate front preview for frontOnly products
-      return composeSidePreview('front', { hideGuide: true }).then(function (frontSrc) {
-        const combined = document.createElement('canvas');
-        combined.width = STAGE_WIDTH;
-        combined.height = STAGE_HEIGHT;
-        const ctx = combined.getContext('2d');
-        return loadImage(frontSrc).then(function (frontImg) {
-          ctx.fillStyle = '#f8fafc';
-          ctx.fillRect(0, 0, combined.width, combined.height);
-          ctx.drawImage(frontImg, 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
-          ctx.fillStyle = '#0f172a';
-          ctx.font = '700 28px Segoe UI';
-          ctx.fillText('Front', 28, 42);
-          return {
-            front: frontSrc,
-            back: '',
-            combined: combined.toDataURL('image/png')
-          };
-        });
+    return Promise.all([
+      composeSidePreview('front', { hideGuide: true }),
+      composeSidePreview('back', { hideGuide: true })
+    ]).then(function (sources) {
+      const combined = document.createElement('canvas');
+      combined.width = STAGE_WIDTH * 2;
+      combined.height = STAGE_HEIGHT;
+      const ctx = combined.getContext('2d');
+
+      return Promise.all(sources.map(loadImage)).then(function (images) {
+        ctx.fillStyle = '#f8fafc';
+        ctx.fillRect(0, 0, combined.width, combined.height);
+        ctx.drawImage(images[0], 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
+        ctx.drawImage(images[1], STAGE_WIDTH, 0, STAGE_WIDTH, STAGE_HEIGHT);
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '700 28px Segoe UI';
+        ctx.fillText('Front', 28, 42);
+        ctx.fillText('Back', STAGE_WIDTH + 28, 42);
+
+        return {
+          front: sources[0],
+          back: sources[1],
+          combined: combined.toDataURL('image/png')
+        };
       });
-    } else {
-      // Normal: generate both front and back
-      return Promise.all([
-        composeSidePreview('front', { hideGuide: true }),
-        composeSidePreview('back', { hideGuide: true })
-      ]).then(function (sources) {
-        const combined = document.createElement('canvas');
-        combined.width = STAGE_WIDTH * 2;
-        combined.height = STAGE_HEIGHT;
-        const ctx = combined.getContext('2d');
-        return Promise.all(sources.map(loadImage)).then(function (images) {
-          ctx.fillStyle = '#f8fafc';
-          ctx.fillRect(0, 0, combined.width, combined.height);
-          ctx.drawImage(images[0], 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
-          ctx.drawImage(images[1], STAGE_WIDTH, 0, STAGE_WIDTH, STAGE_HEIGHT);
-          ctx.fillStyle = '#0f172a';
-          ctx.font = '700 28px Segoe UI';
-          ctx.fillText('Front', 28, 42);
-          ctx.fillText('Back', STAGE_WIDTH + 28, 42);
-          return {
-            front: sources[0],
-            back: sources[1],
-            combined: combined.toDataURL('image/png')
-          };
-        });
-      });
-    }
+    });
   }
 
   function schedulePlacementPreviewUpdate() {
@@ -1101,38 +1203,18 @@
 
   function updatePlacementPreviews() {
     const token = ++state.previewRenderToken;
-    if (product.frontOnly) {
-      composeSidePreview('front', { hideGuide: false }).then(function (src) {
-        if (token !== state.previewRenderToken) return;
-        frontPlacementPreview.src = src;
-        designFrontData.value = src;
-        backPlacementPreview.src = '';
-        designBackData.value = '';
-        // Optionally hide the back preview visually
-        if (backPlacementPreview && backPlacementPreview.parentElement) {
-          backPlacementPreview.parentElement.style.display = 'none';
-        }
-      }).catch(function () {
-        formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
-      });
-    } else {
-      // Show both previews for normal products
-      if (backPlacementPreview && backPlacementPreview.parentElement) {
-        backPlacementPreview.parentElement.style.display = '';
-      }
-      Promise.all([
-        composeSidePreview('front', { hideGuide: false }),
-        composeSidePreview('back', { hideGuide: false })
-      ]).then(function (sources) {
-        if (token !== state.previewRenderToken) return;
-        frontPlacementPreview.src = sources[0];
-        backPlacementPreview.src = sources[1];
-        designFrontData.value = sources[0];
-        designBackData.value = sources[1];
-      }).catch(function () {
-        formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
-      });
-    }
+    Promise.all([
+      composeSidePreview('front', { hideGuide: false }),
+      composeSidePreview('back', { hideGuide: false })
+    ]).then(function (sources) {
+      if (token !== state.previewRenderToken) return;
+      frontPlacementPreview.src = sources[0];
+      backPlacementPreview.src = sources[1];
+      designFrontData.value = sources[0];
+      designBackData.value = sources[1];
+    }).catch(function () {
+      formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
+    });
   }
 
   function wireControls() {
@@ -1231,11 +1313,7 @@
         designFrontData.value = data.front;
         designBackData.value = data.back;
         designImageData.value = data.combined;
-        if (product.frontOnly) {
-          formStatus.textContent = 'Front preview generated. Submit the form to send your quote request.';
-        } else {
-          formStatus.textContent = 'Front and back previews generated. Submit the form to send your quote request.';
-        }
+        formStatus.textContent = 'Front and back previews generated. Submit the form to send your quote request.';
       });
     });
 
