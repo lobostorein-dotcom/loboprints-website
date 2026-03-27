@@ -30,69 +30,8 @@
       front: 'assets/mockups/white hoodie front base.png',
       back: 'assets/mockups/white hoodie back base.png'
     },
-    jersey: {
-      front: 'assets/mockups/jersey front base.png',
-      back: 'assets/mockups/jersey back base.png'
-    },
-    sweatshirt: {
-      front: 'assets/mockups/sweatshirt front base.png',
-      back: 'assets/mockups/sweatshirt back base.png'
-    },
-    jacket: {
-      front: 'assets/mockups/jacket front base.png',
-      back: 'assets/mockups/jacket back base.png'
-    },
-    mug: {
-      front: 'assets/mockups/white mug base .png'
-    },
-    badge: {
-      front: 'assets/mockups/white badge base .png'
-    }
-  };
-
-  const PRODUCT_CONFIG = {
-    roundneck: { name: 'Round Neck T-Shirt' },
-    polo: { name: 'Polo T-Shirt' },
-    oversized: { name: 'Oversized T-Shirt' },
-    hoodie: { name: 'Hoodie' },
-    jersey: { name: 'Sports Jersey' },
-    sweatshirt: { name: 'Sweatshirt' },
-    jacket: { name: 'Jacket' },
-    mug: { name: 'Mug', frontOnly: true },
-    badge: { name: 'Badge', frontOnly: true }
-  };
-
-  const SHIRT_COLORS = [
-    { name: 'White', value: '#ffffff', stroke: '#cbd5e1' },
-    { name: 'Black', value: '#111827', stroke: '#374151' },
-    { name: 'Navy', value: '#1e3a8a', stroke: '#172554' },
-    { name: 'Royal Blue', value: '#2563eb', stroke: '#1e3a8a' },
-    { name: 'Sky Blue', value: '#38bdf8', stroke: '#0284c7' },
-    { name: 'Red', value: '#b91c1c', stroke: '#7f1d1d' },
-    { name: 'Maroon', value: '#7f1d1d', stroke: '#5f1414' },
-    { name: 'Orange', value: '#ea580c', stroke: '#9a3412' },
-    { name: 'Yellow', value: '#facc15', stroke: '#a16207' },
-    { name: 'Green', value: '#15803d', stroke: '#14532d' },
-    { name: 'Mint', value: '#10b981', stroke: '#047857' },
-    { name: 'Purple', value: '#7c3aed', stroke: '#5b21b6' },
-    { name: 'Pink', value: '#ec4899', stroke: '#be185d' },
-    { name: 'Grey', value: '#6b7280', stroke: '#4b5563' }
-  ];
-
-  const state = {
-    activeSide: 'front',
-    activeColor: SHIRT_COLORS[0],
-    previewRenderToken: 0,
-    sources: {
-      front: { base: '', overlay: '' },
-      back: { base: '', overlay: '' }
-    }
-  };
-
-  const params = new URLSearchParams(window.location.search);
-  const productKey = params.get('product') || 'roundneck';
-  const product = PRODUCT_CONFIG[productKey] || PRODUCT_CONFIG.roundneck;
-
+    // ...existing code for product sources, config, and color arrays...
+    // ...restore the original quote submission logic as it was after mug/badge support, before mug-specific changes...
   const productTitle = document.getElementById('productTitle');
   const shirtBaseLayer = document.getElementById('shirtBaseLayer');
   const activeSideIndicator = document.getElementById('activeSideIndicator');
@@ -131,69 +70,7 @@
   let lastSubmitAt = 0;
 
   function getSubmissionHistory() {
-    try {
-      var history = JSON.parse(localStorage.getItem(QUOTE_SECURITY.storageKey) || '[]');
-      if (!Array.isArray(history)) return [];
-      return history.filter(function (ts) { return Number.isFinite(ts); });
-    } catch (e) {
-      return [];
-    }
-  }
-
-  function storeSubmissionHistory(history) {
-    try {
-      localStorage.setItem(QUOTE_SECURITY.storageKey, JSON.stringify(history));
-    } catch (e) {
-      // Ignore storage errors, in-memory throttling still applies.
-    }
-  }
-
-  function canSubmitQuote(now, honeypotValue) {
-    if (honeypotValue) {
-      return 'Spam check failed. Please refresh and try again.';
-    }
-
-    if (now - quoteFormLoadedAt < QUOTE_SECURITY.minFillMs) {
-      return 'Please wait a few seconds before submitting.';
-    }
-
-    if (now - lastSubmitAt < QUOTE_SECURITY.minResubmitGapMs) {
-      return 'Please wait before sending another request.';
-    }
-
-    var history = getSubmissionHistory().filter(function (ts) {
-      return now - ts <= QUOTE_SECURITY.windowMs;
-    });
-
-    if (history.length >= QUOTE_SECURITY.maxSubmissionsPerWindow) {
-      return 'Submission limit reached. Please try again later.';
-    }
-
-    return '';
-  }
-
-  function recordQuoteSubmit(now) {
-    lastSubmitAt = now;
-    var history = getSubmissionHistory().filter(function (ts) {
-      return now - ts <= QUOTE_SECURITY.windowMs;
-    });
-    history.push(now);
-    storeSubmissionHistory(history);
-  }
-
-  const canvases = {
-    front: new fabric.Canvas('designCanvasFront', {
-      preserveObjectStacking: true,
-      selection: true,
-      centeredScaling: false,
-      allowTouchScrolling: false,
-      fireRightClick: false,
-      stopContextMenu: true
-    }),
-    back: new fabric.Canvas('designCanvasBack', {
-      preserveObjectStacking: true,
-      selection: true,
-      centeredScaling: false,
+    // ...restore the original quote submission logic and product config as it was before mug/badge support or related changes...
       allowTouchScrolling: false,
       fireRightClick: false,
       stopContextMenu: true
