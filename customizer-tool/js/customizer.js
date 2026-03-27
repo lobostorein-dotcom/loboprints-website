@@ -2,7 +2,7 @@
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
   // Background SVG removed — real product PNGs are used instead
-  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxFAOyYxTchKlBAMBMuiZuB4nWOECaCGyx62C5OSocjJWG7BvCc26EVs-uDaREA5V04/exec';
+  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/REMOVED_KEY_CUSTOMIZER/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
   const QUOTE_SECURITY = {
     minFillMs: 4000,
@@ -443,7 +443,6 @@
     if (PRODUCT_BASE_SOURCES[kind] && PRODUCT_BASE_SOURCES[kind][side]) {
       return Promise.resolve(PRODUCT_BASE_SOURCES[kind][side]);
     }
-
     return Promise.resolve(svgDataUri(getBaseMarkup(kind, side, color)));
   }
 
