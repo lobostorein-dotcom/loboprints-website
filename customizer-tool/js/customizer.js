@@ -1168,32 +1168,54 @@
   }
 
   function exportCombinedPreview() {
-    return Promise.all([
-      composeSidePreview('front', { hideGuide: true }),
-      composeSidePreview('back', { hideGuide: true })
-    ]).then(function (sources) {
-      const combined = document.createElement('canvas');
-      combined.width = STAGE_WIDTH * 2;
-      combined.height = STAGE_HEIGHT;
-      const ctx = combined.getContext('2d');
-
-      return Promise.all(sources.map(loadImage)).then(function (images) {
-        ctx.fillStyle = '#f8fafc';
-        ctx.fillRect(0, 0, combined.width, combined.height);
-        ctx.drawImage(images[0], 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
-        ctx.drawImage(images[1], STAGE_WIDTH, 0, STAGE_WIDTH, STAGE_HEIGHT);
-        ctx.fillStyle = '#0f172a';
-        ctx.font = '700 28px Segoe UI';
-        ctx.fillText('Front', 28, 42);
-        ctx.fillText('Back', STAGE_WIDTH + 28, 42);
-
-        return {
-          front: sources[0],
-          back: sources[1],
-          combined: combined.toDataURL('image/png')
-        };
+    if (product.frontOnly) {
+      // Only generate front preview for frontOnly products
+      return composeSidePreview('front', { hideGuide: true }).then(function (frontSrc) {
+        const combined = document.createElement('canvas');
+        combined.width = STAGE_WIDTH;
+        combined.height = STAGE_HEIGHT;
+        const ctx = combined.getContext('2d');
+        return loadImage(frontSrc).then(function (frontImg) {
+          ctx.fillStyle = '#f8fafc';
+          ctx.fillRect(0, 0, combined.width, combined.height);
+          ctx.drawImage(frontImg, 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
+          ctx.fillStyle = '#0f172a';
+          ctx.font = '700 28px Segoe UI';
+          ctx.fillText('Front', 28, 42);
+          return {
+            front: frontSrc,
+            back: '',
+            combined: combined.toDataURL('image/png')
+          };
+        });
       });
-    });
+    } else {
+      // Normal: generate both front and back
+      return Promise.all([
+        composeSidePreview('front', { hideGuide: true }),
+        composeSidePreview('back', { hideGuide: true })
+      ]).then(function (sources) {
+        const combined = document.createElement('canvas');
+        combined.width = STAGE_WIDTH * 2;
+        combined.height = STAGE_HEIGHT;
+        const ctx = combined.getContext('2d');
+        return Promise.all(sources.map(loadImage)).then(function (images) {
+          ctx.fillStyle = '#f8fafc';
+          ctx.fillRect(0, 0, combined.width, combined.height);
+          ctx.drawImage(images[0], 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
+          ctx.drawImage(images[1], STAGE_WIDTH, 0, STAGE_WIDTH, STAGE_HEIGHT);
+          ctx.fillStyle = '#0f172a';
+          ctx.font = '700 28px Segoe UI';
+          ctx.fillText('Front', 28, 42);
+          ctx.fillText('Back', STAGE_WIDTH + 28, 42);
+          return {
+            front: sources[0],
+            back: sources[1],
+            combined: combined.toDataURL('image/png')
+          };
+        });
+      });
+    }
   }
 
   function schedulePlacementPreviewUpdate() {
