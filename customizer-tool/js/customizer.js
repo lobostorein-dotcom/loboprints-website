@@ -1355,7 +1355,11 @@
         designFrontData.value = data.front;
         designBackData.value = data.back;
         designImageData.value = data.combined;
-        formStatus.textContent = 'Front and back previews generated. Submit the form to send your quote request.';
+        if (product.frontOnly) {
+          formStatus.textContent = 'Front preview generated. Submit the form to send your quote request.';
+        } else {
+          formStatus.textContent = 'Front and back previews generated. Submit the form to send your quote request.';
+        }
       });
     });
 
