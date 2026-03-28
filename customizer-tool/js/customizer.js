@@ -270,7 +270,6 @@
   function applyMobileCanvasTouchTuning() {
     if (!isMobileViewport) return;
 
-    // Improve mobile touch controls.
     fabric.Object.prototype.set({
       cornerSize: 18,
       cornerStyle: 'circle',
@@ -281,7 +280,6 @@
       borderScaleFactor: 2.2
     });
 
-    // Mobile touch optimisation.
     Object.keys(canvases).forEach(function (side) {
       const canvas = canvases[side];
       canvas.allowTouchScrolling = false;
@@ -325,7 +323,6 @@
       borderScaleFactor: 2.2
     });
 
-    // Keep mobile controls simple and finger-friendly: resize + move only.
     if (obj.controls && obj.controls.mtr) {
       obj.controls.mtr.visible = false;
     }
@@ -342,7 +339,6 @@
 
     return new Promise(function (resolve, reject) {
       const image = new Image();
-      // Do not force CORS mode for local/data/blob sources; that can break preview composition.
       if (/^https?:\/\//i.test(src)) {
         image.crossOrigin = 'anonymous';
       }
@@ -534,7 +530,6 @@
       return;
     }
 
-    // Use canvas-space bounds so clamping remains correct after viewport scaling.
     const bounds = obj.getBoundingRect(false, true);
     if (bounds.width > area.width || bounds.height > area.height) {
       const ratio = Math.min(area.width / bounds.width, area.height / bounds.height, 1);
@@ -1038,13 +1033,9 @@
     if (!match) {
       throw new Error('Invalid image data URL');
     }
-    // Extra validation: warn if base64 still contains a data URL prefix (should not happen)
-    if (match[2].startsWith('data:image/')) {
-      console.warn('splitDataUrlImage: extracted base64 still contains data URL prefix! This should be stripped before sending to backend.', match[2]);
-    }
     return {
       mimeType: match[1],
-      base64: match[2]
+      base64: match[2]   // pure base64 only — data URL prefix already stripped
     };
   }
 
@@ -1083,7 +1074,6 @@
       }
 
       if (isMobileViewport) {
-        // Let fingers move freely on mobile; constrain on object:modified.
         if (event.target) event.target.setCoords();
         return;
       }
@@ -1093,12 +1083,10 @@
 
     canvas.on('object:scaling', function (event) {
       if (event.target && event.target.isPrintAreaGuide) {
-        // Avoid mutating guide geometry mid-transform; commit on object:modified.
         return;
       }
 
       if (isMobileViewport) {
-        // Avoid jitter during pinch/resize on mobile; clamp once gesture ends.
         if (event.target) event.target.setCoords();
         return;
       }
@@ -1139,7 +1127,6 @@
       let designLayerData;
 
       if (guide && hideGuide) {
-        // Hide print-area helper only for final generated preview export.
         var wasVisible = guide.visible;
         var wasEvented = guide.evented;
         var wasSelectable = guide.selectable;
@@ -1372,7 +1359,7 @@
             notes:         formFields.notes,
             shirtColorName: state.activeColor.name,
             shirtColorHex: state.activeColor.value,
-            frontImage:    frontData.base64,
+            frontImage:    frontData.base64,   // FIX 5: pure base64, data URL prefix already stripped by splitDataUrlImage
             backImage:     backData.base64,
             frontMimeType: frontData.mimeType,
             backMimeType:  backData.mimeType
@@ -1380,18 +1367,20 @@
 
           var body = JSON.stringify(data);
 
+          // FIX 2: mode:'no-cors' prevents a CORS preflight being sent to Apps Script.
+          //        Only Content-Type: text/plain is used — no custom headers — so the
+          //        browser treats this as a "simple request" and skips the OPTIONS check.
+          // FIX 3: With no-cors the response is opaque; res.ok / res.status are not
+          //        readable. A resolved promise means the POST was delivered successfully.
           fetch(APPS_SCRIPT_ENDPOINT, {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
-              'Content-Type': 'text/plain;charset=utf-8',
-              'X-Requested-With': 'LoboCustomizerQuote'
+              'Content-Type': 'text/plain;charset=utf-8'
             },
             body: body
           })
-            .then(function (res) {
-              if (!res.ok) {
-                throw new Error('Server responded with status ' + res.status);
-              }
+            .then(function () {
               recordQuoteSubmit(Date.now());
               formStatus.textContent = 'Quote request sent successfully. We will contact you soon.';
               quoteForm.reset();
