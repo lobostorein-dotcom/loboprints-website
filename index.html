@@ -1555,21 +1555,13 @@
       const homepageCategorySwiper = new Swiper('#billboard .category-swiper', {
         slidesPerView: 4,
         spaceBetween: 20,
-        speed: isMobile ? 600 : 4500,
-        loop: true,
-        loopAdditionalSlides: isMobile ? 2 : totalCategorySlides,
-        loopedSlides: isMobile ? 2 : totalCategorySlides,
+        speed: 600,
+        loop: false,
         grabCursor: true,
         allowTouchMove: true,
         watchOverflow: false,
         observer: true,
         observeParents: true,
-        autoplay: {
-          delay: isMobile ? 2000 : 1,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-          reverseDirection: false
-        },
         navigation: {
           nextEl: '#billboard .shopcat-arrow.icon-arrow-right',
           prevEl: '#billboard .shopcat-arrow.icon-arrow-left'
@@ -1723,4 +1715,5 @@
   <script src="header-search.js"></script>
 </body>
 
+  <!-- Removed all custom mobile Swiper re-init scripts for Shop by Category. Looping is now fully disabled and only arrows are enabled. -->
 </html>
