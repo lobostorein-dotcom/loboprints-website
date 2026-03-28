@@ -1038,7 +1038,10 @@
     if (!match) {
       throw new Error('Invalid image data URL');
     }
-
+    // Extra validation: warn if base64 still contains a data URL prefix (should not happen)
+    if (match[2].startsWith('data:image/')) {
+      console.warn('splitDataUrlImage: extracted base64 still contains data URL prefix! This should be stripped before sending to backend.', match[2]);
+    }
     return {
       mimeType: match[1],
       base64: match[2]
