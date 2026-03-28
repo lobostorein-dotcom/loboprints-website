@@ -1158,6 +1158,29 @@
   }
 
   function exportCombinedPreview() {
+    if (product.frontOnly) {
+      // Single-sided products (mug, badge): only render front, combined = front only
+      return composeSidePreview('front', { hideGuide: true }).then(function (frontSource) {
+        return loadImage(frontSource).then(function (img) {
+          const combined = document.createElement('canvas');
+          combined.width = STAGE_WIDTH;
+          combined.height = STAGE_HEIGHT;
+          const ctx = combined.getContext('2d');
+          ctx.fillStyle = '#f8fafc';
+          ctx.fillRect(0, 0, combined.width, combined.height);
+          ctx.drawImage(img, 0, 0, STAGE_WIDTH, STAGE_HEIGHT);
+          ctx.fillStyle = '#0f172a';
+          ctx.font = '700 28px Segoe UI';
+          ctx.fillText('Front', 28, 42);
+          return {
+            front: frontSource,
+            back: frontSource,   // send front as back too so Apps Script field is never empty
+            combined: combined.toDataURL('image/png')
+          };
+        });
+      });
+    }
+
     return Promise.all([
       composeSidePreview('front', { hideGuide: true }),
       composeSidePreview('back', { hideGuide: true })
@@ -1193,15 +1216,19 @@
 
   function updatePlacementPreviews() {
     const token = ++state.previewRenderToken;
-    Promise.all([
-      composeSidePreview('front', { hideGuide: false }),
-      composeSidePreview('back', { hideGuide: false })
-    ]).then(function (sources) {
+    var sidePreviews = product.frontOnly
+      ? [composeSidePreview('front', { hideGuide: false })]
+      : [composeSidePreview('front', { hideGuide: false }), composeSidePreview('back', { hideGuide: false })];
+    Promise.all(sidePreviews).then(function (sources) {
       if (token !== state.previewRenderToken) return;
       frontPlacementPreview.src = sources[0];
-      backPlacementPreview.src = sources[1];
       designFrontData.value = sources[0];
-      designBackData.value = sources[1];
+      if (!product.frontOnly) {
+        backPlacementPreview.src = sources[1];
+        designBackData.value = sources[1];
+      } else {
+        designBackData.value = sources[0];
+      }
     }).catch(function () {
       formStatus.textContent = 'Preview generation failed because a required base/overlay layer did not load.';
     });
