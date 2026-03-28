@@ -1546,22 +1546,27 @@
 
       const totalCategorySlides = categorySwiperElement.querySelectorAll('.swiper-slide').length;
 
+      // On mobile (< 768px) use a normal timed loop — the continuous-scroll trick
+      // (speed:4500 + delay:1) breaks at slidesPerView:1 because Swiper can't clone
+      // enough slides to keep the loop seamless, causing it to freeze at the last card.
+      const isMobile = window.innerWidth < 768;
+
       const homepageCategorySwiper = new Swiper('#billboard .category-swiper', {
         slidesPerView: 4,
         spaceBetween: 20,
-        speed: 4500,
+        speed: isMobile ? 600 : 4500,
         loop: true,
-        loopAdditionalSlides: totalCategorySlides,
-        loopedSlides: totalCategorySlides,
+        loopAdditionalSlides: isMobile ? 2 : totalCategorySlides,
+        loopedSlides: isMobile ? 2 : totalCategorySlides,
         grabCursor: true,
         allowTouchMove: true,
         watchOverflow: false,
-        observer: false,
-        observeParents: false,
+        observer: true,
+        observeParents: true,
         autoplay: {
-          delay: 1,
+          delay: isMobile ? 2000 : 1,
           disableOnInteraction: false,
-          pauseOnMouseEnter: false,
+          pauseOnMouseEnter: true,
           reverseDirection: false
         },
         navigation: {
@@ -1570,7 +1575,7 @@
         },
         breakpoints: {
           300: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 10
           },
           576: {
@@ -1588,23 +1593,6 @@
           1200: {
             slidesPerView: 4,
             spaceBetween: 20
-          }
-        },
-        on: {
-          touchStart(swiper) {
-            if (swiper.autoplay) {
-              swiper.autoplay.stop();
-            }
-          },
-          sliderFirstMove(swiper) {
-            if (swiper.autoplay) {
-              swiper.autoplay.stop();
-            }
-          },
-          touchEnd(swiper) {
-            if (swiper.autoplay) {
-              swiper.autoplay.start();
-            }
           }
         }
       });
@@ -1683,9 +1671,9 @@
           slidesPerView: 4,
           spaceBetween: 20,
           loop: true,
-          speed: 900,
+          speed: 600,
           autoplay: {
-            delay: 1800,
+            delay: 2000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true
           },
@@ -1695,7 +1683,7 @@
           },
           breakpoints: {
             300: {
-              slidesPerView: 1,
+              slidesPerView: 2,
               spaceBetween: 10
             },
             576: {
@@ -1735,6 +1723,3 @@
 </body>
 
 </html>
-
-
-
