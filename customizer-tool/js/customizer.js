@@ -1034,11 +1034,23 @@
   }
 
   function splitDataUrlImage(dataUrl) {
-    const match = /^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/.exec(dataUrl || '');
-    if (!match) {
-      throw new Error('Invalid image data URL');
+    if (!dataUrl) {
+      console.error('splitDataUrlImage: dataUrl is empty or undefined!', dataUrl);
+      throw new Error('Invalid image data URL (empty)');
     }
-
+    if (typeof dataUrl !== 'string') {
+      console.error('splitDataUrlImage: dataUrl is not a string!', dataUrl);
+      throw new Error('Invalid image data URL (not a string)');
+    }
+    if (!dataUrl.startsWith('data:image/')) {
+      console.error('splitDataUrlImage: dataUrl does not start with data:image/', dataUrl);
+      throw new Error('Invalid image data URL (not an image data URL)');
+    }
+    const match = /^data:(image\/[a-zA-Z0-9.+-]+);base64,(.+)$/.exec(dataUrl);
+    if (!match) {
+      console.error('splitDataUrlImage: dataUrl does not match expected pattern!', dataUrl);
+      throw new Error('Invalid image data URL (pattern mismatch)');
+    }
     return {
       mimeType: match[1],
       base64: match[2]
