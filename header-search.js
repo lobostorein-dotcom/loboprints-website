@@ -49,31 +49,68 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const productIndex = [
-    { name: 'Cotton Basic Round Neck T-Shirt', url: 'tshirt1.html', image: 'images/basic plain white 05.jpg.jpeg', category: 'T-Shirts', tags: 'cotton basic round neck' },
-    { name: 'Cotton Premium Round Neck T-Shirt (200 GSM)', url: 'tshirt2.html', image: 'images/primeum tshirt black colours 01.jpeg', category: 'T-Shirts', tags: 'cotton premium 200 gsm' },
-    { name: 'Cotton Affordable Oversized T-Shirt (200 GSM)', url: 'tshirt3.html', image: 'images/oversized 200gsm tshirt ivory  images colours-01.jpeg', category: 'T-Shirts', tags: 'oversized cotton affordable' },
-    { name: 'Cotton Premium Oversized T-Shirt (240 GSM)', url: 'tshirt4.html', image: 'images/240gsm oversize tshirt aqua blue  colours-01.jpeg', category: 'T-Shirts', tags: 'oversized premium 240 gsm' },
-    { name: 'Cotton Affordable Polo T-Shirt', url: 'tshirt5.html', image: 'images/product-item-9.jpg', category: 'T-Shirts', tags: 'polo affordable' },
-    { name: 'Cotton Premium Polo T-Shirt', url: 'tshirt6.html', image: 'images/product-item-10.jpg', category: 'T-Shirts', tags: 'polo premium' },
-    { name: 'Polyester Basic Round Neck T-Shirt', url: 'tshirt7.html', image: 'images/product-item-7.jpg', category: 'T-Shirts', tags: 'polyester basic round neck' },
-    { name: 'Polyester Premium Round Neck T-Shirt', url: 'tshirt8.html', image: 'images/product-item-8.jpg', category: 'T-Shirts', tags: 'polyester premium round neck' },
-    { name: 'Polyester Basic Polo T-Shirt', url: 'tshirt9.html', image: 'images/product-item-9.jpg', category: 'T-Shirts', tags: 'polyester basic polo' },
-    { name: 'Polyester Premium Polo T-Shirt', url: 'tshirt10.html', image: 'images/product-item-10.jpg', category: 'T-Shirts', tags: 'polyester premium polo' },
-    { name: 'Hoodies', url: 'hoodies.html', image: 'images/Hoodies.jpeg', category: 'Category', tags: 'hoodie sweatshirt zipper' },
-    { name: 'Trackpants', url: 'trackpants.html', image: 'images/Trackpants.jpeg', category: 'Category', tags: 'track pant lower' },
-    { name: 'Shorts', url: 'shorts.html', image: 'images/Shorts.jpeg', category: 'Category', tags: 'sports shorts' },
-    { name: 'Badges', url: 'badges.html', image: 'images/badges.jpeg', category: 'Category', tags: 'badges pins' },
-    { name: 'Jerseys', url: 'jerseys.html', image: 'images/tshirts.jpeg', category: 'Category', tags: 'sports jersey sublimation' },
-    { name: 'Jackets', url: 'jackets.html', image: 'images/Hoodies.jpeg', category: 'Category', tags: 'jacket zipper' },
-      { name: 'Zipper Jacket with Mesh', url: 'jacket2.html', image: 'images/zipper jacket with mesh orange 01.jpg', category: 'Jackets', tags: 'zipper jacket mesh orange black sky blue' },
-      { name: 'Caps', url: 'caps.html', image: 'images/Caps.jpeg', category: 'Category', tags: 'caps baseball dad mesh trucker' },
-      { name: 'Baseball Cap', url: 'cap1.html', image: 'images/baseball cap.jpg', category: 'Caps', tags: 'baseball cap adjustable' },
-      { name: 'Dad Cap', url: 'cap2.html', image: 'images/dad cap.jpg', category: 'Caps', tags: 'dad cap unstructured' },
-      { name: 'Mesh Cap', url: 'cap3.html', image: 'images/mesh cap.jpg', category: 'Caps', tags: 'mesh cap breathable' },
-      { name: 'Trucker Cap', url: 'cap4.html', image: 'images/Trucker cap.jpg', category: 'Caps', tags: 'trucker cap snapback foam' },
-    { name: 'ID Cards', url: 'ids.html', image: 'images/idcards.jpeg', category: 'Category', tags: 'id lanyards holders' },
-    { name: 'Mugs', url: 'mugs.html', image: 'images/product-item-9.jpg', category: 'Category', tags: 'mug print gift' },
-    { name: 'All Categories', url: 'categories.html', image: 'images/tshirts.jpeg', category: 'Category', tags: 'all products browse' }
+    // T-Shirts
+    { name: 'Cotton Basic Round Neck T-Shirt', url: 'tshirt1.html', image: 'images/basic plain white 05.webp', category: 'T-Shirts', tags: 'cotton basic round neck' },
+    { name: 'Cotton Premium Round Neck T-Shirt', url: 'tshirt2.html', image: 'images/primeum tshirt black colours 01.webp', category: 'T-Shirts', tags: 'cotton premium round neck' },
+    { name: 'Cotton Affordable Oversized T-Shirt', url: 'tshirt3.html', image: 'images/oversized 200gsm tshirt ivory  images colours-01.webp', category: 'T-Shirts', tags: 'cotton oversized affordable' },
+    { name: 'Cotton Premium Oversized T-Shirt', url: 'tshirt4.html', image: 'images/240gsm oversize tshirt aqua blue  colours-01.webp', category: 'T-Shirts', tags: 'cotton premium oversized' },
+    { name: 'Cotton Affordable Polo T-Shirt', url: 'tshirt5.html', image: 'images/cotton pink basic polo tshirt 01.webp', category: 'T-Shirts', tags: 'cotton polo affordable' },
+    { name: 'Cotton Premium Polo T-Shirt', url: 'tshirt6.html', image: 'images/premium cotton sky blue basic polo tshirt 01.webp', category: 'T-Shirts', tags: 'cotton polo premium' },
+    { name: 'Polyester Basic Round Neck T-Shirt', url: 'tshirt7.html', image: 'images/polyster basic navy blue round tshirt 01.webp', category: 'T-Shirts', tags: 'polyester basic round neck' },
+    { name: 'Polyester Premium Round Neck T-Shirt', url: 'tshirt8.html', image: 'images/premium polyster basic round purple tshirt 01.webp', category: 'T-Shirts', tags: 'polyester premium round neck' },
+    { name: 'Polyester Basic Polo T-Shirt', url: 'tshirt9.html', image: 'images/Polyster basic Blue polo tshirts colours-01.webp', category: 'T-Shirts', tags: 'polyester basic polo' },
+    { name: 'Polyester Premium Polo T-Shirt', url: 'tshirt10.html', image: 'images/Polyster Premium polo tshirts  pink colours-01.webp', category: 'T-Shirts', tags: 'polyester premium polo' },
+    // Hoodies
+    { name: 'Normal Hoodie', url: 'hoodie1.html', image: 'images/normal hoodies Blue colour-01.webp', category: 'Hoodies', tags: 'hoodie normal' },
+    { name: 'Drop Shoulder Hoodie', url: 'hoodie2.html', image: 'images/drop shoulder hoodies maroon colour 01.webp', category: 'Hoodies', tags: 'hoodie drop shoulder' },
+    { name: 'Zipper Hoodie', url: 'hoodie3.html', image: 'images/Zipper hoodie yellow 01.webp', category: 'Hoodies', tags: 'hoodie zipper' },
+    { name: 'Zipper Hoodie with Hood', url: 'hoodie4.html', image: 'images/Zipper hoodie with hood red 01.webp', category: 'Hoodies', tags: 'hoodie zipper with hood' },
+    { name: 'Sweatshirt', url: 'sweatshirt1.html', image: 'images/sweatshirt white 01.webp', category: 'Hoodies', tags: 'sweatshirt' },
+    // Trackpants
+    { name: 'Basic Trackpants Without Zip / Pocket', url: 'trackpant1.html', image: 'images/Basic Trackpants Without Zip  Pocket 01.webp', category: 'Trackpants', tags: 'trackpants basic no zip' },
+    { name: 'Basic Trackpants With Zip / Pocket', url: 'trackpant2.html', image: 'images/Basic Trackpants With Zip  Pocket 01.webp', category: 'Trackpants', tags: 'trackpants basic zip' },
+    { name: 'Premium Trackpants Without Zip / Pocket', url: 'trackpant3.html', image: 'images/Premium Trackpants Without Zip  Pocket 01.webp', category: 'Trackpants', tags: 'trackpants premium no zip' },
+    { name: 'Premium Trackpants With Zip / Pocket', url: 'trackpant4.html', image: 'images/Premium Trackpants With Zip  Pocket 01.webp', category: 'Trackpants', tags: 'trackpants premium zip' },
+    // Shorts
+    { name: 'Basic Shorts', url: 'short1.html', image: 'images/Basic Shorts 01.webp', category: 'Shorts', tags: 'shorts basic' },
+    { name: 'Premium Shorts', url: 'short2.html', image: 'images/Premium Shorts 01.webp', category: 'Shorts', tags: 'shorts premium' },
+    // Jackets
+    { name: 'Zipper Jacket without Mesh', url: 'jacket1.html', image: 'images/Zipper Jacket without Mesh green 01.webp', category: 'Jackets', tags: 'jacket zipper no mesh' },
+    { name: 'Zipper Jacket with Mesh', url: 'jacket2.html', image: 'images/zipper jacket with mesh orange 01.webp', category: 'Jackets', tags: 'jacket zipper mesh' },
+    // Caps
+    { name: 'Baseball Cap', url: 'cap1.html', image: 'images/baseball cap.webp', category: 'Caps', tags: 'cap baseball' },
+    { name: 'Dad Cap', url: 'cap2.html', image: 'images/dad cap.webp', category: 'Caps', tags: 'cap dad' },
+    { name: 'Mesh Cap', url: 'cap3.html', image: 'images/mesh cap.webp', category: 'Caps', tags: 'cap mesh' },
+    { name: 'Trucker Cap', url: 'cap4.html', image: 'images/Trucker cap.webp', category: 'Caps', tags: 'cap trucker' },
+    // Jerseys
+    { name: 'Round Neck Jersey', url: 'jersey1.html', image: 'images/Round Neck Jersey 01.webp', category: 'Jerseys', tags: 'jersey round neck' },
+    { name: 'Full Sublimation Jersey - Half Sleeve', url: 'jersey2.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Jerseys', tags: 'jersey sublimation half sleeve' },
+    { name: 'Full Sublimation Jersey - Full Sleeve', url: 'jersey3.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Jerseys', tags: 'jersey sublimation full sleeve' },
+    { name: 'Full Sublimation Polo - Half Sleeve', url: 'jersey4.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Jerseys', tags: 'polo sublimation half sleeve' },
+    { name: 'Full Sublimation Polo - Full Sleeve', url: 'jersey5.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Jerseys', tags: 'polo sublimation full sleeve' },
+    // Badges
+    { name: 'Pin Round Badge', url: 'badge1.html', image: 'images/round pin badge.webp', category: 'Badges', tags: 'badge pin round' },
+    { name: 'Pin Square Badge', url: 'badge2.html', image: 'images/square pin badge.webp', category: 'Badges', tags: 'badge pin square' },
+    { name: 'Magnetic Round Badge', url: 'badge3.html', image: 'images/round magent badge.webp', category: 'Badges', tags: 'badge magnetic round' },
+    { name: 'Magnetic Square Badge', url: 'badge4.html', image: 'images/square magent badge.webp', category: 'Badges', tags: 'badge magnetic square' },
+    // ID Cards
+    { name: 'ID Cards', url: 'id1.html', image: 'images/idcards.webp', category: 'ID Cards', tags: 'id cards' },
+    { name: 'Lanyards', url: 'id2.html', image: 'images/lanyards 1.webp', category: 'ID Cards', tags: 'lanyards' },
+    { name: 'ID Holders', url: 'id3.html', image: 'images/card hoolder.webp', category: 'ID Cards', tags: 'id holders' },
+    // Mugs
+    { name: 'Custom Printed Mug', url: 'mugs.html', image: 'images/mug.webp', category: 'Mugs', tags: 'mug custom printed' },
+    // Main Categories
+    { name: 'T-Shirts', url: 'tshirts.html', image: 'images/basic plain white 05.webp', category: 'Category', tags: 'tshirts' },
+    { name: 'Hoodies', url: 'hoodies.html', image: 'images/drop shoulder hoodies maroon colour 01.webp', category: 'Category', tags: 'hoodies' },
+    { name: 'Trackpants', url: 'trackpants.html', image: 'images/Basic Trackpants Without Zip  Pocket 01.webp', category: 'Category', tags: 'trackpants' },
+    { name: 'Shorts', url: 'shorts.html', image: 'images/Basic Shorts 01.webp', category: 'Category', tags: 'shorts' },
+    { name: 'Jackets', url: 'jackets.html', image: 'images/zipper jacket with mesh orange 01.webp', category: 'Category', tags: 'jackets' },
+    { name: 'Caps', url: 'caps.html', image: 'images/Caps.webp', category: 'Category', tags: 'caps' },
+    { name: 'Badges', url: 'badges.html', image: 'images/round pin badge.webp', category: 'Category', tags: 'badges' },
+    { name: 'Jerseys', url: 'jerseys.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Category', tags: 'jerseys' },
+    { name: 'ID Cards', url: 'ids.html', image: 'images/idcards.webp', category: 'Category', tags: 'id cards' },
+    { name: 'Mugs', url: 'mugs.html', image: 'images/mug.webp', category: 'Category', tags: 'mugs' },
+    { name: 'All Categories', url: 'categories.html', image: 'images/basic plain white 05.webp', category: 'Category', tags: 'all products browse' }
   ];
 
   const pathPrefix = window.location.pathname.indexOf('/customizer-tool/') !== -1 ? '../' : '';
