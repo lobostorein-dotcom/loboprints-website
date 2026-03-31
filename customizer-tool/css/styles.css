@@ -460,7 +460,6 @@ body {
 
 .mobile-controls-header,
 .mobile-controls-close-btn {
-  }
   display: none;
 }
 
@@ -797,7 +796,6 @@ body {
     font-weight: 700;
     color: #334155;
     cursor: pointer;
-    /* transition and hover style removed (undo) */
   }
 
   /* Hide desktop title/subtitle — toggle button replaces them */
