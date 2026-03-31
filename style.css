@@ -1460,7 +1460,7 @@ a {
   height: 48px;
   border: 1px solid #ccc;
 }
-.qty-number .quntity-button {
+ qty-number .quntity-button {
   min-width: 40px;
   height: 40px;
   font-size: 1.8em;
@@ -1471,11 +1471,11 @@ a {
   transition: .5s all ease-in-out;
 }
 
-.qty-number .quntity-button:hover {
+ qty-number .quntity-button:hover {
   background-color: var(--accent-lit-color);
 }
 
-.qty-number input {
+ qty-number input {
   font-size: 1.4em;
   width: 50px;
   height: 40px;
@@ -1484,7 +1484,7 @@ a {
   border: 1px solid var(--dark-color);
 }
 
-.qty-field .regular-price {
+ qty-field .regular-price {
   display: none;
 }
 
@@ -2836,4 +2836,20 @@ body.mobile-drawer-open .mobile-drawer-overlay {
     padding: 0.55rem 0.3rem;
     font-size: 0.98rem;
   }
+}
+
+.upload-quote-close {
+  border: 1px solid rgba(148,163,184,.45);
+  background: #fff;
+  color: #0f172a;
+  border-radius: 12px;
+  padding: 8px 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.upload-quote-close:hover, .upload-quote-close:focus {
+  background: #f87171;
+  color: #fff;
+  border-color: #dc2626;
 }
