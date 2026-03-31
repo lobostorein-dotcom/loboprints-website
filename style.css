@@ -1,3 +1,19 @@
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  transition: transform 0.2s;
+  display: block;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
 /*
 Main stylesheet for the Lobo Prints website.
 Version: 1.1
