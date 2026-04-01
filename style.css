@@ -3184,3 +3184,18 @@ body.mobile-drawer-open .mobile-drawer-overlay {
   border-width: 2px;
 }
 
+/* ── Premium hamburger menu icon (mobile) ────────────────── */
+@media (max-width: 991.98px) {
+  .navbar-toggler {
+    border: 2px solid rgba(234, 179, 8, 0.65);
+    border-radius: 8px;
+    padding: 5px 9px;
+  }
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.28);
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23eab308' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+}
+
