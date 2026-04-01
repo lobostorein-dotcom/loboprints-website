@@ -392,6 +392,23 @@
     @media (max-width: 575px) {
       .why-hero .hero-stats { gap: 1.5rem; }
       .why-hero .stat-item strong { font-size: 1.7rem; }
+      .why-hero .btn-warning,
+      .why-hero .btn-outline-light {
+        display: block;
+        width: 100%;
+      }
+      .why-hero .btn-warning.me-3 {
+        margin-right: 0 !important;
+      }
+      .why-hero .btn-outline-light {
+        margin-top: 0.8rem;
+      }
+      .why-collage-image {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        object-position: center;
+      }
     }
   </style>
 </head>
@@ -612,8 +629,8 @@
           </div>
         </div>
       </div>
-      <div class="mt-5 rounded-4 overflow-hidden border" style="box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);">
-        <img src="images/behind the scene collage.webp" alt="Behind the scenes collage showing design print packing and delivery" class="img-fluid w-100" loading="lazy" decoding="async">
+      <div class="mt-5 rounded-4 overflow-hidden border why-collage-block" style="box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);">
+        <img src="images/behind the scene collage.webp" alt="Behind the scenes collage showing design print packing and delivery" class="img-fluid w-100 why-collage-image" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -667,7 +684,7 @@
               <td><span class="check-partial">~</span></td>
             </tr>
             <tr>
-              <td><strong>Live design customizer tool</strong></td>
+              <td><strong>Live Design Lab tool</strong></td>
               <td><span class="check-yes">✔</span></td>
               <td><span class="check-no">✘</span></td>
             </tr>
@@ -778,8 +795,8 @@
           </div>
         </div>
       </div>
-      <div class="mt-5 rounded-4 overflow-hidden border" style="box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);">
-        <img src="images/behind the scene collage.webp" alt="Customer highlights and behind-the-scenes collage" class="img-fluid w-100" loading="lazy" decoding="async">
+      <div class="mt-5 rounded-4 overflow-hidden border why-collage-block" style="box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);">
+        <img src="images/behind the scene collage.webp" alt="Customer highlights and behind-the-scenes collage" class="img-fluid w-100 why-collage-image" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
