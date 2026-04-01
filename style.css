@@ -344,8 +344,8 @@ a {
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
   color: #0f172a;
-  background: linear-gradient(135deg, rgba(219, 234, 254, 0.9), rgba(239, 246, 255, 0.9));
-  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.16);
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.9), rgba(253, 230, 138, 0.7));
+  box-shadow: 0 6px 14px rgba(234, 179, 8, 0.18);
 }
 
 .navbar-nav .nav-link.active {
@@ -2869,3 +2869,318 @@ body.mobile-drawer-open .mobile-drawer-overlay {
   color: #fff;
   border-color: #dc2626;
 }
+
+@media (max-width: 767.98px) {
+  body {
+    --bs-body-font-size: 16px;
+  }
+
+  h1,
+  .h1 {
+    font-size: clamp(1.8rem, 7vw, 2.35rem);
+  }
+
+  h2,
+  .h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  h3,
+  .h3 {
+    font-size: clamp(1.25rem, 5vw, 1.65rem);
+  }
+
+  section,
+  .py-5,
+  .my-5 {
+    margin-top: 1.75rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .container,
+  .container-fluid {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .breadcrumb {
+    row-gap: 0.3rem;
+  }
+
+  .table-responsive,
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+    transform: scale(0.92);
+    transform-origin: bottom right;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar-collapse.mobile-drawer-enabled {
+    width: min(84vw, 320px);
+    min-width: 0;
+  }
+
+  .navbar-brand img {
+    height: 40px !important;
+  }
+
+  .header-search-toggle {
+    width: 34px;
+    height: 34px;
+  }
+
+  .feature-strip {
+    padding: 42px 0;
+  }
+
+  .feature-strip .feat-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 1.35rem;
+  }
+}
+
+
+.ai-summary-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.premium-quote-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 55%, #eef2ff 100%);
+  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.16) !important;
+}
+
+.premium-quote-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, #facc15 0%, #eab308 45%, #2563eb 100%);
+}
+
+.premium-quote-card h2 {
+  color: #0f172a;
+  font-family: "Marcellus", serif;
+  margin-bottom: 0.35rem !important;
+}
+
+.premium-quote-subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 1.1rem;
+}
+
+.premium-quote-card .form-label {
+  color: #334155;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+}
+
+.premium-quote-card .form-control,
+.premium-quote-card .form-select {
+  border-radius: 0.85rem;
+  border: 1px solid #d4dbe7;
+  background: #fffdf7;
+  color: #0f172a;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.premium-quote-card .form-control::placeholder {
+  color: #94a3b8;
+}
+
+.premium-quote-card .form-control:focus,
+.premium-quote-card .form-select:focus {
+  border-color: #93c5fd;
+  background: #fff;
+  box-shadow: 0 0 0 0.24rem rgba(59, 130, 246, 0.16);
+}
+
+.premium-quote-card textarea.form-control {
+  min-height: 136px;
+  resize: vertical;
+}
+
+.quote-actions {
+  margin-top: 0.4rem;
+}
+
+.quote-actions .btn {
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quote-actions .btn:hover,
+.quote-actions .btn:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 24px rgba(15, 23, 42, 0.18);
+}
+
+.btn-quote-whatsapp {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #059669;
+  color: #fff;
+}
+
+.btn-quote-whatsapp:hover,
+.btn-quote-whatsapp:focus {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #047857;
+  color: #fff;
+}
+
+.btn-quote-upload {
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+  border-color: #eab308;
+  color: #0f172a;
+}
+
+.btn-quote-upload:hover,
+.btn-quote-upload:focus {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  border-color: #d97706;
+  color: #0f172a;
+}
+
+/* ─── Product CTA Action Buttons ─── */
+.product-cta-row {
+  margin-bottom: 0.25rem;
+}
+
+.product-cta-row .btn {
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 0.97rem;
+  padding: 0.72rem 1.6rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.product-cta-row .btn:hover,
+.product-cta-row .btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+}
+
+/* WhatsApp CTA — premium green */
+.product-cta-row .btn-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #059669;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.3);
+}
+
+.product-cta-row .btn-primary:hover,
+.product-cta-row .btn-primary:focus {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #047857;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(5, 150, 105, 0.4);
+}
+
+/* Upload CTA — gold outline */
+.product-cta-row .btn-outline-primary {
+  background: transparent;
+  border: 2px solid #eab308;
+  color: #92600a !important;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+}
+
+.product-cta-row .btn-outline-primary:hover,
+.product-cta-row .btn-outline-primary:focus {
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+  border-color: #eab308;
+  color: #0f172a !important;
+  box-shadow: 0 8px 20px rgba(234, 179, 8, 0.3);
+}
+
+/* Design Lab CTA — navy premium */
+.product-cta-row .btn-outline-dark {
+  background: transparent;
+  border: 2px solid #1e3a5f;
+  color: #1e3a5f !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+.product-cta-row .btn-outline-dark:hover,
+.product-cta-row .btn-outline-dark:focus {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  border-color: #0f172a;
+  color: #facc15 !important;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+}
+
+/* Product list CTA section (Need Custom ...?) */
+.product-list-cta {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  color: #fff;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.product-list-cta h2 {
+  font-family: 'Marcellus', serif;
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  color: #facc15;
+  margin-bottom: 1rem;
+}
+
+.product-list-cta p {
+  font-size: 1.05rem;
+  opacity: 0.82;
+  max-width: 540px;
+  margin: 0 auto 2rem;
+}
+
+.product-list-cta .btn {
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.product-list-cta .btn-warning {
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+  border-color: #eab308;
+  color: #0f172a;
+  box-shadow: 0 8px 20px rgba(234, 179, 8, 0.32);
+}
+
+.product-list-cta .btn-warning:hover,
+.product-list-cta .btn-warning:focus {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  border-color: #d97706;
+  color: #0f172a;
+  box-shadow: 0 12px 26px rgba(234, 179, 8, 0.45);
+}
+
+.product-list-cta .btn-outline-light {
+  border-width: 2px;
+}
+
