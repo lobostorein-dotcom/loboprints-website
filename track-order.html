@@ -44,6 +44,69 @@
   }
   </script>
   <style>
+        /* ── Premium Result Card ── */
+        .premium-card {
+          background: #fff;
+          border-radius: 1.25rem;
+          box-shadow: 0 8px 40px rgba(30,50,100,0.10), 0 1.5px 4px rgba(30,50,100,0.06);
+          border: 1.5px solid #e2e8f0;
+          overflow: hidden;
+          transition: box-shadow 0.2s;
+        }
+        .premium-divider {
+          height: 1.5px;
+          background: linear-gradient(90deg,#e2e8f0 0%,#c7d2fe 50%,#e2e8f0 100%);
+          margin: 1rem 0;
+          border-radius: 99px;
+        }
+        /* Stage pill */
+        .stage-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          padding: 0.3rem 1rem;
+          border-radius: 999px;
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          background: linear-gradient(90deg,#22c55e 0%,#16a34a 100%);
+          color: #fff;
+          box-shadow: 0 2px 10px rgba(22,163,74,0.20);
+        }
+        /* Order meta row */
+        .order-meta-row {
+          display: flex;
+          gap: 0;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 0.75rem;
+          overflow: hidden;
+        }
+        .order-meta-item {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          padding: 0.65rem 0.8rem;
+          background: #f8fafc;
+        }
+        .order-meta-item + .order-meta-item { border-left: 1.5px solid #e2e8f0; }
+        .order-meta-label {
+          font-size: 0.65rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          color: #94a3b8;
+          margin-bottom: 0.2rem;
+        }
+        .order-meta-value {
+          font-size: 0.92rem;
+          font-weight: 700;
+          color: #1e293b;
+        }
+        @media (max-width: 575.98px) {
+          .premium-card { padding: 1.2rem 1rem !important; }
+          .order-meta-row { flex-direction: column; }
+          .order-meta-item + .order-meta-item { border-left: none; border-top: 1.5px solid #e2e8f0; }
+        }
     body { padding-top: 70px; }
 
     /*  Page hero  */
@@ -96,7 +159,7 @@
       border: 1px solid #bae6fd;
     }
 
-    /*  Stepper  shared  */
+    /* ── Premium Stepper ── */
     .order-stepper {
       display: flex;
       align-items: flex-start;
@@ -111,55 +174,61 @@
       flex: 1 1 0;
       position: relative;
       text-align: center;
-      min-width: 60px;
+      min-width: 0;
     }
 
-    /* horizontal connector line */
+    /* connector track */
     .step:not(:last-child)::after {
       content: '';
       position: absolute;
-      top: 19px;
-      left: calc(50% + 20px);
-      right: -50%;
-      height: 2px;
-      background: #dee2e6;
+      top: 22px;
+      left: calc(50% + 24px);
+      right: calc(-50% + 2px);
+      height: 3px;
+      background: #e2e8f0;
+      border-radius: 99px;
       z-index: 0;
+      transition: background 0.4s;
     }
-    .step.completed:not(:last-child)::after { background: #198754; }
-    .step.active:not(:last-child)::after    { background: #198754; }
+    .step.completed:not(:last-child)::after {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+    }
 
-    /* circle icon */
+    /* step circle */
     .step-icon {
-      width: 40px;
-      height: 40px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      border: 2px solid #dee2e6;
-      background: #f8f9fa;
+      border: 2.5px solid #e2e8f0;
+      background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.82rem;
-      color: #adb5bd;
+      font-size: 0.85rem;
+      color: #94a3b8;
       position: relative;
       z-index: 1;
-      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
     .step.completed .step-icon {
-      background: #198754;
-      border-color: #198754;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-color: #16a34a;
       color: #fff;
+      box-shadow: 0 4px 16px rgba(22,163,74,0.28);
     }
     .step.active .step-icon {
-      background: #0d6efd;
-      border-color: #0d6efd;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      border-color: #2563eb;
       color: #fff;
-      animation: pulse-ring 2s ease-out infinite;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.35);
+      animation: premium-pulse 2s ease-out infinite;
     }
-    @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0   rgba(13, 110, 253, 0.38); }
-      65%  { box-shadow: 0 0 0 9px rgba(13, 110, 253, 0);    }
-      100% { box-shadow: 0 0 0 0   rgba(13, 110, 253, 0);    }
+    @keyframes premium-pulse {
+      0%   { box-shadow: 0 0 0 0   rgba(37,99,235,0.40), 0 4px 20px rgba(37,99,235,0.35); }
+      60%  { box-shadow: 0 0 0 10px rgba(37,99,235,0),   0 4px 20px rgba(37,99,235,0.35); }
+      100% { box-shadow: 0 0 0 0   rgba(37,99,235,0),   0 4px 20px rgba(37,99,235,0.35); }
     }
 
     /* checkmark vs number */
@@ -169,23 +238,36 @@
 
     /* label */
     .step-label {
-      font-size: 0.72rem;
-      margin-top: 0.45rem;
-      color: #adb5bd;
+      font-size: 0.68rem;
+      margin-top: 0.5rem;
+      color: #94a3b8;
       font-weight: 500;
       line-height: 1.25;
       word-break: break-word;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
     }
-    .step.completed .step-label,
-    .step.active .step-label {
-      color: #212529;
-      font-weight: 600;
+    .step.completed .step-label { color: #16a34a; font-weight: 700; }
+    .step.active    .step-label { color: #2563eb; font-weight: 700; }
+
+    /* progress percentage bar beneath stepper */
+    .stepper-progress-wrap {
+      margin-top: 1.1rem;
+      background: #e2e8f0;
+      border-radius: 99px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .stepper-progress-bar {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #22c55e 0%, #2563eb 100%);
+      transition: width 0.7s cubic-bezier(.4,0,.2,1);
     }
 
     /*  Mobile: vertical stepper  */
     @media (max-width: 575.98px) {
       .tracker-card { padding: 1.5rem 1.25rem; }
-
       .order-stepper {
         flex-direction: column;
         align-items: stretch;
@@ -200,19 +282,16 @@
         gap: 0.9rem;
         min-width: 0;
       }
-      /* vertical connector */
-      .step:not(:last-child) { padding-bottom: 1.25rem; }
+      .step:not(:last-child) { padding-bottom: 1.4rem; }
       .step:not(:last-child)::after {
-        left: 19px;
-        top: 40px;
+        left: 22px;
+        top: 46px;
         right: auto;
-        width: 2px;
-        height: 1.25rem;
+        width: 3px;
+        height: 1.4rem;
       }
-      .step-label {
-        margin-top: 0;
-        font-size: 0.9rem;
-      }
+      .step-label { margin-top: 0; font-size: 0.82rem; text-transform: none; }
+      .stepper-progress-wrap { display: none; }
     }
   </style>
 </head>
@@ -256,14 +335,14 @@
           <div class="tracker-card">
 
             <!-- Input -->
-            <label class="form-label fw-semibold mb-2" for="trackingCode">Tracking Code</label>
+            <label class="form-label fw-semibold mb-2" for="trackingCode">Tracking ID</label>
             <div class="input-group">
               <input
                 type="text"
                 id="trackingCode"
                 class="form-control"
-                placeholder="e.g. LB001"
-                aria-label="Tracking code"
+                placeholder="e.g. A7K2P9"
+                aria-label="Tracking ID"
                 maxlength="32"
                 autocomplete="off"
                 spellcheck="false">
@@ -271,7 +350,7 @@
                 Track
               </button>
             </div>
-            <p class="text-muted small mt-2 mb-0">Your tracking code was shared with you when your order was placed.</p>
+            <p class="text-muted small mt-2 mb-0">Your Tracking ID was shared with you when your order was placed.</p>
 
             <!-- Loading -->
             <div id="loadingSpinner" class="text-center py-4 d-none">
@@ -283,7 +362,7 @@
 
             <!-- Not found -->
             <div id="errorMsg" class="alert alert-warning mt-4 mb-0 d-none" role="alert">
-              <strong>Order not found.</strong> Please double&#8209;check your tracking code and try again.
+              <strong>Invalid Tracking ID.</strong> Please double&#8209;check your Tracking ID and try again.
             </div>
 
             <!-- Network error -->
@@ -293,24 +372,45 @@
 
             <!-- Result -->
             <div id="resultPanel" class="mt-4 d-none">
-              <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
-                <div>
-                  <span class="text-muted small d-block">Order Code</span>
-                  <span class="fw-bold fs-5" id="displayCode"></span>
+              <div class="premium-card p-4 rounded-4">
+
+                <!-- Header: ID + Stage badge -->
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2563eb" opacity=".13"/><path d="M8 12.5l3 3 5-5" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span class="text-muted small">Tracking ID</span>
+                    <span class="fw-bold" id="displayTrackingID" style="letter-spacing:.06em;"></span>
+                  </div>
+                  <span class="stage-pill" id="displayStage"></span>
                 </div>
-                <div class="text-end">
-                  <span class="text-muted small d-block">Current Stage</span>
-                  <span class="status-badge" id="displayStage"></span>
+
+                <!-- Order details -->
+                <div class="order-meta-row">
+                  <div class="order-meta-item">
+                    <span class="order-meta-label">Name</span>
+                    <span class="order-meta-value" id="displayName"></span>
+                  </div>
+                  <div class="order-meta-item">
+                    <span class="order-meta-label">Product</span>
+                    <span class="order-meta-value" id="displayProduct"></span>
+                  </div>
+                  <div class="order-meta-item">
+                    <span class="order-meta-label">Qty</span>
+                    <span class="order-meta-value" id="displayQty"></span>
+                  </div>
                 </div>
+
+                <div class="premium-divider"></div>
+
+                <!-- Progress stepper -->
+                <p class="text-muted small mb-3 fw-semibold" style="letter-spacing:.04em;text-transform:uppercase;font-size:.7rem;">Order Progress</p>
+                <div class="order-stepper" id="orderStepper" role="list" aria-label="Order stages"></div>
+                <div class="stepper-progress-wrap mt-3">
+                  <div class="stepper-progress-bar" id="stepperBar" style="width:0%"></div>
+                </div>
+
               </div>
-              <hr class="my-3">
-              <p class="fw-semibold mb-3 text-center small text-uppercase letter-spacing-1 text-muted">Order Progress</p>
-              <div
-                class="order-stepper"
-                id="orderStepper"
-                role="list"
-                aria-label="Order progress stages"></div>
-            </div>
+            </div><!-- /#resultPanel -->
 
           </div><!-- /.tracker-card -->
 
@@ -473,18 +573,19 @@
       });
     }
 
+
     async function trackOrder() {
       var input = document.getElementById('trackingCode');
-      var code = input.value.trim().toUpperCase();
+      var trackingID = input.value.trim().toUpperCase();
       var now = Date.now();
 
-      if (!code) {
+      if (!trackingID) {
         input.focus();
         return;
       }
 
-      if (!TRACK_SECURITY.codePattern.test(code)) {
-        showSecurityMessage('Please enter a valid tracking code (letters, numbers, and hyphens only).');
+      if (!TRACK_SECURITY.codePattern.test(trackingID)) {
+        showSecurityMessage('Please enter a valid Tracking ID (letters, numbers, and hyphens only).');
         input.focus();
         return;
       }
@@ -502,7 +603,8 @@
       document.getElementById('trackBtn').disabled = true;
 
       try {
-        var url = 'https://script.google.com/macros/s/AKfycbxZp9MPsH6OedPLQPA-ijljLhPBMlaONmZFrA8v0rJ1u3JSW_aNzmIgTagv0KNquyw8/exec?Code=' + encodeURIComponent(code);
+        // Use new API URL and param
+        var url = 'https://script.google.com/macros/s/REMOVED_KEY_TRACKING/exec?code=' + encodeURIComponent(trackingID);
         var controller = new AbortController();
         var timeoutId = setTimeout(function () { controller.abort(); }, 12000);
         var res = await fetch(url, {
@@ -528,8 +630,6 @@
         var record = null;
         if (Array.isArray(data)) {
           record = data.length ? data[0] : null;
-        } else if (data && typeof data === 'object' && !data.error) {
-          record = data;
         }
 
         if (!record) {
@@ -537,21 +637,17 @@
           return;
         }
 
-        // Validate stage against known list  never render raw API data into HTML
-        var rawStage = String(record.Stage || record.stage || '').trim();
-        var validStage = STAGES.find(function(s) {
-          return s.toLowerCase() === rawStage.toLowerCase();
-        });
-
-        if (!validStage) {
-          showEl('errorMsg');
-          return;
-        }
-
-        var displayCode = String(record.Code || record.code || code).trim().toUpperCase();
-        document.getElementById('displayCode').textContent = displayCode;
-        document.getElementById('displayStage').textContent = validStage;
-        buildStepper(validStage);
+        // Display only allowed fields
+        document.getElementById('displayTrackingID').textContent = record.TrackingID || '';
+        document.getElementById('displayName').textContent = record.Name || '';
+        document.getElementById('displayProduct').textContent = record.Product || '';
+        document.getElementById('displayQty').textContent = record.Qty || '';
+        document.getElementById('displayStage').textContent = record.Stage || '';
+        buildStepper(record.Stage || '');
+        // Update thin progress bar
+        var stageIdx = STAGES.findIndex(function(s){ return s.toLowerCase() === (record.Stage||'').toLowerCase(); });
+        var pct = stageIdx < 0 ? 0 : Math.round(((stageIdx + 1) / STAGES.length) * 100);
+        document.getElementById('stepperBar').style.width = pct + '%';
         showEl('resultPanel');
 
       } catch (err) {
