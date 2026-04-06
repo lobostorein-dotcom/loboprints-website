@@ -1,4 +1,4 @@
-let selectedColor = "white";
+﻿let selectedColor = "white";
 let selectedSize = "Multiple Sizes";
 
 const variantImages = {
@@ -116,7 +116,7 @@ Quantity: ${quantity}
 
 I will attach my design file here if needed.`;
 
-  let url = "https://wa.me/919742998799?text=" + encodeURIComponent(message);
+  let url = "https://wa.me/919742118799?text=" + encodeURIComponent(message);
 
   window.open(url,"_blank");
 
@@ -144,7 +144,7 @@ Details: ${details}
 
 Please get back to me with a quote.`;
 
-  const whatsappURL = `https://wa.me/919742998799?text=${encodeURIComponent(message)}`;
+  const whatsappURL = `https://wa.me/919742118799?text=${encodeURIComponent(message)}`;
   window.open(whatsappURL, '_blank');
 }
 

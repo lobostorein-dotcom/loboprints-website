@@ -88,6 +88,15 @@ document.addEventListener('DOMContentLoaded', function () {
     { name: 'Full Sublimation Jersey - Full Sleeve', url: 'jersey3.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Jerseys', tags: 'jersey sublimation full sleeve' },
     { name: 'Full Sublimation Polo - Half Sleeve', url: 'jersey4.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Jerseys', tags: 'polo sublimation half sleeve' },
     { name: 'Full Sublimation Polo - Full Sleeve', url: 'jersey5.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Jerseys', tags: 'polo sublimation full sleeve' },
+    // Sports Jerseys
+    { name: 'Cricket Jersey', url: 'cricket-jersey.html', image: 'images/Round Neck Jersey 01.webp', category: 'Sports Jerseys', tags: 'sports jersey cricket' },
+    { name: 'Football Jersey', url: 'football-jersey.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Sports Jerseys', tags: 'sports jersey football' },
+    { name: 'Volleyball Jersey', url: 'volleyball-jersey.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Sports Jerseys', tags: 'sports jersey volleyball' },
+    { name: 'Throwball Jersey', url: 'throwball-jersey.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Sports Jerseys', tags: 'sports jersey throwball' },
+    { name: 'Badminton Jersey', url: 'badminton-jersey.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Sports Jerseys', tags: 'sports jersey badminton' },
+    { name: 'Pickle Ball Jersey', url: 'pickle-ball-jersey.html', image: 'images/Round Neck Jersey 02.webp', category: 'Sports Jerseys', tags: 'sports jersey pickle ball' },
+    { name: 'Basket Ball Jersey', url: 'basket-ball-jersey.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Sports Jerseys', tags: 'sports jersey basket ball' },
+    { name: 'Kabbadi Jersey', url: 'kabbadi-jersey.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Sports Jerseys', tags: 'sports jersey kabbadi' },
     // Badges
     { name: 'Pin Round Badge', url: 'badge1.html', image: 'images/round pin badge.webp', category: 'Badges', tags: 'badge pin round' },
     { name: 'Pin Square Badge', url: 'badge2.html', image: 'images/square pin badge.webp', category: 'Badges', tags: 'badge pin square' },
@@ -108,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
     { name: 'Caps', url: 'caps.html', image: 'images/Caps.webp', category: 'Category', tags: 'caps' },
     { name: 'Badges', url: 'badges.html', image: 'images/round pin badge.webp', category: 'Category', tags: 'badges' },
     { name: 'Jerseys', url: 'jerseys.html', image: 'images/Full%20Sublimation%20Polo%20%E2%80%93%20Full%20Sleeve%2001.webp', category: 'Category', tags: 'jerseys' },
+    { name: 'Sports Jerseys', url: 'sports.html', image: 'images/Full%20Sublimation%20Jersey%20%E2%80%93%20Half%20Sleeve%2001.webp', category: 'Category', tags: 'sports jerseys cricket football volleyball throwball badminton pickle ball basket ball kabbadi' },
     { name: 'ID Cards', url: 'ids.html', image: 'images/idcards.webp', category: 'Category', tags: 'id cards' },
     { name: 'Mugs', url: 'mugs.html', image: 'images/mug.webp', category: 'Category', tags: 'mugs' },
     { name: 'All Categories', url: 'categories.html', image: 'images/basic plain white 05.webp', category: 'Category', tags: 'all products browse' }

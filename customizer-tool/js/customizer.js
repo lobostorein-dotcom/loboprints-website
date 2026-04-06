@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
   // Background SVG removed — real product PNGs are used instead
