@@ -485,7 +485,8 @@
     crossorigin="anonymous"></script>
 
   <script>
-    const STAGES = ['Designing', 'Cutting', 'Stitching', 'Printing', 'Packing', 'Delivery'];
+    const CLOTHING_STAGES = ['Order Confirmed', 'Designing', 'Cutting', 'Stitching', 'Printing', 'Packing', 'Order Ready', 'Delivery'];
+    const MERCH_STAGES = ['Order Confirmed', 'Designing', 'Printing', 'Order Ready', 'Delivery'];
     const TRACK_SECURITY = {
       minIntervalMs: 2500,
       windowMs: 60000,
@@ -543,13 +544,25 @@
       ['loadingSpinner', 'errorMsg', 'networkErrMsg', 'resultPanel'].forEach(hideEl);
     }
 
-    function buildStepper(activeStage) {
+    function normalizeStageName(value) {
+      return String(value || '').trim().toLowerCase();
+    }
+
+    function getStagesForProduct(productName) {
+      var product = String(productName || '').toLowerCase();
+      if (/(mug|badge|badges|id|card)/.test(product)) {
+        return MERCH_STAGES;
+      }
+      return CLOTHING_STAGES;
+    }
+
+    function buildStepper(activeStage, stages) {
       const stepper = document.getElementById('orderStepper');
       stepper.innerHTML = '';
-      const activeIdx = STAGES.findIndex(function(s) {
-        return s.toLowerCase() === activeStage.toLowerCase();
+      const activeIdx = stages.findIndex(function(s) {
+        return normalizeStageName(s) === normalizeStageName(activeStage);
       });
-      STAGES.forEach(function(stage, idx) {
+      stages.forEach(function(stage, idx) {
         var state = idx < activeIdx ? 'completed' : (idx === activeIdx ? 'active' : '');
         var ariaLabel = stage + (state === 'completed' ? '  completed' : state === 'active' ? '  in progress' : '  upcoming');
 
@@ -643,10 +656,11 @@
         document.getElementById('displayProduct').textContent = record.Product || '';
         document.getElementById('displayQty').textContent = record.Qty || '';
         document.getElementById('displayStage').textContent = record.Stage || '';
-        buildStepper(record.Stage || '');
+        var stages = getStagesForProduct(record.Product || '');
+        buildStepper(record.Stage || '', stages);
         // Update thin progress bar
-        var stageIdx = STAGES.findIndex(function(s){ return s.toLowerCase() === (record.Stage||'').toLowerCase(); });
-        var pct = stageIdx < 0 ? 0 : Math.round(((stageIdx + 1) / STAGES.length) * 100);
+        var stageIdx = stages.findIndex(function(s){ return normalizeStageName(s) === normalizeStageName(record.Stage || ''); });
+        var pct = stageIdx < 0 ? 0 : Math.round(((stageIdx + 1) / stages.length) * 100);
         document.getElementById('stepperBar').style.width = pct + '%';
         showEl('resultPanel');
 
