@@ -933,8 +933,13 @@ document.addEventListener('DOMContentLoaded', function () {
         throw new Error('Submission failed. Please try again.');
       }
 
-      console.log('Submission successful');
-      setStatus('Thanks! Your request was submitted successfully.', false, true);
+      if (response.type === 'opaque') {
+        console.log('Used no-cors mode, cannot verify success');
+        setStatus('Request sent, but unable to confirm delivery. Please check your email or contact us if you don\'t hear back.', false, false);
+      } else {
+        console.log('Submission successful');
+        setStatus('Thanks! Your request was submitted successfully.', false, true);
+      }
       form.reset();
     } catch (error) {
       setStatus(error && error.message ? error.message : 'Something went wrong while submitting.', true, false);
