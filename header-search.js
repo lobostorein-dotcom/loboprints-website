@@ -903,6 +903,7 @@ document.addEventListener('DOMContentLoaded', function () {
       };
 
       var response;
+      console.log('Attempting normal fetch to:', WEBAPP_URL);
       try {
         response = await fetch(WEBAPP_URL, {
           method: 'POST',
@@ -911,7 +912,9 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           body: JSON.stringify(payload)
         });
+        console.log('Normal fetch succeeded, response:', response);
       } catch (networkError) {
+        console.log('Normal fetch failed with error:', networkError, 'trying no-cors');
         // Fallback for restrictive CORS responses on some Apps Script deployments.
         response = await fetch(WEBAPP_URL, {
           method: 'POST',
@@ -921,12 +924,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           body: JSON.stringify(payload)
         });
+        console.log('No-cors fetch completed, response:', response);
       }
 
+      console.log('Response type:', response.type, 'ok:', response.ok);
       if (response.type !== 'opaque' && !response.ok) {
+        console.log('Response not ok, throwing error');
         throw new Error('Submission failed. Please try again.');
       }
 
+      console.log('Submission successful');
       setStatus('Thanks! Your request was submitted successfully.', false, true);
       form.reset();
     } catch (error) {
