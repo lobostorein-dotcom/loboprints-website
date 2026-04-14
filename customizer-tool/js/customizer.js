@@ -2,7 +2,7 @@
   const STAGE_WIDTH = 700;
   const STAGE_HEIGHT = 760;
   // Background SVG removed — real product PNGs are used instead
-  const APPS_SCRIPT_ENDPOINT = 'https://script.google.com/macros/s/REMOVED_KEY_CUSTOMIZER/exec';
+  const APPS_SCRIPT_ENDPOINT = (window.LOBO_CONFIG && window.LOBO_CONFIG.customizer_endpoint) || 'https://script.google.com/macros/s/AKfycbwb26UuSOQOuVT3FoIs6dfN5mi6Aivrc9RHZEDEDq26RePzkTA8mAF1p6bBWfk8QsO3wg/exec';
   const SUBMISSION_IMAGE_TYPE = 'image/png';
   const QUOTE_SECURITY = {
     minFillMs: 4000,

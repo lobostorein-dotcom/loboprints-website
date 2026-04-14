@@ -629,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  var WEBAPP_URL = 'https://script.google.com/macros/s/REMOVED_KEY_UPLOAD/exec';
+  var WEBAPP_URL = (window.LOBO_CONFIG && window.LOBO_CONFIG.upload_endpoint) || 'https://script.google.com/macros/s/AKfycbxhONtteGm48yx232EkeaEy3pyED3Z4daz2xh3-CTiyb3zRpmrN6hcKW4qvve3ovSvU/exec';
   var MAX_FILE_SIZE = 10 * 1024 * 1024;
 
   if (document.querySelector('.upload-quote-modal')) {

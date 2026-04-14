@@ -617,7 +617,8 @@
 
       try {
         // Use new API URL and param
-        var url = 'https://script.google.com/macros/s/REMOVED_KEY_TRACKING/exec?code=' + encodeURIComponent(trackingID);
+        var baseUrl = (window.LOBO_CONFIG && window.LOBO_CONFIG.tracking_endpoint) || 'https://script.google.com/macros/s/AKfycbwvLv6rWhZ3Djy_sFuGnru_Vy64eKov9IAW83ZEukIWDKwtU7N3tA6q66-0Q0s-jfJb/exec';
+        var url = baseUrl + '?code=' + encodeURIComponent(trackingID);
         var controller = new AbortController();
         var timeoutId = setTimeout(function () { controller.abort(); }, 12000);
         var res = await fetch(url, {
