@@ -2505,6 +2505,72 @@ section.bg-primary.text-white.py-5 a.btn.btn-light.btn-lg[href*="wa.me"]:focus {
   contain-intrinsic-size: 1px 900px;
 }
 
+.homepage #footer .row.d-flex.flex-wrap.justify-content-between.py-5 {
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
+}
+
+.homepage #footer .footer-menu {
+  padding: 0.68rem 0.75rem;
+}
+
+.homepage #footer .footer-menu p {
+  margin-bottom: 0.38rem;
+  line-height: 1.42;
+}
+
+.homepage #footer .footer-intro.mb-4 {
+  margin-bottom: 0.6rem !important;
+}
+
+.homepage #footer .widget-title {
+  margin-bottom: 0.55rem !important;
+  font-size: 0.75rem;
+}
+
+.homepage #footer .menu-list .menu-item {
+  margin-bottom: 0.18rem;
+}
+
+.homepage #footer .social-links ul {
+  gap: 0.28rem !important;
+}
+
+.homepage #footer > .border-top {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+.homepage #footer > .border-top p {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 767px) {
+  .homepage #footer .row.d-flex.flex-wrap.justify-content-between.py-5 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    row-gap: 0.55rem;
+  }
+
+  .homepage #footer .footer-menu {
+    padding: 0.6rem 0.7rem;
+  }
+
+  .homepage #footer .footer-intro.mb-4 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .homepage #footer .widget-title {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .homepage #footer > .border-top {
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+  }
+}
+
 .header-search-input:focus {
   border-color: #93c5fd;
   box-shadow: 0 0.55rem 1.15rem rgba(59, 130, 246, 0.2);
