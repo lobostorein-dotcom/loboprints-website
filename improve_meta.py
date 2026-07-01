@@ -104,9 +104,14 @@ for p in pages:
         safe_desc = new_desc.replace('"', '&quot;')
         raw = raw.replace('</head>', f'  <meta name="description" content="{safe_desc}">\n</head>', 1)
         desc_m = desc_re.search(raw)
-    if not keywords_m and kw_data and kw_data.get('keywords') and '</head>' in raw:
-        kw_text = ', '.join(kw_data.get('keywords', []))
-        raw = raw.replace('</head>', f'  <meta name="keywords" content="{kw_text}">\n</head>', 1)
+    kw_text = ', '.join(kw_data.get('keywords', []))
+    kw_text_safe = kw_text.replace('"', '&quot;')
+    kw_tag = f'<meta name="keywords" content="{kw_text_safe}">'
+    if keywords_m:
+        if keywords_m.group(0) != kw_tag:
+            raw = raw.replace(keywords_m.group(0), kw_tag)
+    elif kw_text and '</head>' in raw:
+        raw = raw.replace('</head>', f'  {kw_tag}\n</head>', 1)
     
     # Apply changes only if different
     if current_title != new_title and title_m:
