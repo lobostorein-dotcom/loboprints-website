@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T7ZZ42PP');</script>
+  <!-- End Google Tag Manager -->
+  <title>ID Cards, Lanyards & Holders in Bangalore | Lobo Prints</title>
+  <link rel="icon" type="image/png" href="images/new%20fevicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="images/new%20fevicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/new%20fevicon.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="Lobo Prints">
+  <meta name="keywords" content="ID cards Bangalore, lanyards JP Nagar, ID holders Karnataka, custom ID printing Bangalore, india's best custom printing, custom tshirt in banglore, custom t shirt in bangalore, design your own t shirt, online customizer, create your own design, custom id cards india, college id cards, office id cards, custom tshirt in bangalore, custom t shirt in banglore, custom t-shirt in bangalore, custom t shirts in bangalore, college custom tshirts, college custom t shirts, college t shirt printing, cricket jerseys, custom cricket jerseys, sports jerseys, sports jerserys, hoodies for events, event hoodies, custom hoodies for events, design your own t-shirt, create your own t shirt, online t shirt customizer, online t-shirt customizer, customize your own t shirt">
+  <meta name="description" content="Order ID cards, lanyards and ID holders from Lobo Prints in JP Nagar, Bangalore for offices, schools, events and staff branding. Use our Design Lab to create your own design, add logo/text, and preview before order.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#8C907E">
+  <meta name="geo.region" content="IN-KA">
+  <meta name="geo.placename" content="JP Nagar, Bangalore, Karnataka">
+  <meta name="geo.position" content="12.9077;77.5850">
+  <meta name="ICBM" content="12.9077, 77.5850">
+  <link rel="canonical" href="https://loboprints.in/ids.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ID Cards, Lanyards & Holders in Bangalore | Lobo Prints">
+  <meta property="og:description" content="Custom ID card and lanyard printing services in JP Nagar, Bangalore, Karnataka.">
+  <meta property="og:url" content="https://loboprints.in/ids.html">
+  <meta property="og:site_name" content="Lobo Prints">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://loboprints.in/images/idcards.webp">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ID Cards, Lanyards & Holders in Bangalore | Lobo Prints">
+  <meta name="twitter:description" content="Custom ID products from Lobo Prints in Bangalore.">
+  <meta name="twitter:image" content="https://loboprints.in/images/idcards.webp">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    .uniform-card-grid .card {
+      position: relative;
+      border: 1px solid var(--bs-border-color);
+      border-radius: 1rem;
+      overflow: hidden;
+      background: var(--bs-body-bg);
+      box-shadow: var(--bs-box-shadow-sm);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .uniform-card-grid .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 62%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.08) 100%);
+      opacity: 0;
+      pointer-events: none;
+      border-radius: 1rem 1rem 0 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .uniform-card-grid .card-img-top {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .uniform-card-grid .card-body {
+      padding: 1rem 1rem 1.15rem;
+    }
+
+    .uniform-card-grid .card-title {
+      font-weight: 600;
+      font-size: 0.96rem;
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: calc(1.3em * 2);
+    }
+
+    .uniform-card-grid .card:hover {
+      border-color: #eab308;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(234, 179, 8, 0.2);
+    }
+
+    .uniform-card-grid .card:hover::after {
+      opacity: 1;
+    }
+
+    .uniform-card-grid .card:hover .card-img-top {
+      transform: scale(1.04);
+    }
+
+    .uniform-card-grid .btn-outline-primary {
+      border-width: 1.25px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      line-height: 1.25;
+      padding: 0.34rem 0.78rem;
+      min-height: 34px;
+      max-width: 100%;
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-color: #eab308;
+      color: #92600a;
+      background: linear-gradient(180deg, rgba(250,204,21,0.07) 0%, rgba(234,179,8,0.03) 100%);
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .uniform-card-grid .btn-outline-primary:hover,
+    .uniform-card-grid .btn-outline-primary:focus {
+      color: #0f172a;
+      border-color: #eab308;
+      background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+      box-shadow: 0 0.4rem 1rem rgba(234, 179, 8, 0.32);
+    }
+
+  </style>
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@type":  "CollectionPage",
+    "name":  "ID Cards, Lanyards \u0026 Holders in Bangalore | Lobo Prints",
+    "description":  "Order ID cards, lanyards and ID holders from Lobo Prints in JP Nagar, Bangalore for offices, schools, events and staff branding.",
+    "url":  "https://loboprints.in/ids.html",
+    "image":  "https://loboprints.in/images/idcards.webp",
+    "isPartOf":  {
+                     "@type":  "WebSite",
+                     "name":  "Lobo Prints",
+                     "url":  "https://loboprints.in/"
+                 }
+}
+  </script>
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://loboprints.in/#localbusiness",
+    "name": "Lobo Prints",
+    "image": "https://loboprints.in/images/LOBO PRINTS FOR WEBSITE-04.webp",
+    "url": "https://loboprints.in/",
+    "telephone": "+919742118799",
+    "email": "business@loboprints.in",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "JP Nagar",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "postalCode": "560078",
+        "addressCountry": "IN"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 12.9077,
+        "longitude": 77.5850
+    },
+    "areaServed": [
+      {"@type":"City","name":"Bangalore"},
+      {"@type":"AdministrativeArea","name":"Karnataka"}
+    ],
+    "priceRange": "Affordable"
+}
+  </script>
+  <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@type":  "BreadcrumbList",
+    "itemListElement":  [
+                            {
+                                "@type":  "ListItem",
+                                "position":  1,
+                                "name":  "Home",
+                                "item":  "https://loboprints.in/"
+                            },
+                            {
+                                "@type":  "ListItem",
+                                "position":  2,
+                                "name":  "Categories",
+                                "item":  "https://loboprints.in/categories.html"
+                            },
+                            {
+                                "@type":  "ListItem",
+                                "position":  3,
+                                "name":  "ID Cards, Lanyards \u0026 Holders",
+                                "item":  "https://loboprints.in/ids.html"
+                            }
+                        ]
+}
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJQPGC16KV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DJQPGC16KV');
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7ZZ42PP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/LOBO PRINTS FOR WEBSITE-04.webp" alt="Lobo Prints" height="60" decoding="async" fetchpriority="high"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="all-products.html">All Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="track-order.html">Track Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="customizer-tool/index.html">Design Lab</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1 class="visually-hidden">Custom ID Cards, Lanyards & Holders in JP Nagar, Bangalore</h1>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-4 uniform-card-grid">
+
+        <div class="col">
+          <div class="card h-100 text-center">
+            <img src="images/idcards.webp" class="card-img-top" alt="ID Cards">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">ID Cards</h5>
+              <a href="id1.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 text-center">
+            <img src="images/id card tags.webp" class="card-img-top" alt="Lanyards">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">Lanyards</h5>
+              <a href="id2.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100 text-center">
+            <img src="images/card hoolder.webp" class="card-img-top" alt="ID Holders">
+            <div class="card-body d-flex flex-column align-items-center">
+              <h5 class="card-title">ID Holders</h5>
+              <a href="id3.html" class="btn btn-sm btn-outline-primary mt-auto">View Details</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="product-list-cta">
+    <div class="container text-center">
+      <h2 class="mb-4">Need Custom ID Cards?</h2>
+      <p class="lead mb-4">Get a free quote for your custom ID cards, lanyards, and holder requirements</p>
+      <a href="https://wa.me/919742118799?text=Hi%20Lobo%20Prints%2C%20I%20need%20custom%20ID%20cards" class="btn btn-whatsapp btn-lg fw-bold me-3">WhatsApp Quote</a>
+      <a href="contact.html" class="btn btn-outline-light btn-lg">Contact Form</a>
+    </div>
+  </section>
+
+    <footer id="footer" class="mt-5">
+    <div class="container">
+      <div class="row d-flex flex-wrap justify-content-between py-5">
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-001">
+            <div class="footer-intro mb-4">
+              <a href="index.html">
+                <img src="images/LOBO PRINTS FOR WEBSITE-04.webp" alt="Lobo Prints">
+              </a>
+            </div>
+            <p>We create custom apparel and uniforms for teams, businesses, schools, and events with reliable quality and fast delivery.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-003">
+            <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item"><a href="index.html" class="item-anchor">Home</a></li>
+              <li class="menu-item"><a href="categories.html" class="item-anchor">Categories</a></li>
+              <li class="menu-item"><a href="contact.html" class="item-anchor">Contact</a></li>
+              <li class="menu-item"><a href="sitemap.xml" class="item-anchor">Sitemap</a></li>
+              <li class="menu-item"><a href="tel:9742118799" class="item-anchor">Call Us</a></li>
+              <li class="menu-item"><a href="https://wa.me/919742118799" class="item-anchor">WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-004 border-animation-left">
+            <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
+            <p>Have a question? <a href="mailto:business@loboprints.in" class="item-anchor">business@loboprints.in</a></p>
+            <p>Call anytime: <a href="tel:9742118799" class="item-anchor">9742118799</a></p>
+            <p>Location: JP Nagar, Bangalore, Karnataka</p>
+            <p><a href="https://wa.me/919742118799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote" class="item-anchor">Message on WhatsApp</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-top py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">Custom Apparel - Fast Delivery - Quality Guaranteed</p>
+          </div>
+          <div class="col-md-6 text-end">
+            <p class="mb-0">(c) 2026 Lobo Prints. All rights reserved. Design by <a href="mailto:lakshmikanthds2@gmail.com" class="text-decoration-none">lakshmikanthds2@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919742118799" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <img src="images/whatsapp icon.png" alt="WhatsApp" width="56" height="56" style="display:block;">
+    </a>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919742118799" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <img src="images/whatsapp icon.png" alt="WhatsApp" width="56" height="56" style="display:block;">
+    </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="card-clickable.js"></script>
+  <script src="config.js"></script>
+  <script src="header-search.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T7ZZ42PP');</script>
+  <!-- End Google Tag Manager -->
+  <title>Why Choose Lobo Prints | Quality Custom Apparel in Bangalore</title>
+  <link rel="icon" type="image/png" href="images/new%20fevicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="images/new%20fevicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/new%20fevicon.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Lobo Prints">
+  <meta name="keywords" content="why lobo prints, best custom printing bangalore, quality t-shirt printing JP nagar, reliable custom apparel, bulk printing bangalore, india's best custom printing, custom tshirt in bangalore, custom tshirt in banglore, custom t shirt in bangalore, custom t shirt in banglore, custom t-shirt in bangalore, custom t shirts in bangalore, college custom tshirts, college custom t shirts, college t shirt printing, cricket jerseys, custom cricket jerseys, sports jerseys, sports jerserys, hoodies for events, event hoodies, custom hoodies for events, design your own t shirt, design your own t-shirt, create your own t shirt, online t shirt customizer, online t-shirt customizer, customize your own t shirt">
+  <meta name="description" content="Discover why thousands of teams, businesses and schools trust Lobo Prints for custom apparel. Premium quality, fast delivery, no compromise.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8C907E">
+  <link rel="canonical" href="https://loboprints.in/why-us.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Why Choose Lobo Prints | Custom Apparel Bangalore">
+  <meta property="og:description" content="Discover why thousands of teams, businesses and schools trust Lobo Prints for custom apparel, printing, and uniforms.">
+  <meta property="og:url" content="https://loboprints.in/why-us.html">
+  <meta property="og:site_name" content="Lobo Prints">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://loboprints.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Why Us",
+          "item": "https://loboprints.in/why-us.html"
+        }
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why choose Lobo Prints for custom apparel in Bangalore?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lobo Prints offers in-house production, quality checks, design support, and reliable bulk delivery timelines for teams, colleges, and businesses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide bulk custom T-shirts, hoodies, and jerseys?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We handle bulk orders for custom T-shirts, hoodies, jerseys, uniforms, and event merchandise in Bangalore and across Karnataka."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I approve a design before production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We share a design mockup for approval before final production starts."
+          }
+        }
+      ]
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    /* -- Hero ------------------------------------------- */
+    .why-hero {
+      margin-top: 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
+      color: #fff;
+      padding: 80px 0 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(59,130,246,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(191,161,74,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .why-hero .eyebrow {
+      display: inline-block;
+      background: rgba(191,161,74,0.18);
+      color: #e6c94a;
+      border: 1px solid rgba(191,161,74,0.35);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+    .why-hero h1 {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      color: #facc15;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .why-hero p.lead {
+      font-size: 1.15rem;
+      opacity: 0.82;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    .why-hero .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .why-hero .stat-item strong {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #e6c94a;
+      line-height: 1;
+    }
+    .why-hero .stat-item span {
+      font-size: 0.88rem;
+      opacity: 0.75;
+      letter-spacing: 0.04em;
+    }
+
+    /* -- Section titles --------------------------------- */
+    .section-eyebrow {
+      display: inline-block;
+      background: rgba(191,161,74,0.1);
+      color: #9a7c2e;
+      border: 1px solid rgba(191,161,74,0.28);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    /* -- Reason cards ----------------------------------- */
+    .reason-card {
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 100%;
+      transition: box-shadow 0.28s ease, transform 0.28s ease;
+      background: #fff;
+    }
+    .reason-card:hover {
+      box-shadow: 0 12px 36px rgba(0,0,0,0.11);
+      transform: translateY(-4px);
+    }
+    .reason-card .reason-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      background: #f1f5f9;
+    }
+    .reason-card .reason-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #64748b;
+    }
+    .reason-card .reason-img-placeholder .ph-icon {
+      font-size: 2.5rem;
+    }
+    .reason-card .reason-img-placeholder .ph-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .reason-card .reason-body {
+      padding: 1.5rem;
+    }
+    .reason-card .reason-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #bfa14a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .reason-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: #0f172a;
+    }
+    .reason-card p {
+      font-size: 0.93rem;
+      color: #475569;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* -- Feature strip ---------------------------------- */
+    .feature-strip {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      color: #fff;
+      padding: 60px 0;
+    }
+    .feature-strip .feat-item {
+      text-align: center;
+      padding: 1rem;
+    }
+    .feature-strip .feat-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.7rem;
+    }
+    .feature-strip .feat-item h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #facc15;
+      margin-bottom: 0.4rem;
+    }
+    .feature-strip .feat-item p {
+      font-size: 0.87rem;
+      opacity: 0.72;
+      margin: 0;
+    }
+
+    /* -- Process section -------------------------------- */
+    .process-step {
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    .process-step .step-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+    }
+    .process-step h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .process-step p {
+      font-size: 0.87rem;
+      color: #64748b;
+      margin: 0;
+    }
+    .process-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 30px;
+      color: #cbd5e1;
+      font-size: 1.5rem;
+    }
+
+    /* -- Comparison table ------------------------------- */
+    .compare-table {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .compare-table thead th {
+      text-align: center;
+      padding: 1.1rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .compare-table thead th:first-child {
+      text-align: left;
+    }
+    .compare-table th.lobo-col {
+      background: #0f172a;
+      color: #fff;
+    }
+    .compare-table th.others-col {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+    .compare-table tbody td {
+      padding: 0.95rem 1rem;
+      vertical-align: middle;
+      font-size: 0.9rem;
+      border-color: #f1f5f9;
+    }
+    .compare-table tbody td:nth-child(2) {
+      text-align: center;
+      background: rgba(15,23,42,0.03);
+    }
+    .compare-table tbody td:nth-child(3) {
+      text-align: center;
+    }
+    .check-yes { color: #16a34a; font-size: 1.2rem; font-weight: 700; }
+    .check-no  { color: #dc2626; font-size: 1.2rem; }
+    .check-partial { color: #d97706; font-size: 1.1rem; }
+
+    /* -- CTA -------------------------------------------- */
+    .why-cta {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+      color: #fff;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .why-cta h2 {
+      font-family: 'Marcellus', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #facc15;
+      margin-bottom: 1rem;
+    }
+    .why-cta p {
+      font-size: 1.05rem;
+      opacity: 0.8;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+    }
+
+    /* -- Testimonial highlight -------------------------- */
+    .testimonial-highlight {
+      background: #f8fafc;
+      border-left: 4px solid #bfa14a;
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem 2rem;
+      font-style: italic;
+      color: #334155;
+      font-size: 1.05rem;
+      position: relative;
+    }
+    .testimonial-highlight::before {
+      content: '\201C';
+      font-size: 4rem;
+      color: #bfa14a;
+      line-height: 1;
+      position: absolute;
+      top: -0.5rem;
+      left: 0.7rem;
+      opacity: 0.4;
+    }
+    .testimonial-highlight .t-author {
+      margin-top: 0.8rem;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+    }
+
+    /* -- Responsive tweaks ------------------------------ */
+    @media (max-width: 575px) {
+      .why-hero .hero-stats { gap: 1.5rem; }
+      .why-hero .stat-item strong { font-size: 1.7rem; }
+      .why-hero .btn-warning,
+      .why-hero .btn-outline-light {
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+      }
+      .why-hero .btn-warning.me-3 {
+        margin-right: auto !important;
+      }
+      .why-hero .btn-outline-light {
+        margin-top: 0.8rem;
+      }
+      /* Collage � horizontal scroll on mobile */
+      .why-collage-block {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0.75rem;
+      }
+      .why-collage-image {
+        width: auto;
+        height: 220px;
+        min-width: 580px;
+        max-width: none;
+        object-fit: cover;
+        object-position: center;
+      }
+      /* Testimonials � horizontal scroll on mobile */
+      .testimonials-scroll-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 0 !important;
+        padding-bottom: 0.75rem;
+        scroll-snap-type: x mandatory;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+      }
+      .testimonials-scroll-row > [class*="col-"] {
+        flex: 0 0 82vw;
+        max-width: 82vw;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        scroll-snap-align: start;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJQPGC16KV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DJQPGC16KV');
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7ZZ42PP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/LOBO PRINTS FOR WEBSITE-04.webp" alt="Lobo Prints" height="60" decoding="async" fetchpriority="high"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="all-products.html">All Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="track-order.html">Track Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="customizer-tool/index.html">Design Lab</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<section class="ai-summary-hidden" data-ai-summary="true" aria-label="AI summary">
+  <h2>Quick Answer: Why Choose Lobo Prints</h2>
+  <p>In-house production, quality checks, and reliable timelines for bulk custom apparel orders.</p>
+  <p>Suitable for schools, colleges, businesses, and teams in Bangalore and Karnataka.</p>
+</section>
+<!-- ==================== HERO ==================== -->
+  <section class="why-hero">
+    <div class="container position-relative">
+      <div class="eyebrow">Lobo Prints &mdash; JP Nagar, Bangalore</div>
+      <h1>Why Thousands Choose<br>Lobo Prints</h1>
+      <p class="lead">Quality you can feel. Deadlines we keep. Prices that make sense. Here's everything that sets us apart.</p>
+      <a href="contact.html" class="btn btn-warning btn-lg fw-bold me-3">Get a Free Quote</a>
+      <a href="all-products.html" class="btn btn-outline-light btn-lg">Browse Products</a>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <strong>1,00,000+</strong>
+          <span>Products Delivered</span>
+        </div>
+        <div class="stat-item">
+          <strong>500+</strong>
+          <span>Happy Clients</span>
+        </div>
+        <div class="stat-item">
+          <strong>8+</strong>
+          <span>Years of Experience</span>
+        </div>
+        <div class="stat-item">
+          <strong>10 Days</strong>
+          <span>Bulk Order Delivery</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== QUICK FEATURES STRIP ==================== -->
+  <section class="feature-strip">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="feat-item">
+            <div class="feat-icon">&#x1F3A8;</div>
+            <h5>Free Design Help</h5>
+            <p>Our team helps you finalise artwork at no extra cost</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="feat-item">
+            <div class="feat-icon">&#x26A1;</div>
+            <h5>Fast Turnaround</h5>
+            <p>Most bulk orders are delivered in around 10 days</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="feat-item">
+            <div class="feat-icon">&#x1F9F5;</div>
+            <h5>Premium Fabrics</h5>
+            <p>From 180 GSM to 240 GSM cotton &amp; polyester options</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="feat-item">
+            <div class="feat-icon">&#x1F69A;</div>
+            <h5>Pan-India Shipping</h5>
+            <p>Delivered to your door, wherever you are in India</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6 REASONS ==================== -->
+  <section class="py-5 bg-white" id="reasons">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-eyebrow">The Lobo Prints Difference</div>
+        <h2 class="fw-bold" style="font-size: clamp(1.6rem,4vw,2.4rem);">6 Reasons We're the Right Choice</h2>
+        <p class="text-muted mx-auto" style="max-width:540px;">Whether it's ten T-shirts for a startup or a thousand jerseys for a school tournament, here's why we never let you down.</p>
+      </div>
+      <div class="row g-4">
+
+        <!-- Reason 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card">
+            <img src="images/reason 1.webp" class="reason-img" alt="Close-up custom print quality on fabric" loading="lazy" decoding="async">
+            <div class="reason-body">
+              <div class="reason-number">Reason 01</div>
+              <h3>Uncompromising Print Quality</h3>
+              <p>Every garment goes through a multi-step quality check. We use premium inks and heat-press calibration to ensure your logo or artwork looks pixel-perfect &mdash; wash after wash. Fading, cracking, or bleeding? Not here.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card">
+            <img src="images/reason 2.webp" class="reason-img" alt="Team wearing custom jerseys and hoodies" loading="lazy" decoding="async">
+            <div class="reason-body">
+              <p>From cricket clubs and school sports days to corporate uniforms and startup merch &mdash; we've served 500+ clients across Bangalore and Karnataka. Our repeat client rate speaks for itself.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card">
+            <img src="images/reason 3.webp" class="reason-img" alt="In-house printing process in action" loading="lazy" decoding="async">
+            <div class="reason-body">
+              <div class="reason-number">Reason 03</div>
+              <h3>In-House Production, Zero Middlemen</h3>
+              <p>We own our printing infrastructure. No outsourcing = tighter quality control, faster delivery, and better prices. You deal directly with the people making your products.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card">
+            <img src="images/reason 4.webp" class="reason-img" alt="Packed custom apparel order ready for delivery" loading="lazy" decoding="async">
+            <div class="reason-body">
+              <div class="reason-number">Reason 04</div>
+              <h3>Deadlines We Actually Keep</h3>
+              <p>We know your event has a fixed date. Our team plans production timelines backward from your deadline, not forward from when it's convenient. For bulk orders, delivery is typically completed in around 10 days.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card">
+            <img src="images/reason 5.webp" class="reason-img" alt="Customer reviewing apparel design mockup" loading="lazy" decoding="async">
+            <div class="reason-body">
+              <p>You get a clear, itemised quote upfront. No hidden setup fees, no late surcharges, no "we forgot to mention" extras. What we quote is what you pay &mdash; and it's competitive.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reason 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="reason-card">
+            <img src="images/reason 6.webp" class="reason-img" alt="Product range collage including t-shirt hoodie cap mug and badge" loading="lazy" decoding="async">
+            <div class="reason-body">
+              <p>T-shirts, hoodies, jerseys, trackpants, caps, mugs, ID cards, badges, jackets, sweatshirts &mdash; all under one roof. You save time, coordination hassle, and money by bundling orders with us.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-eyebrow">Simple &amp; Smooth</div>
+        <h2 class="fw-bold" style="font-size: clamp(1.5rem,4vw,2.2rem);">How It Works in 4 Steps</h2>
+        <p class="text-muted">Ordering custom apparel from Lobo Prints is hassle-free from start to finish.</p>
+      </div>
+      <div class="row align-items-start justify-content-center">
+        <div class="col-6 col-md-3">
+          <div class="process-step">
+            <div class="step-circle">1</div>
+            <h5>Share Your Idea</h5>
+            <p>Chat with us on WhatsApp or email your design brief, logo, and size breakdown.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="process-step">
+            <div class="step-circle">2</div>
+            <h5>Get a Digital Mockup</h5>
+            <p>We send a digital mockup showing exactly how your design will look on the product. <strong>Note: Mockups are provided after order confirmation or on request and may incur a fee.</strong></p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="process-step">
+            <div class="step-circle">3</div>
+            <h5>Approve &amp; Confirm</h5>
+            <p>Approve the mockup, confirm size breakdowns, and we begin production right away.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="process-step">
+            <div class="step-circle">4</div>
+            <h5>Delivered to You</h5>
+            <p>Your order is packed securely and shipped to your door or pick it up from JP Nagar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 rounded-4 border why-collage-block" style="box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);">
+        <img src="images/behind the scene collage.webp" alt="Behind the scenes collage showing design print packing and delivery" class="img-fluid w-100 why-collage-image" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== COMPARISON TABLE ==================== -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-eyebrow">Side by Side</div>
+        <h2 class="fw-bold" style="font-size: clamp(1.5rem,4vw,2.2rem);">Lobo Prints vs. The Rest</h2>
+        <p class="text-muted">Here's an honest comparison of what we offer vs. typical local printers.</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table compare-table align-middle">
+          <thead>
+            <tr>
+              <th class="text-start" style="background:#f8fafc;">Feature</th>
+              <th class="lobo-col">Lobo Prints</th>
+              <th class="others-col">Typical Local Printer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Free design mockup before production</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-no">&#10006;</span></td>
+            </tr>
+            <tr>
+              <td><strong>In-house production (no outsourcing)</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-partial">~</span></td>
+            </tr>
+            <tr>
+              <td><strong>Pan-India delivery</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-no">&#10006;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Consistent quality across large orders</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-partial">~</span></td>
+            </tr>
+            <tr>
+              <td><strong>Clear itemised quote (no hidden charges)</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-no">&#10006;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Multiple printing methods (DTF, sublimation, screen)</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-partial">~</span></td>
+            </tr>
+            <tr>
+              <td><strong>Live Design Lab tool</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-no">&#10006;</span></td>
+            </tr>
+            <tr>
+              <td><strong>Minimum order as low as 10 pieces</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-partial">~</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dedicated WhatsApp support throughout order</strong></td>
+              <td><span class="check-yes">&#10004;</span></td>
+              <td><span class="check-no">&#10006;</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-center mt-3">
+        <small class="text-muted">&#10004; Yes &nbsp; &#10006; &nbsp; No &nbsp; ~ Sometimes / Varies</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRODUCT RANGE HIGHLIGHT ==================== -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-eyebrow">Everything You Need</div>
+        <h2 class="fw-bold" style="font-size: clamp(1.5rem,4vw,2.2rem);">One Brand, Multiple Solutions</h2>
+        <p class="text-muted mx-auto" style="max-width:520px;">From sportswear to corporate gifts, we print on more than you think.</p>
+      </div>
+      <div class="row g-3 text-center">
+        <div class="col-6 col-sm-4 col-lg-2">
+          <a href="tshirts.html" class="text-decoration-none">
+            <div class="p-3 rounded-3 bg-white border h-100 d-flex flex-column align-items-center gap-2" style="transition: box-shadow 0.2s;">
+              <span style="font-size:2rem;">&#x1F455;</span>
+              <span class="fw-600 text-dark" style="font-size:0.9rem; font-weight:600;">T-Shirts</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2">
+          <a href="hoodies.html" class="text-decoration-none">
+            <div class="p-3 rounded-3 bg-white border h-100 d-flex flex-column align-items-center gap-2">
+              <span style="font-size:2rem;">&#x1F9E5;</span>
+              <span class="fw-600 text-dark" style="font-size:0.9rem; font-weight:600;">Hoodies</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2">
+          <a href="jerseys.html" class="text-decoration-none">
+            <div class="p-3 rounded-3 bg-white border h-100 d-flex flex-column align-items-center gap-2">
+              <span style="font-size:2rem;">&#x1F93D;</span>
+              <span class="fw-600 text-dark" style="font-size:0.9rem; font-weight:600;">Jerseys</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2">
+          <a href="caps.html" class="text-decoration-none">
+            <div class="p-3 rounded-3 bg-white border h-100 d-flex flex-column align-items-center gap-2">
+              <span style="font-size:2rem;">&#x1F9E2;</span>
+              <span class="fw-600 text-dark" style="font-size:0.9rem; font-weight:600;">Caps</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2">
+          <a href="mugs.html" class="text-decoration-none">
+            <div class="p-3 rounded-3 bg-white border h-100 d-flex flex-column align-items-center gap-2">
+              <span style="font-size:2rem;">&#x2615;</span>
+              <span class="fw-600 text-dark" style="font-size:0.9rem; font-weight:600;">Mugs</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-sm-4 col-lg-2">
+          <a href="badges.html" class="text-decoration-none">
+            <div class="p-3 rounded-3 bg-white border h-100 d-flex flex-column align-items-center gap-2">
+              <span style="font-size:2rem;">&#x1F3F7;</span>
+              <span class="fw-600 text-dark" style="font-size:0.9rem; font-weight:600;">Badges &amp; IDs</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIAL HIGHLIGHT ==================== -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="section-eyebrow">What Clients Say</div>
+        <h2 class="fw-bold" style="font-size: clamp(1.5rem,4vw,2.2rem);">Don't Just Take Our Word for It</h2>
+      </div>
+      <div class="row g-4 testimonials-scroll-row">
+        <div class="col-md-4">
+          <div class="testimonial-highlight">
+            Amazing jersey quality and super fast delivery. Our entire team was thrilled with how they turned out. Will definitely order again.
+            <div class="t-author">Kashi &mdash; Cricket Team Captain, Bangalore</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-highlight">
+            Got 200 corporate T-shirts printed for our company event. The print was sharp, delivery was on time, and the pricing was very competitive.
+            <div class="t-author">Kiran Shetty &mdash; HR Manager</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-highlight">
+            Very professional from start to finish. They sent mockups, confirmed sizes, and delivered exactly what we approved. Zero surprises.
+            <div class="t-author">Sandeep Kumar &mdash; Startup Founder</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA ==================== -->
+  <section class="why-cta">
+    <div class="container">
+      <h2>Ready to Order? Let's Make It Happen.</h2>
+      <p>Get a free quote within minutes. Just tell us what you need we'll handle the rest.</p>
+      <a href="https://wa.me/919742118799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote%20for%20custom%20apparel" class="btn btn-whatsapp btn-lg fw-bold me-3">WhatsApp Quote</a>
+      <a href="customizer-tool/index.html" class="btn btn-outline-light btn-lg">Try Design Lab</a>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="footer" class="mt-0">
+    <div class="container">
+      <div class="row d-flex flex-wrap justify-content-between py-5">
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-001">
+            <div class="footer-intro mb-4">
+              <a href="index.html">
+                <img src="images/LOBO PRINTS FOR WEBSITE-04.webp" alt="Lobo Prints">
+              </a>
+            </div>
+            <p>We create custom apparel and uniforms for teams, businesses, schools, and events. From T-shirts and jerseys to professional uniforms, we turn your ideas into high-quality printed clothing.</p>
+            <div class="social-links">
+              <ul class="list-unstyled d-flex flex-wrap gap-3">
+                <li>
+                  <a href="https://www.instagram.com/loboprints.in" class="text-secondary" target="_blank" rel="noopener">
+                    <img src="images/instagram icon.png" alt="Instagram" width="28" height="28" style="display:inline-block;vertical-align:middle;" loading="lazy" />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/919742118799" class="text-secondary" target="_blank" rel="noopener">
+                    <img src="images/whatsapp icon.png" alt="WhatsApp" width="28" height="28" style="display:inline-block;vertical-align:middle;" loading="lazy" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-002">
+            <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item"><a href="index.html" class="item-anchor">Home</a></li>
+              <li class="menu-item"><a href="why-us.html" class="item-anchor">Why Us</a></li>
+              <li class="menu-item"><a href="categories.html" class="item-anchor">Categories</a></li>
+              <li class="menu-item"><a href="all-products.html" class="item-anchor">All Products</a></li>
+              <li class="menu-item"><a href="contact.html" class="item-anchor">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-003">
+            <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item"><a href="categories.html" class="item-anchor">Categories</a></li>
+              <li class="menu-item"><a href="contact.html" class="item-anchor">Contact</a></li>
+              <li class="menu-item"><a href="sitemap.xml" class="item-anchor">Sitemap</a></li>
+              <li class="menu-item"><a href="tel:9742118799" class="item-anchor">Call Us</a></li>
+              <li class="menu-item"><a href="https://wa.me/919742118799" class="item-anchor">WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-004 border-animation-left">
+            <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
+            <p>Have a question? <a href="mailto:business@loboprints.in" class="item-anchor">business@loboprints.in</a></p>
+            <p>Call anytime: <a href="tel:9742118799" class="item-anchor">9742118799</a></p>
+            <p>Location: JP Nagar, Bangalore, Karnataka</p>
+            <p><a href="https://wa.me/919742118799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote" class="item-anchor">Message on WhatsApp</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-top py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">Custom Apparel - Fast Delivery - Quality Guaranteed</p>
+          </div>
+          <div class="col-md-6 text-end">
+            <p class="mb-0">&copy; 2026 Lobo Prints. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919742118799" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <img src="images/whatsapp icon.png" alt="WhatsApp" width="56" height="56" style="display:block;">
+  </a>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/SmoothScroll.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script src="js/script.min.js"></script>
+  <script src="config.js"></script>
+  <script src="header-search.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T7ZZ42PP');</script>
+  <!-- End Google Tag Manager -->
+  <title>Best Printing Services in Bangalore | Screen Printing, DTF, Embroidery, Sublimation | Lobo Prints</title>
+  <link rel="icon" type="image/png" href="images/new%20fevicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="shortcut icon" href="images/new%20fevicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/new%20fevicon.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="Lobo Prints">
+  <meta name="keywords" content="screen printing Bangalore, dtf printing Bangalore, embroidary Bangalore, embroidery Bangalore, sublimation printing Bangalore, in-house garmenting Bangalore, cheap and best custom printing Bangalore, fast quick t-shirt printing JP Nagar, nearby printing services Jayanagar BTM Banashankari Koramangala, bulk custom apparel Karnataka">
+  <meta name="description" content="Lobo Prints offers screen printing, DTF, embroidery, sublimation, and in-house garmenting in JP Nagar, Bangalore. Get affordable, best-quality, fast and quick custom apparel production for bulk orders.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#8C907E">
+  <meta name="geo.region" content="IN-KA">
+  <meta name="geo.placename" content="JP Nagar, Bangalore, Karnataka">
+  <meta name="geo.position" content="12.9077;77.5850">
+  <meta name="ICBM" content="12.9077, 77.5850">
+  <link rel="canonical" href="https://loboprints.in/services.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Custom Printing Services in Bangalore | Lobo Prints">
+  <meta property="og:description" content="Explore our 5 core services: Screen Printing, DTF, Embroidery, Sublimation, and In-House Garmenting for bulk custom apparel in Bangalore.">
+  <meta property="og:url" content="https://loboprints.in/services.html">
+  <meta property="og:site_name" content="Lobo Prints">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:image" content="https://loboprints.in/images/new%20fevicon.png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Custom Printing Services in Bangalore | Lobo Prints">
+  <meta name="twitter:description" content="Screen printing, DTF, embroidery, sublimation, and in-house garmenting with quick turnaround in Bangalore.">
+  <meta name="twitter:image" content="https://loboprints.in/images/new%20fevicon.png">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap" rel="stylesheet">
+
+  <style>
+    .services-page {
+      padding-top: 92px;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 220px);
+    }
+
+    .services-hero {
+      margin-top: 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
+      color: #fff;
+      padding: 54px 0 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .services-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(59,130,246,0.15) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(191,161,74,0.12) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .services-hero .eyebrow {
+      display: inline-block;
+      background: rgba(191,161,74,0.18);
+      color: #e6c94a;
+      border: 1px solid rgba(191,161,74,0.35);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .services-hero h1 {
+      font-family: 'Marcellus', serif;
+      color: #facc15;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      margin-bottom: 0.9rem;
+    }
+    .services-hero .lead {
+      max-width: 820px;
+      margin: 0 auto;
+      opacity: 0.92;
+    }
+    .services-hero .hero-shell {
+      position: relative;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.35);
+      padding: clamp(1.2rem, 3.5vw, 2.2rem);
+      backdrop-filter: blur(2px);
+    }
+    .service-intro {
+      border: 1px solid rgba(15,23,42,0.08);
+      border-radius: 10px;
+      background: linear-gradient(160deg, #ffffff 0%, #f8fafc 60%, #eef2ff 100%);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.12);
+      padding: clamp(1.1rem, 2.4vw, 1.9rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-intro::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      background: linear-gradient(180deg, #facc15 0%, #eab308 100%);
+    }
+    .services-grid .service-card-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .services-accordion {
+      width: 100%;
+      max-width: 380px;
+    }
+    .services-accordion .accordion-item {
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 0;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      background:
+        radial-gradient(circle at 88% -8%, rgba(250, 204, 21, 0.28) 0%, rgba(250, 204, 21, 0) 48%),
+        linear-gradient(160deg, #ffffff 0%, #fffbf0 40%, #f0f4ff 100%);
+      position: relative;
+      width: 100%;
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    .services-accordion .accordion-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #facc15 0%, #f59e0b 50%, #d97706 100%);
+      border-radius: 14px 14px 0 0;
+      opacity: 0.7;
+      transition: opacity 0.35s ease;
+    }
+    .services-accordion .accordion-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      border-color: rgba(15, 23, 42, 0.1);
+    }
+    .services-accordion .accordion-item:hover::before {
+      opacity: 1;
+    }
+    .services-accordion .accordion-button {
+      font-weight: 800;
+      color: #0f172a;
+      padding: 0.8rem 1rem;
+      font-size: 1.08rem;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.12) 0%, rgba(245, 158, 11, 0.06) 100%);
+      gap: 0.95rem;
+      align-items: flex-start;
+      min-height: 78px;
+      border: 0;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.3px;
+    }
+    .services-accordion .accordion-button::after {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      background-color: #ffffff;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+      background-position: center;
+      background-size: 0.95rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .services-accordion .accordion-button::before {
+      content: attr(data-no);
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      color: #fff;
+      background: linear-gradient(140deg, #fbbf24 0%, #f59e0b 55%, #d97706 100%);
+      box-shadow: 0 12px 24px rgba(245, 158, 11, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+      flex: 0 0 auto;
+      margin-top: 0.1rem;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .services-accordion .accordion-button:not(.collapsed) {
+      color: #0f172a;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.08) 0%, rgba(245, 158, 11, 0.04) 68%);
+      box-shadow: none;
+    }
+    .service-button-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.1rem;
+      line-height: 1.2;
+    }
+    .service-button-text strong {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.2px;
+    }
+    .service-button-text span {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #475569;
+      letter-spacing: 0.01em;
+    }
+    .services-accordion .accordion-button:focus {
+      box-shadow: none;
+      outline: none;
+    }
+    .services-accordion .accordion-body {
+      color: #475569;
+      line-height: 1.65;
+      font-size: 0.98rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 251, 235, 0.7) 100%);
+      border-top: 2px solid rgba(250, 204, 21, 0.15);
+      min-height: 120px;
+      padding: 0.85rem 1rem 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+    .mini-card {
+      border: 1px solid rgba(15,23,42,0.08);
+      border-radius: 9px;
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      padding: 1.08rem;
+      height: 100%;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+    }
+    .mini-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.55rem;
+      color: #0f172a;
+    }
+    .mini-card p {
+      margin: 0;
+      color: #475569;
+      font-size: 0.94rem;
+    }
+    .services-cta {
+      border-radius: 11px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #0f172a 100%);
+      color: #fff;
+      padding: clamp(1.6rem, 4vw, 2.8rem);
+      box-shadow: 0 18px 36px rgba(15,23,42,0.25);
+    }
+    .services-cta h2 {
+      font-family: 'Marcellus', serif;
+      color: #facc15;
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    }
+    @media (max-width: 767.98px) {
+      .services-hero {
+        padding: 48px 0 40px;
+      }
+      .services-hero h1 {
+        line-height: 1.24;
+      }
+      .service-intro {
+        border-radius: 8px;
+        padding: 0.95rem;
+      }
+      .services-accordion .accordion-item {
+        border-radius: 4px;
+      }
+      .services-accordion .accordion-item::before {
+        border-radius: 4px;
+      }
+      .services-accordion .accordion-button {
+        padding: 0.9rem 0.95rem;
+        min-height: 82px;
+      }
+      .services-accordion .accordion-body {
+        min-height: auto;
+        padding: 0.9rem 0.95rem 1rem;
+        font-size: 0.94rem;
+        line-height: 1.64;
+      }
+      .service-button-text strong {
+        font-size: 0.96rem;
+      }
+      .service-button-text span {
+        font-size: 0.8rem;
+      }
+      .mini-card {
+        border-radius: 8px;
+        padding: 0.9rem;
+      }
+      .services-cta {
+        border-radius: 9px;
+        padding: 1.2rem;
+      }
+      .services-accordion {
+        max-width: none;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Services - Lobo Prints",
+    "url": "https://loboprints.in/services.html",
+    "description": "Screen printing, DTF printing, embroidery, sublimation, and in-house garmenting services in Bangalore.",
+    "about": {
+      "@type": "LocalBusiness",
+      "name": "Lobo Prints",
+      "telephone": "+91-9742118799",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "JP Nagar, Bangalore",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      }
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://loboprints.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://loboprints.in/services.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Lobo Prints Service List",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Screen Printing"},
+      {"@type": "ListItem", "position": 2, "name": "DTF"},
+      {"@type": "ListItem", "position": 3, "name": "Embroidery"},
+      {"@type": "ListItem", "position": 4, "name": "Sublimation"},
+      {"@type": "ListItem", "position": 5, "name": "In-House Garmenting"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which method is best for bulk custom T-shirt printing in Bangalore?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Screen printing is usually the best-value method for bulk orders with consistent artwork. For multicolor and detailed artwork, DTF is a strong option."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you support quick delivery in nearby Bangalore locations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We support quick production planning for nearby locations like JP Nagar, Jayanagar, BTM, Banashankari, and Koramangala based on order size and artwork readiness."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer affordable pricing with quality output?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We focus on transparent, affordable pricing and reliable print quality, making us a practical cheap-and-best value partner for bulk custom apparel."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJQPGC16KV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DJQPGC16KV');
+  </script>
+</head>
+
+<body class="services-page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7ZZ42PP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="images/LOBO PRINTS FOR WEBSITE-04.webp" alt="Lobo Prints" height="60" decoding="async" fetchpriority="high"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="all-products.html">All Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="track-order.html">Track Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="customizer-tool/index.html">Design Lab</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="ai-summary-hidden" data-ai-summary="true" aria-label="AI summary">
+    <h2>Quick Answer: Lobo Prints Services</h2>
+    <p>Lobo Prints provides five core services: screen printing, DTF, embroidery, sublimation, and in-house garmenting.</p>
+    <p>These services are optimized for quality, speed, and cost control in Bangalore and nearby areas.</p>
+  </section>
+
+  <section class="services-hero">
+    <div class="container position-relative">
+      <div class="hero-shell">
+        <span class="eyebrow">Lobo Prints Services</span>
+        <h1>Screen Printing, DTF, Embroidery, Sublimation, In-House Garmenting</h1>
+        <p class="lead">Looking for nearby, cheap and best custom printing in Bangalore? We support fast and quick production planning for bulk apparel orders in JP Nagar, Jayanagar, BTM, Banashankari, Koramangala, and surrounding areas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="service-intro mb-4">
+        <h2 class="h3 mb-3">Our 5 Core Services</h2>
+        <p class="mb-0">Click each service to expand and read full details. This page is intentionally focused only on the five services you requested, with richer explanation to improve conversion and search relevance for high-intent terms.</p>
+      </div>
+
+      <div class="row g-4 services-grid">
+        <div class="col-xl-4 col-md-6 service-card-wrap">
+        <div class="accordion services-accordion w-100">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" data-no="01" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <span class="service-button-text"><strong>Screen Printing</strong><span>Best value for bulk custom apparel production</span></span>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-service="screen_printing">
+            <div class="accordion-body">
+              Screen printing is one of the best options for bulk custom apparel where design consistency and long-lasting quality are important. It is widely used for college fest T-shirts, corporate staff uniforms, event merchandise, and team wear. For simple to medium-color artwork, this method gives excellent value and is often the most affordable for larger quantities. At Lobo Prints, we focus on proper setup, curing, and quality checks so the print remains durable after repeated washes. If you need cheap and best-value bulk printing in Bangalore with quick planning support, screen printing is usually the first recommendation.
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 service-card-wrap">
+        <div class="accordion services-accordion w-100">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" data-no="02" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span class="service-button-text"><strong>DTF (Direct to Film)</strong><span>High-detail and multi-color artwork output</span></span>
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-service="dtf_printing">
+            <div class="accordion-body">
+              DTF (Direct to Film) is ideal for high-detail and multi-color designs where precision and color richness matter. It works well for startup merch, custom logo combinations, detailed artwork, and short to medium quantity runs. DTF is flexible across fabric types and is a practical choice when you need both quality and fast turnaround. For customers searching nearby for quick and premium-looking custom print output in Bangalore, DTF provides strong visual results while keeping production practical.
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 service-card-wrap">
+        <div class="accordion services-accordion w-100">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" data-no="03" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <span class="service-button-text"><strong>Embroidary / Embroidery</strong><span>Premium stitch branding for uniforms and caps</span></span>
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-service="embroidery">
+            <div class="accordion-body">
+              Embroidery gives a premium and professional finish for polos, jackets, caps, and uniforms. It is preferred by offices, institutions, schools, and hospitality teams that need long-term branding with a high-quality look and feel. Thread-based logo finishing offers strong durability and elegant texture. We digitize logos carefully so output is neat even in smaller stitch areas. If you are comparing embroidary or embroidery services in Bangalore, this method is ideal when brand presentation and durability are priorities.
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 service-card-wrap">
+        <div class="accordion services-accordion w-100">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" data-no="04" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <span class="service-button-text"><strong>Sublimation</strong><span>Breathable, vibrant prints for sportswear</span></span>
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-service="sublimation">
+            <div class="accordion-body">
+              Sublimation is the best fit for polyester apparel and all-over sports designs. It is commonly used for jerseys, training kits, and performance wear where breathability and color vibrancy are important. Since the dye bonds into the fabric, the print remains lightweight and resistant to cracking or peeling. This method is excellent for sports teams and events with sponsor-heavy or full-coverage graphics. For fast and consistent jersey production in Bangalore and Karnataka, sublimation is a proven choice.
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 service-card-wrap">
+        <div class="accordion services-accordion w-100">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" data-no="05" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              <span class="service-button-text"><strong>In-House Garmenting</strong><span>End-to-end quality control and faster planning</span></span>
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-service="inhouse_garmenting">
+            <div class="accordion-body">
+              In-house garmenting helps maintain better control over fit, finish, shade consistency, and production timelines. It reduces dependency on external vendors and improves reliability for repeat bulk orders. This is a major advantage for colleges, businesses, and teams that need dependable quality over multiple batches. The in-house workflow also helps us support quicker timeline commitments when deadlines are tight. If you are looking for nearby custom printing with stable quality and practical pricing, in-house garmenting creates strong value.
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-4">
+          <div class="mini-card">
+            <h3>Nearby Coverage</h3>
+            <p>JP Nagar, Jayanagar, BTM Layout, Banashankari, Bannerghatta Road, Koramangala, Electronic City, and nearby Bangalore areas.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mini-card">
+            <h3>Bulk Friendly</h3>
+            <p>Built for teams, colleges, corporate uniforms, events, and promotional apparel with quality checks and practical costing.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mini-card">
+            <h3>Quick Response</h3>
+            <p>Share quantity, artwork, and timeline to get a fast method recommendation and quote through contact or WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-4 pb-5">
+    <div class="container">
+      <div class="services-cta text-center">
+        <h2>Need the Right Service Recommendation?</h2>
+        <p class="mb-4">Tell us your fabric, artwork type, quantity, and deadline. We will suggest the best method for quality, speed, and budget.</p>
+        <a href="contact.html" id="servicesQuoteBtn" class="btn btn-warning btn-lg fw-bold me-2 mb-2">Get a Quick Quote</a>
+        <a href="https://wa.me/919742118799?text=Hi%20Lobo%20Prints%2C%20I%20need%20details%20for%20Screen%20Printing%2FDTF%2FEmbroidery%2FSublimation%2FIn-house%20Garmenting" id="servicesWhatsAppBtn" class="btn btn-whatsapp btn-lg mb-2">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="mt-5">
+    <div class="container">
+      <div class="row d-flex flex-wrap justify-content-between py-5">
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-001">
+            <div class="footer-intro mb-4">
+              <a href="index.html">
+                <img src="images/LOBO PRINTS FOR WEBSITE-04.webp" alt="Lobo Prints">
+              </a>
+            </div>
+            <p>We create custom apparel and uniforms for teams, businesses, schools, and events with reliable quality and fast delivery.</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-003">
+            <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item"><a href="index.html" class="item-anchor">Home</a></li>
+              <li class="menu-item"><a href="categories.html" class="item-anchor">Categories</a></li>
+              <li class="menu-item"><a href="contact.html" class="item-anchor">Contact</a></li>
+              <li class="menu-item"><a href="sitemap.xml" class="item-anchor">Sitemap</a></li>
+              <li class="menu-item"><a href="tel:9742118799" class="item-anchor">Call Us</a></li>
+              <li class="menu-item"><a href="https://wa.me/919742118799" class="item-anchor">WhatsApp</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="footer-menu footer-menu-004 border-animation-left">
+            <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
+            <p>Have a question? <a href="mailto:business@loboprints.in" class="item-anchor">business@loboprints.in</a></p>
+            <p>Call anytime: <a href="tel:9742118799" class="item-anchor">9742118799</a></p>
+            <p>Location: JP Nagar, Bangalore, Karnataka</p>
+            <p><a href="https://wa.me/919742118799?text=Hi%20Lobo%20Prints%2C%20I%20would%20like%20a%20quote" class="item-anchor">Message on WhatsApp</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-top py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">Custom Apparel - Fast Delivery - Quality Guaranteed</p>
+          </div>
+          <div class="col-md-6 text-end">
+            <p class="mb-0">(c) 2026 Lobo Prints. All rights reserved. Design by <a href="mailto:lakshmikanthds2@gmail.com" class="text-decoration-none">lakshmikanthds2@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919742118799" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <img src="images/whatsapp icon.png" alt="WhatsApp" width="56" height="56" style="display:block;">
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="config.js"></script>
+  <script src="header-search.js"></script>
+  <script>
+    (function () {
+      var quoteBtn = document.getElementById('servicesQuoteBtn');
+      var whatsappBtn = document.getElementById('servicesWhatsAppBtn');
+
+      function trackCta(name) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'cta_click', {
+            event_category: 'services_page',
+            event_label: name
+          });
+        }
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({
+            event: 'services_cta_click',
+            cta_name: name
+          });
+        }
+      }
+
+      if (quoteBtn) {
+        quoteBtn.addEventListener('click', function () { trackCta('quick_quote'); });
+      }
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function () { trackCta('whatsapp_services'); });
+      }
+
+      document.querySelectorAll('#servicesAccordion .accordion-collapse').forEach(function (panel) {
+        panel.addEventListener('shown.bs.collapse', function () {
+          var service = panel.getAttribute('data-service') || 'unknown_service';
+          if (typeof gtag === 'function') {
+            gtag('event', 'service_expand', {
+              event_category: 'services_page',
+              event_label: service
+            });
+          }
+          if (window.dataLayer && Array.isArray(window.dataLayer)) {
+            window.dataLayer.push({
+              event: 'service_expand',
+              service_name: service
+            });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
